@@ -1,0 +1,22 @@
+# Gabaritos das questões de múltipla escolha (uso do professor — NUNCA versionar)
+gabaritos/
+
+# Planejamento do professor
+PLANEJAMENTO.md
+
+# Dumps e backups de banco
+*.dump
+*.backup
+*.sql.bak
+pg_dump*.sql
+
+# Arquivos temporários de ferramentas de modelagem
+*.brM.bak
+*.drawio.bkp
+~$*
+
+# Editor e sistema operacional
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
