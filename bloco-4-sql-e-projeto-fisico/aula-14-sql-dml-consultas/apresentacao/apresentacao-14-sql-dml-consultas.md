@@ -31,8 +31,8 @@ footer: '🗄️ Curso de Modelagem de Dados · Aula 14'
 ## `INSERT` — e a regra de ouro
 
 ```sql
-INSERT INTO obra (titulo, ano, isbn)
-VALUES ('Dom Casmurro', 1899, '9788512345678');
+INSERT INTO obra (isbn, titulo, ano_publicacao)
+VALUES ('9788512345678', 'Dom Casmurro', 1899);
 ```
 
 > 📏 **Sempre liste as colunas.** `INSERT INTO obra VALUES (...)` depende da **ordem física** — uma ordem que o modelo relacional diz não existir (aula 09). Um `ALTER TABLE ADD COLUMN` quebra todo `INSERT` que confiava nela, **e quebra em silêncio** se os tipos forem compatíveis.
@@ -92,9 +92,9 @@ ORDER BY colunas          -- 6º
 ```sql
 SELECT u.nome, o.titulo
 FROM emprestimo e
-JOIN usuario  u ON u.matricula = e.matricula
-JOIN exemplar x ON x.cod_obra = e.cod_obra
-JOIN obra     o ON o.cod_obra = x.cod_obra;
+JOIN usuario  u ON e.matricula = u.matricula
+JOIN exemplar x ON e.tombo     = x.tombo
+JOIN obra     o ON x.isbn      = o.isbn;
 ```
 
 **`INNER JOIN`** — só o que casa dos dois lados.
@@ -107,10 +107,10 @@ JOIN obra     o ON o.cod_obra = x.cod_obra;
 ## Agrupamento e agregação
 
 ```sql
-SELECT   u.curso, COUNT(*) AS total
+SELECT   u.tipo, COUNT(*) AS total
 FROM     emprestimo e
-JOIN     usuario u ON u.matricula = e.matricula
-GROUP BY u.curso
+JOIN     usuario u ON e.matricula = u.matricula
+GROUP BY u.tipo
 HAVING   COUNT(*) > 10
 ORDER BY total DESC;
 ```
@@ -143,8 +143,9 @@ E a **divisão relacional** da aula 11 vira dupla negação: `NOT EXISTS (… NO
 CREATE VIEW emprestimos_em_aberto AS
 SELECT u.nome, o.titulo, e.data_prevista
 FROM emprestimo e
-JOIN usuario u ON u.matricula = e.matricula
-JOIN obra    o ON o.cod_obra  = e.cod_obra
+JOIN usuario  u ON e.matricula = u.matricula
+JOIN exemplar x ON e.tombo     = x.tombo
+JOIN obra     o ON x.isbn      = o.isbn
 WHERE e.data_devolucao IS NULL;
 ```
 
