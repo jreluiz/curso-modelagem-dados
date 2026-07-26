@@ -1,0 +1,18 @@
+---
+config:
+  theme: base
+  # fontFamily precisa ser chave de topo — dentro de themeVariables é ignorada
+  fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif"
+  themeVariables:
+    fontSize: 22px
+    lineColor: "#336791"
+    primaryColor: "#eaf0f5"
+    primaryTextColor: "#1a1a1a"
+    primaryBorderColor: "#336791"
+    edgeLabelBackground: "#fdfdfb"
+---
+flowchart TD
+    M([MUNDO REAL]) -->|conversa, observação, documentos| R["<b>1. LEVANTAMENTO DE REQUISITOS</b><br>texto do minimundo"]
+    R --> C["<b>2. PROJETO CONCEITUAL</b><br>o que existe e como se relaciona<br><i>modelo ER · independente de SGBD · Blocos 1 e 2</i>"]
+    C -->|mapeamento| L["<b>3. PROJETO LÓGICO</b><br>tabelas, chaves, FKs, normalização<br><i>modelo relacional · Bloco 3</i>"]
+    L --> F["<b>4. PROJETO FÍSICO</b><br>como fica rápido<br><i>índices, tipos · depende do produto · Bloco 4</i>"]

@@ -20,3 +20,7 @@ pg_dump*.sql
 .vscode/
 .DS_Store
 Thumbs.db
+
+# Python (ferramentas de slides)
+__pycache__/
+*.pyc

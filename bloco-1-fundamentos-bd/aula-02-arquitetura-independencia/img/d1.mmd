@@ -1,0 +1,30 @@
+---
+config:
+  theme: base
+  # fontFamily precisa ser chave de topo — dentro de themeVariables é ignorada
+  fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif"
+  themeVariables:
+    fontSize: 22px
+    lineColor: "#336791"
+    primaryColor: "#eaf0f5"
+    primaryTextColor: "#1a1a1a"
+    primaryBorderColor: "#336791"
+    edgeLabelBackground: "#fdfdfb"
+---
+flowchart TD
+    subgraph EXT["NÍVEL EXTERNO — várias visões"]
+        V1[visão do atendente]
+        V2[visão da direção]
+        V3[visão do aluno]
+    end
+    subgraph CON["NÍVEL CONCEITUAL — um só"]
+        C[ESQUEMA CONCEITUAL]
+    end
+    subgraph INT["NÍVEL INTERNO — arquivos, índices, páginas"]
+        I[ESQUEMA INTERNO]
+    end
+    V1 --- C
+    V2 --- C
+    V3 --- C
+    C -->|mapeamento conceitual/interno| I
+    I --> DISCO[(disco)]

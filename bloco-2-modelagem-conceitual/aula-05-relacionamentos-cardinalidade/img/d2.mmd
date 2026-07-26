@@ -1,0 +1,16 @@
+---
+config:
+  theme: base
+  # fontFamily precisa ser chave de topo — dentro de themeVariables é ignorada
+  fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif"
+  themeVariables:
+    fontSize: 22px
+    lineColor: "#336791"
+    primaryColor: "#eaf0f5"
+    primaryTextColor: "#1a1a1a"
+    primaryBorderColor: "#336791"
+    edgeLabelBackground: "#fdfdfb"
+---
+flowchart LR
+    F[FUNCIONARIO] ---|1 · papel: chefe| CHEFIA{CHEFIA}
+    CHEFIA ---|N · papel: subordinado| F

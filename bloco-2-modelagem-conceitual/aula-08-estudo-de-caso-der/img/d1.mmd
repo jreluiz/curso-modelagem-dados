@@ -1,0 +1,112 @@
+---
+config:
+  theme: base
+  # fontFamily precisa ser chave de topo — dentro de themeVariables é ignorada
+  fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif"
+  themeVariables:
+    fontSize: 22px
+    lineColor: "#336791"
+    primaryColor: "#eaf0f5"
+    primaryTextColor: "#1a1a1a"
+    primaryBorderColor: "#336791"
+    edgeLabelBackground: "#fdfdfb"
+---
+erDiagram
+    USUARIO ||--|| ALUNO : "é"
+    USUARIO ||--|| PROFESSOR : "é"
+    USUARIO ||--|| SERVIDOR : "é"
+    USUARIO ||--o{ TELEFONE : "tem"
+    USUARIO ||--o{ EMPRESTIMO : "realiza"
+    USUARIO ||--o{ RESERVA : "faz"
+
+    OBRA ||--o{ EXEMPLAR : "possui"
+    OBRA }o--o{ AUTOR : "é escrita por"
+    OBRA }o--o{ AREA : "é classificada em"
+    OBRA ||--o{ RESERVA : "é alvo de"
+
+    EXEMPLAR ||--o{ EMPRESTIMO : "é objeto de"
+    FUNCIONARIO ||--o{ EMPRESTIMO : "registra"
+    FUNCIONARIO ||--o{ MULTA : "perdoa"
+    EMPRESTIMO ||--o{ RENOVACAO : "tem"
+    EMPRESTIMO ||--o| MULTA : "gera"
+
+    USUARIO {
+        int matricula PK
+        varchar nome
+        varchar email UK
+        date data_cadastro
+    }
+    ALUNO {
+        int matricula PK "FK de USUARIO"
+        varchar curso
+        int semestre_ingresso
+    }
+    PROFESSOR {
+        int matricula PK "FK de USUARIO"
+        varchar departamento
+        varchar titulacao
+    }
+    SERVIDOR {
+        int matricula PK "FK de USUARIO"
+        varchar setor
+    }
+    TELEFONE {
+        int matricula PK "FK de USUARIO"
+        varchar numero PK "chave parcial"
+        varchar tipo "celular, residencial, recado"
+    }
+    OBRA {
+        varchar isbn PK
+        varchar titulo
+        int ano_publicacao
+        varchar editora
+    }
+    AUTOR {
+        int id_autor PK
+        varchar nome
+        varchar nacionalidade
+    }
+    AREA {
+        varchar codigo_area PK
+        varchar nome
+    }
+    EXEMPLAR {
+        int tombo PK
+        varchar isbn FK
+        date data_aquisicao
+        varchar situacao "disponivel, emprestado, manutencao, extraviado"
+    }
+    FUNCIONARIO {
+        int matricula_func PK
+        varchar nome
+        varchar cargo
+    }
+    EMPRESTIMO {
+        int id_emprestimo PK
+        int matricula FK
+        int tombo FK
+        int matricula_func FK
+        date data_retirada
+        date data_prevista
+        date data_devolucao "nulo enquanto em aberto"
+    }
+    RENOVACAO {
+        int id_emprestimo PK "FK de EMPRESTIMO"
+        int sequencia PK "chave parcial"
+        date data_renovacao
+        date nova_data_prevista
+    }
+    RESERVA {
+        int id_reserva PK
+        int matricula FK
+        varchar isbn FK
+        date data_solicitacao
+        varchar situacao "aguardando, atendida, cancelada, expirada"
+    }
+    MULTA {
+        int id_emprestimo PK "FK de EMPRESTIMO"
+        numeric valor
+        date data_pagamento "nulo se não paga"
+        varchar justificativa_perdao "nulo se não perdoada"
+        int matricula_func FK "nulo se não perdoada"
+    }
