@@ -1,6 +1,7 @@
 # Aula 12 — Normalização
 
 > 🎯 Objetivos: identificar anomalias de atualização, escrever as dependências funcionais de um esquema e decompor uma relação até a 3FN/BCNF justificando cada passo.
+> 🎬 Slides da aula: [apresentacao-12-normalizacao.pdf](apresentacao/apresentacao-12-normalizacao.pdf)
 
 ## 1. As três anomalias
 

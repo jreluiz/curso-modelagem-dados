@@ -1,6 +1,7 @@
 # Aula 02 — Arquitetura de SGBD e Independência de Dados
 
 > 🎯 Objetivos: distinguir esquema de instância, explicar a arquitetura em três níveis e o que ela protege, e classificar comandos em DDL, DML e DCL.
+> 🎬 Slides da aula: [apresentacao-02-arquitetura-independencia.pdf](apresentacao/apresentacao-02-arquitetura-independencia.pdf)
 
 ## 1. Esquema × instância
 

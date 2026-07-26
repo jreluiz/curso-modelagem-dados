@@ -3,6 +3,7 @@
 > 🎯 Objetivos: transformar um esquema relacional em um script `CREATE TABLE` completo, declarar as restrições que garantem a integridade e ler as mensagens de erro do PostgreSQL.
 
 > 🛠️ A partir daqui você precisa do PostgreSQL instalado e do banco `curso_bd` criado — veja o [guia de ambiente](../../recursos/ambiente.md).
+> 🎬 Slides da aula: [apresentacao-13-sql-ddl.pdf](apresentacao/apresentacao-13-sql-ddl.pdf)
 
 ## 1. Do esquema relacional ao script
 

@@ -1,6 +1,7 @@
 # Aula 16 — Revisão e Próximos Passos
 
 > 🎯 Objetivos: revisitar o curso inteiro num único fio condutor, reconhecer quando o modelo relacional **não** é a resposta e escolher o próximo passo de estudo.
+> 🎬 Slides da aula: [apresentacao-16-revisao-proximos-passos.pdf](apresentacao/apresentacao-16-revisao-proximos-passos.pdf)
 
 ## 1. O mapa do curso em uma tela
 

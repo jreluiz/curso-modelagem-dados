@@ -1,6 +1,7 @@
 # Aula 10 — Mapeamento ER → Relacional
 
 > 🎯 Objetivos: aplicar as sete regras de mapeamento, escolher entre as quatro opções de especialização e reconhecer o que se perde na tradução.
+> 🎬 Slides da aula: [apresentacao-10-mapeamento-er-relacional.pdf](apresentacao/apresentacao-10-mapeamento-er-relacional.pdf)
 
 ## 1. Por que traduzir
 

@@ -1,6 +1,7 @@
 # Aula 14 — SQL DML e Consultas
 
 > 🎯 Objetivos: povoar um banco respeitando a integridade referencial, escrever consultas com junção, agregação e subconsulta, e reconhecer nelas os operadores da álgebra relacional.
+> 🎬 Slides da aula: [apresentacao-14-sql-dml-consultas.pdf](apresentacao/apresentacao-14-sql-dml-consultas.pdf)
 
 ## 1. `INSERT`, `UPDATE`, `DELETE`
 

@@ -1,6 +1,7 @@
 # Aula 06 — Entidades Fracas e Chaves
 
 > 🎯 Objetivos: identificar uma entidade fraca pelo teste da identificação, definir sua chave parcial e decidir entre chave natural e artificial com argumento.
+> 🎬 Slides da aula: [apresentacao-06-entidades-fracas-chaves.pdf](apresentacao/apresentacao-06-entidades-fracas-chaves.pdf)
 
 ## 1. A entidade que não se identifica sozinha
 

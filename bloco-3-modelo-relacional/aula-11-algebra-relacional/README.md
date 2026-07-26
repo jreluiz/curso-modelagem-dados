@@ -1,6 +1,7 @@
 # Aula 11 — Álgebra Relacional
 
 > 🎯 Objetivos: ler e escrever expressões com os operadores da álgebra relacional, montar sequências de operações e reconhecer a mesma operação escrita em SQL.
+> 🎬 Slides da aula: [apresentacao-11-algebra-relacional.pdf](apresentacao/apresentacao-11-algebra-relacional.pdf)
 
 ## 1. Por que estudar isto
 

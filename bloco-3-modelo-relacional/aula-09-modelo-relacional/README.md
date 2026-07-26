@@ -1,6 +1,7 @@
 # Aula 09 — O Modelo Relacional
 
 > 🎯 Objetivos: descrever uma relação com o vocabulário formal, distinguir os tipos de restrição de integridade e escolher a ação referencial correta para cada situação.
+> 🎬 Slides da aula: [apresentacao-09-modelo-relacional.pdf](apresentacao/apresentacao-09-modelo-relacional.pdf)
 
 ## 1. Relação, tupla, atributo, domínio
 

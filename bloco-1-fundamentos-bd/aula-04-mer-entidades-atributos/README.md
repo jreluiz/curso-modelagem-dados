@@ -1,6 +1,7 @@
 # Aula 04 — MER: Entidades e Atributos
 
 > 🎯 Objetivos: distinguir conjunto de entidades de instância, classificar atributos pelos quatro eixos, escolher uma chave primária com justificativa e desenhar o resultado em Chen e em Mermaid.
+> 🎬 Slides da aula: [apresentacao-04-mer-entidades-atributos.pdf](apresentacao/apresentacao-04-mer-entidades-atributos.pdf)
 
 ## 1. Conjunto de entidades × instância de entidade
 

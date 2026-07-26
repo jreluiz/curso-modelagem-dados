@@ -1,6 +1,7 @@
 # Aula 05 — Relacionamentos, Grau e Cardinalidade
 
 > 🎯 Objetivos: determinar a razão de cardinalidade de um relacionamento nas duas direções, distinguir cardinalidade de participação e decidir onde mora um atributo de relacionamento.
+> 🎬 Slides da aula: [apresentacao-05-relacionamentos-cardinalidade.pdf](apresentacao/apresentacao-05-relacionamentos-cardinalidade.pdf)
 
 ## 1. O que é um relacionamento
 

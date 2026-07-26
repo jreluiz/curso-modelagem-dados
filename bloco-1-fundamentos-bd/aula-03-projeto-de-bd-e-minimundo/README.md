@@ -1,6 +1,7 @@
 # Aula 03 — O Projeto de Banco de Dados e o Minimundo
 
 > 🎯 Objetivos: reconhecer as quatro fases do projeto de um banco de dados, recortar um minimundo a partir de um texto e extrair dele os primeiros candidatos a entidade e relacionamento.
+> 🎬 Slides da aula: [apresentacao-03-projeto-de-bd-e-minimundo.pdf](apresentacao/apresentacao-03-projeto-de-bd-e-minimundo.pdf)
 
 ## 1. Minimundo: recortar a realidade
 

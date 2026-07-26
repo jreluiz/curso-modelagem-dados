@@ -1,6 +1,7 @@
 # Aula 15 — Projeto Físico, Índices e Transações
 
 > 🎯 Objetivos: decidir quando criar um índice e a que custo, ler um plano de execução, e escrever transações entendendo o que ACID garante.
+> 🎬 Slides da aula: [apresentacao-15-projeto-fisico-transacoes.pdf](apresentacao/apresentacao-15-projeto-fisico-transacoes.pdf)
 
 Esta é a aula do **nível interno** da Aula 02 — o último dos três, e o único que fala de disco.
 

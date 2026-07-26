@@ -1,6 +1,7 @@
 # Aula 07 — Generalização, Especialização e Agregação
 
 > 🎯 Objetivos: modelar hierarquias com generalização e especialização, classificar as restrições de disjunção e completude, e reconhecer quando **não** especializar.
+> 🎬 Slides da aula: [apresentacao-07-generalizacao-agregacao.pdf](apresentacao/apresentacao-07-generalizacao-agregacao.pdf)
 
 ## 1. Quando duas entidades são quase iguais
 

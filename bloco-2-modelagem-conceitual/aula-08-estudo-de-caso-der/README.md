@@ -9,6 +9,7 @@ Esta aula não traz conceito novo. Traz o **uso** de tudo que veio antes, no cas
 > A biblioteca central atende **usuários** vinculados à universidade, identificados pela matrícula, com nome, e-mail e a data em que se cadastraram. Um usuário pode informar vários telefones, cada um com um tipo (celular, residencial, recado). Todo usuário é **aluno**, **professor** ou **servidor** — nunca mais de um. De alunos interessam o curso e o semestre de ingresso; de professores, o departamento e a titulação; de servidores, o setor de lotação.
 >
 > O acervo é formado por **obras**, identificadas pelo ISBN, com título, ano de publicação e editora. Uma obra é escrita por um ou mais **autores**, e a ordem em que os autores aparecem na capa importa. Uma obra é classificada em uma ou mais **áreas de conhecimento**.
+> 🎬 Slides da aula: [apresentacao-08-estudo-de-caso-der.pdf](apresentacao/apresentacao-08-estudo-de-caso-der.pdf)
 >
 > De cada obra a biblioteca possui **exemplares** físicos. Cada exemplar tem um número de tombo, único em todo o acervo, a data em que foi adquirido e uma situação (disponível, emprestado, em manutenção, extraviado). É o exemplar que é emprestado, nunca a obra.
 >

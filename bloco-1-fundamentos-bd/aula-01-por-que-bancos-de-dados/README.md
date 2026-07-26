@@ -1,6 +1,7 @@
 # Aula 01 — Por Que Bancos de Dados Existem
 
 > 🎯 Objetivos: identificar os problemas que surgem quando dados vivem em arquivos soltos, explicar o que um SGBD acrescenta e reconhecer os papéis de quem trabalha com um banco de dados.
+> 🎬 Slides da aula: [apresentacao-01-por-que-bancos-de-dados.pdf](apresentacao/apresentacao-01-por-que-bancos-de-dados.pdf)
 
 ## 1. A planilha que deu certo até dar errado
 
