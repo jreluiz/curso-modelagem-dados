@@ -126,7 +126,7 @@ Um **ORM** (Hibernate, JPA, SQLAlchemy, Entity Framework) automatiza essa tradu�
 **Aprofundar em bancos de dados**
 - **SQL avançado** — funções de janela (`OVER`, `PARTITION BY`), CTEs recursivas (`WITH RECURSIVE`), `GROUPING SETS`. É o próximo salto de produtividade real;
 - **Administração (DBA)** — configuração, replicação, particionamento, ajuste fino, alta disponibilidade;
-- **Desempenho** — leia [Use The Index, Luke!](https://use-the-index-luke.com/pt/) inteiro. É curto e muda a forma como você escreve consultas.
+- **Desempenho** — leia [Use The Index, Luke!](https://use-the-index-luke.com/sql/table-of-contents) inteiro (em inglês). É curto e muda a forma como você escreve consultas.
 
 **Aplicar o que você já sabe**
 - **Uma linguagem + um banco** — conecte um programa ao PostgreSQL (JDBC em Java, `psycopg` em Python) e veja o modelo virando sistema;
