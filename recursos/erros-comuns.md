@@ -4,11 +4,11 @@ Duas metades: os erros de **modelagem** (que ninguém aponta para você, porque 
 
 ---
 
-## Parte 1 — Erros de modelagem conceitual
+## Parte 1 — Erros de modelagem
 
 ### Promover um atributo a entidade sem necessidade
 
-**Sintoma:** o DER tem uma entidade `SEXO`, com dois registros: "M" e "F". Ou uma entidade `ESTADO_CIVIL` com quatro.
+**Sintoma:** o modelo tem uma tabela `SEXO`, com duas linhas: "M" e "F". Ou uma tabela `ESTADO_CIVIL` com quatro.
 
 **Causa:** confundir "é um valor de domínio limitado" com "é uma coisa do mundo com identidade própria".
 
@@ -20,43 +20,45 @@ Duas metades: os erros de **modelagem** (que ninguém aponta para você, porque 
 
 ### O N:M que ninguém viu
 
-**Sintoma:** o modelo diz que um `PEDIDO` tem uma FK para `PRODUTO`. Aí chega o primeiro pedido com dois produtos.
+**Sintoma:** o modelo diz que `PEDIDO` tem uma FK para `PRODUTO`. Aí chega o primeiro pedido com dois produtos.
 
 **Causa:** ler o relacionamento em uma direção só. "Um pedido tem um produto" parece verdade quando você imagina o pedido mais simples possível.
 
-**Cura:** leia **sempre nas duas direções**, e sempre no plural: *"Um pedido pode conter **vários** produtos?"* e *"Um produto pode aparecer em **vários** pedidos?"* Dois "sim" = N:M = precisa de entidade associativa.
+**Cura:** leia **sempre nas duas direções**, e sempre no plural: *"Um pedido pode conter **vários** produtos?"* e *"Um produto pode aparecer em **vários** pedidos?"* Dois "sim" = N:M = precisa de **tabela associativa**. Não existe N:M direto entre duas tabelas — a FK não tem onde caber.
 
 ---
 
-### Cardinalidade invertida
+### A chave estrangeira do lado errado
 
-**Sintoma:** o modelo diz 1:N, mas os dados dizem o contrário — ou a FK acaba na tabela errada e você precisa repetir linha.
+**Sintoma:** num 1:N entre `DEPARTAMENTO` e `FUNCIONARIO`, a FK foi parar em `DEPARTAMENTO`. Aí o primeiro departamento com dois funcionários obriga a repetir a linha inteira do departamento.
 
-**Causa:** em Chen, o número fica do lado oposto ao que a intuição pede.
+**Causa:** copiar a direção da seta do diagrama em vez de perguntar de que lado cabe um valor só.
 
-**Cura:** o teste da frase única. Escreva: **"Um(a) ⟨A⟩ se relaciona com quantos(as) ⟨B⟩?"** e depois a recíproca. Anote os dois números *antes* de desenhar qualquer coisa. Melhor ainda: use `(min,max)`, que não deixa margem.
+**Cura:** **a FK mora sempre do lado N** — do lado que tem um só do outro. Um funcionário tem um departamento: a coluna `departamento_id` cabe na linha do funcionário. Um departamento tem muitos funcionários: não cabe uma coluna com muitos valores, porque a célula guarda um valor só.
 
----
-
-### Participação total confundida com cardinalidade
-
-**Sintoma:** o aluno escreve "1:N total" achando que disse duas coisas sobre o mesmo lado.
-
-**Causa:** são eixos **independentes**. Cardinalidade responde *"quantos, no máximo?"*; participação responde *"pode zero?"*.
-
-**Cura:** todo lado de todo relacionamento tem **duas** respostas. Um departamento tem no máximo 1 gerente (cardinalidade) e obrigatoriamente 1 gerente (participação total). São afirmações diferentes sobre o mundo.
+> ⚠️ Teste de uma linha: *"desse lado, quantos do outro cabem?"* Se a resposta for "vários", a FK **não** é aqui.
 
 ---
 
-### Entidade fraca × entidade com FK obrigatória
+### "Quantos" e "é obrigatório" são duas perguntas
 
-**Sintoma:** tudo que tem FK `NOT NULL` vira entidade fraca no modelo.
+**Sintoma:** o aluno escreve "1:N obrigatório" achando que disse duas coisas sobre o mesmo lado.
+
+**Causa:** são eixos **independentes**. O primeiro responde *"quantos, no máximo?"*; o segundo responde *"pode zero?"*.
+
+**Cura:** todo lado de todo relacionamento tem **duas** respostas. Um departamento tem no máximo 1 gerente (quantos) e obrigatoriamente 1 gerente (não pode zero). São afirmações diferentes sobre o mundo, e no esquema viram coisas diferentes: a primeira decide onde a FK mora, a segunda decide se ela é `NOT NULL`.
+
+---
+
+### Entidade dependente × entidade com FK obrigatória
+
+**Sintoma:** tudo que tem FK `NOT NULL` é tratado como parte da outra tabela, com `ON DELETE CASCADE` em tudo.
 
 **Causa:** confundir *dependência de existência* com *dependência de identificação*.
 
-**Cura:** a entidade fraca é a que **não consegue se identificar sozinha** — a chave dela inclui a chave da dona. `DEPENDENTE` de um funcionário é fraca: existem dois "João" e só o par (funcionário, nome) distingue. Já `PEDIDO` tem número próprio e único: mesmo que exija cliente, é forte.
+**Cura:** a entidade dependente é a que **não consegue se identificar sozinha** — a chave dela inclui a chave da dona. `DEPENDENTE` de um funcionário é dependente: existem dois "João" e só o par (funcionário, nome) distingue. Já `PEDIDO` tem número próprio e único: mesmo que exija cliente, se identifica sozinho.
 
-> ⚠️ Teste decisivo: **remova a entidade dona e pergunte se a chave ainda identifica**. Se a resposta for não, é fraca.
+> ⚠️ Teste decisivo: **tire a tabela dona e pergunte se a chave ainda identifica.** Se a resposta for não, é dependente — e só aí `CASCADE` é a ação certa.
 
 ---
 
@@ -80,6 +82,18 @@ Duas metades: os erros de **modelagem** (que ninguém aponta para você, porque 
 
 ---
 
+### A tabela que não foi normalizada por preguiça
+
+**Sintoma:** `PEDIDO(numero, data, cliente_id, cliente_nome, cliente_cidade, ...)` — "é que assim eu não preciso de junção".
+
+**Causa:** otimizar antes de existir problema, e pagar com o dado errado em dois lugares.
+
+**Cura:** o nome do cliente depende do **cliente**, não do pedido — é 3FN e a regra é uma frase: *todo atributo depende da chave, e de nada além dela*. Quando o cliente muda de cidade, a versão duplicada não muda junto, e aí ninguém sabe qual é a verdadeira.
+
+> 💡 Desnormalizar é decisão legítima — **depois** de medir, com o motivo escrito e alguém responsável por manter as cópias em dia. Antes disso é só erro com nome bonito.
+
+---
+
 ### O ciclo redundante
 
 **Sintoma:** `ALUNO` → `TURMA` → `CURSO`, e também `ALUNO` → `CURSO` direto.
@@ -90,19 +104,9 @@ Duas metades: os erros de **modelagem** (que ninguém aponta para você, porque 
 
 ---
 
-### Especialização que não paga o próprio custo
-
-**Sintoma:** `PESSOA` especializada em `PESSOA_FISICA` e `PESSOA_JURIDICA`, com uma subclasse tendo um único atributo diferente.
-
-**Causa:** aplicar herança por reflexo, vindo da programação orientada a objetos.
-
-**Cura:** especialize quando a subclasse tiver **atributos próprios relevantes** ou **participar de relacionamentos próprios**. Um atributo a mais resolve-se com um campo opcional e um `CHECK`. Regra prática: menos de dois atributos exclusivos e nenhum relacionamento exclusivo, não especialize.
-
----
-
 ### O modelo que não foi lido em voz alta
 
-**Sintoma:** o DER está bonito e ninguém percebeu que ele afirma que um empréstimo pode existir sem exemplar.
+**Sintoma:** o diagrama está bonito e ninguém percebeu que ele afirma que um empréstimo pode existir sem exemplar.
 
 **Cura:** o ritual final de todo modelo — leia **cada** linha do diagrama como uma frase em português e pergunte se é verdade no minimundo. Cinco minutos de leitura em voz alta encontram mais defeitos que uma hora olhando o desenho.
 
@@ -122,13 +126,13 @@ Duas metades: os erros de **modelagem** (que ninguém aponta para você, porque 
 
 **Causa:** integridade referencial funcionando exatamente como você pediu. Está tentando referenciar algo que não existe.
 
-**Cura:** insira na ordem das dependências — **primeiro as tabelas referenciadas, depois as que referenciam**. No script de carga, a ordem é sempre: entidades fortes → entidades fracas → tabelas associativas. Se o erro aparece num `DELETE`, é o inverso: alguém ainda aponta para a linha que você quer apagar; ou apague os dependentes antes, ou declare `ON DELETE CASCADE` sabendo o que está autorizando.
+**Cura:** insira na ordem das dependências — **primeiro as tabelas referenciadas, depois as que referenciam**. No script de carga, a ordem é sempre: tabelas independentes → tabelas dependentes → tabelas associativas. Se o erro aparece num `DELETE`, é o inverso: alguém ainda aponta para a linha que você quer apagar; ou apague os dependentes antes, ou declare `ON DELETE CASCADE` sabendo o que está autorizando.
 
 ---
 
 ### `ERROR: duplicate key value violates unique constraint "aluno_pkey"`
 
-**Causa:** dois registros com a mesma chave primária. Em carga de teste, quase sempre é o script rodado duas vezes.
+**Causa:** duas linhas com a mesma chave primária. Em carga de teste, quase sempre é o script rodado duas vezes.
 
 **Cura:** para recomeçar limpo, `TRUNCATE TABLE aluno CASCADE;` ou rode o `01-ddl.sql` de novo (ele começa com `DROP TABLE IF EXISTS`). Em produção isso é outra conversa — ali o erro está te protegendo.
 
@@ -207,7 +211,7 @@ Quando o modelo "parece certo" mas alguma coisa incomoda, rode estas quatro perg
 
 1. **Leia cada relacionamento em voz alta, nas duas direções.** A frase é verdade no minimundo?
 2. **Invente três instâncias reais** e tente guardá-las no modelo. Alguma não cabe? Alguma exige repetir informação?
-3. **Tente inserir e apagar.** Existe alguma informação que você só consegue guardar inventando um registro falso? (anomalia de inserção) Existe alguma que some sem querer? (anomalia de exclusão)
+3. **Tente inserir e apagar.** Existe alguma informação que você só consegue guardar inventando uma linha falsa? (anomalia de inserção) Existe alguma que some sem querer? (anomalia de exclusão)
 4. **Procure o mesmo dado escrito em dois lugares.** Se existe, quem garante que eles concordam?
 
 ---

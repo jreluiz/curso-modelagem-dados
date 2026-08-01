@@ -5,17 +5,18 @@ As apresentações de cada aula são escritas em **Markdown** e convertidas em P
 Cada aula guarda a sua apresentação numa subpasta `apresentacao/`, ao lado do material escrito:
 
 ```
-bloco-2-modelagem-conceitual/aula-08-estudo-de-caso-der/
-├── README.md                                   # a aula escrita
+bloco-2-do-minimundo-ao-esquema/aula-08-estudo-de-caso/
+├── README.md                               # a aula escrita
+├── exemplos/                               # artefatos citados pela aula
 └── apresentacao/
-    ├── apresentacao-08-estudo-de-caso-der.md   # a fonte   ← edite este
-    ├── apresentacao-08-estudo-de-caso-der.pdf  # o gerado  ← projete este
-    └── img/
-        ├── der-usuarios.mmd                    # diagrama para projeção
-        └── der-usuarios.svg                    # gerado do .mmd
+    ├── apresentacao-08-estudo-de-caso.md   # a fonte   ← edite este
+    ├── apresentacao-08-estudo-de-caso.pdf  # o gerado  ← projete este
+    └── img/                                # opcional, só se houver diagrama
+        ├── der-usuarios.mmd                # diagrama para projeção
+        └── der-usuarios.svg                # gerado do .mmd
 ```
 
-O `img/` fica **dentro** de `apresentacao/`: os diagramas são feitos para projeção e não são usados pelo README da aula.
+O `img/` fica **dentro** de `apresentacao/`: os diagramas são feitos para projeção e não são usados pelo README da aula. Nenhum dos 16 decks atuais precisa dele — os diagramas destes slides cabem em desenho ASCII —, mas o `gerar.sh` continua convertendo todo `.mmd` que encontrar.
 
 **O `.md` e o `.pdf` são versionados.** O `.md` para o `git diff` mostrar o que mudou; o `.pdf` para abrir na aula sem depender de gerar nada na hora.
 

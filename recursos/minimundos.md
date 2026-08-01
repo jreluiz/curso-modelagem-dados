@@ -12,14 +12,14 @@ Doze enunciados prontos para modelar. Servem aos exercícios das aulas, ao [trab
 | 4 | [Oficina mecânica](#4-oficina-mecânica) | ⭐⭐ | Ordem de serviço, peça × serviço |
 | 5 | [Hotel](#5-hotel) | ⭐⭐ | Período, tipo × unidade, ocupação |
 | 6 | [Escola de idiomas](#6-escola-de-idiomas) | ⭐⭐ | Turma, pré-requisito (autorrelacionamento) |
-| 7 | [E-commerce](#7-e-commerce) | ⭐⭐⭐ | Entidade fraca, histórico de preço |
-| 8 | [Transportadora](#8-transportadora) | ⭐⭐⭐ | Rota, autorrelacionamento, ternário |
+| 7 | [E-commerce](#7-e-commerce) | ⭐⭐ | Entidade dependente, histórico de preço |
+| 8 | [Transportadora](#8-transportadora) | ⭐⭐⭐ | Rota com ordem, histórico de situação |
 | 9 | [Campeonato esportivo](#9-campeonato-esportivo) | ⭐⭐⭐ | Autorrelacionamento com papéis |
-| 10 | [Congresso científico](#10-congresso-científico) | ⭐⭐⭐ | N:M múltiplos, especialização |
-| 11 | [Hospital](#11-hospital) | ⭐⭐⭐⭐ | Especialização, ternário, temporalidade |
-| 12 | [Rede de bibliotecas](#12-rede-de-bibliotecas) | ⭐⭐⭐⭐ | Agregação, reserva, multi-unidade |
+| 10 | [Congresso científico](#10-congresso-científico) | ⭐⭐⭐ | N:M múltiplos, ordem no relacionamento |
+| 11 | [Hospital](#11-hospital) | ⭐⭐⭐ | Ocupação por período, prescrição |
+| 12 | [Rede de bibliotecas](#12-rede-de-bibliotecas) | ⭐⭐⭐ | Reserva × empréstimo, multi-unidade |
 
-> ⚠️ A **Biblioteca Universitária** não está nesta lista de propósito: ela é o caso trabalhado nas aulas, com o modelo publicado na [Aula 08](../bloco-2-modelagem-conceitual/aula-08-estudo-de-caso-der/exemplos/minimundo.md). Usá-la em projeto seria copiar a resposta.
+> ⚠️ A **Biblioteca Universitária** não está nesta lista de propósito: ela é o caso trabalhado nas aulas, com o modelo publicado na [Aula 08](../bloco-2-do-minimundo-ao-esquema/aula-08-estudo-de-caso/exemplos/minimundo.md). Usá-la em projeto seria copiar a resposta.
 
 ---
 
@@ -73,7 +73,7 @@ Mecânicos têm nome, especialidade e data de admissão. Um serviço da ordem é
 
 Peças têm código, descrição, fabricante e quantidade em estoque.
 
-> **Armadilhas:** o valor da peça na ordem é o do dia (histórico), não o do cadastro; a troca de proprietário exige entidade própria com período; um serviço da ordem pode precisar de mais de um mecânico — pergunte ao cliente.
+> **Armadilhas:** o valor da peça na ordem é o do dia (histórico), não o do cadastro; a troca de proprietário exige tabela própria com período; um serviço da ordem pode precisar de mais de um mecânico — pergunte ao cliente.
 
 ---
 
@@ -119,7 +119,7 @@ O envio tem transportadora, código de rastreio e data prevista. Um pedido pode 
 
 Clientes avaliam produtos que compraram, com nota de 1 a 5 e comentário.
 
-> **Armadilhas:** o item de pedido é entidade fraca do pedido; sem o preço praticado no item, mudar o preço reescreve o passado; a hierarquia de categorias é autorrelacionamento 1:N; a avaliação só existe para quem comprou — isso é restrição, e ela deve estar registrada em texto.
+> **Armadilhas:** o item de pedido é entidade dependente do pedido; sem o preço praticado no item, mudar o preço reescreve o passado; a hierarquia de categorias é autorrelacionamento 1:N; a avaliação só existe para quem comprou — isso é restrição, e ela deve estar registrada em texto.
 
 ---
 
@@ -135,7 +135,7 @@ A rota de uma viagem passa por cidades intermediárias, numa ordem que interessa
 
 Cada carga tem um histórico de situações (coletada, em trânsito, em rota de entrega, entregue, devolvida), com data, hora e a cidade onde a situação foi registrada.
 
-> **Armadilhas:** a ordem das cidades na rota exige atributo de sequência na entidade associativa; motorista × viagem é N:M por causa do revezamento; o histórico de situação é entidade, nunca um atributo `situacao` sobrescrito.
+> **Armadilhas:** a ordem das cidades na rota exige um atributo de sequência na tabela associativa; motorista × viagem é N:M por causa do revezamento; o histórico de situação é tabela, nunca um atributo `situacao` sobrescrito; origem e destino são **dois** relacionamentos com `CIDADE`, não um.
 
 ---
 
@@ -149,7 +149,7 @@ Jogadores pertencem a um time por período (contratos com data de início e fim;
 
 Em uma partida, registram-se os eventos: gols (com o minuto e o jogador), cartões (amarelo/vermelho, minuto, jogador) e substituições (minuto, quem sai, quem entra).
 
-> **Armadilhas:** mandante e visitante são **dois papéis** do mesmo autorrelacionamento com `TIME`; o vínculo jogador-time é entidade com período, não FK simples; gol contra exige saber que o jogador marcou para o outro lado — o modelo precisa comportar isso.
+> **Armadilhas:** mandante e visitante são **dois papéis** do mesmo relacionamento com `TIME`; o vínculo jogador-time é tabela com período, não FK simples; gol contra exige saber que o jogador marcou para o outro lado — o modelo precisa comportar isso.
 
 ---
 
@@ -165,23 +165,23 @@ Trabalhos aceitos são apresentados em sessões, que ocorrem em uma sala, num di
 
 Participantes inscrevem-se na edição (categoria: estudante, profissional, palestrante) e podem assistir às sessões.
 
-> **Armadilhas:** a ordem dos autores é atributo do relacionamento; "autor de correspondência" é atributo do relacionamento, não do autor; a restrição de instituição não cabe no DER — registre em texto; participante e autor podem ser a mesma pessoa (especializar ou não?).
+> **Armadilhas:** a ordem dos autores é atributo do relacionamento, não do autor; "autor de correspondência" também é do relacionamento; a restrição de instituição não cabe no diagrama — registre em texto; a mesma pessoa pode ser autor, revisor e participante — resolva com **uma** tabela de pessoas e papéis, não com três cadastros.
 
 ---
 
 ## 11. Hospital
 
-O hospital tem pacientes (prontuário, nome, data de nascimento, tipo sanguíneo, convênio) e profissionais. Os profissionais dividem-se em médicos (CRM, especialidade), enfermeiros (COREN, setor) e técnicos administrativos (setor, função) — todo profissional é de um desses tipos.
+O hospital tem pacientes (prontuário, nome, data de nascimento, tipo sanguíneo, convênio) e profissionais. De cada profissional interessam nome, o conselho e o número de registro (CRM, COREN…), a função e o setor.
 
 Consultas ambulatoriais têm data, hora, médico, paciente e o diagnóstico registrado com o código do CID.
 
 Uma **internação** tem data de entrada, data de alta, o motivo e o leito ocupado. Leitos pertencem a quartos, que pertencem a alas. Um leito é ocupado por um paciente por vez, mas ao longo do tempo por muitos.
 
-Durante a internação, prescrevem-se medicamentos (dose, via, frequência, período) e realizam-se procedimentos (data, hora, tipo, equipe envolvida — que pode ter vários profissionais em papéis diferentes).
+Durante a internação, prescrevem-se medicamentos (dose, via, frequência, período) e realizam-se procedimentos (data, hora, tipo e o profissional responsável).
 
 Exames são solicitados por um médico para um paciente, com data de solicitação, data de realização e o resultado.
 
-> **Armadilhas:** a especialização de profissional é disjunta e total; a equipe do procedimento é ternária (procedimento × profissional × papel); leito ocupado "por vez" exige período, não FK; consulta e internação compartilham diagnóstico — generalizar ou repetir?
+> **Armadilhas:** leito ocupado "por vez" exige período, não uma FK sobrescrita; a prescrição tem atributos próprios e não é um simples N:M; quarto → ala → leito é 1:N encadeado, e é onde se erra a direção da FK; profissional é **uma** tabela com função e conselho como atributos — três tabelas quase iguais é o erro que este minimundo testa.
 
 ---
 
@@ -197,11 +197,9 @@ Um empréstimo é de um exemplar, para um usuário, com data de retirada, data p
 
 Usuários **reservam obras** (não exemplares) e entram numa fila de espera. Quando um exemplar da obra é devolvido, o primeiro da fila é avisado e tem 48 horas para retirar.
 
-Um usuário pode retirar em qualquer unidade, mas o exemplar precisa voltar para a unidade de origem. Transferências entre unidades ficam registradas.
-
 Multas por atraso são calculadas por dia e podem ser pagas ou perdoadas por um funcionário, com justificativa.
 
-> **Armadilhas:** reserva é da **obra** e empréstimo é do **exemplar** — modelar isso corretamente é o coração do problema; a renovação é entidade, não um contador; o limite por categoria é regra derivada de atributo da categoria; a fila de espera precisa de ordem ou de data de solicitação; multa é do empréstimo ou do usuário?
+> **Armadilhas:** reserva é da **obra** e empréstimo é do **exemplar** — modelar isso corretamente é o coração do problema; a renovação é tabela, não um contador; o limite por categoria é derivado de um atributo da categoria; a fila de espera precisa de ordem ou de data de solicitação; multa é do empréstimo ou do usuário?
 
 ---
 
@@ -210,7 +208,7 @@ Multas por atraso são calculadas por dia e podem ser pagas ou perdoadas por um 
 Três critérios, nesta ordem:
 
 1. **Você entende o domínio?** Modelar bem exige saber quando o enunciado está mentindo. Um domínio que você conhece de verdade — o trabalho de alguém da família, um hobby, a rotina de um lugar que você frequenta — vale mais que um tema "impressionante";
-2. **Ele tem no mínimo 6 entidades, um N:M e uma entidade fraca ou especialização?** Menos que isso não exercita o curso;
+2. **Ele tem no mínimo 5 entidades, um N:M e um autorrelacionamento ou uma entidade dependente?** Menos que isso não exercita o curso;
 3. **Ele cabe em duas semanas?** Modelar o Instagram inteiro não é ambição, é falta de recorte. Recortar é a primeira habilidade do modelador.
 
 > 💡 Minimundo próprio é bem-vindo e até incentivado — escreva o enunciado no mesmo formato dos daqui (três a cinco parágrafos, em português corrido, sem nomear entidades ou tabelas) e valide o recorte antes de começar a desenhar.

@@ -1,6 +1,6 @@
 # 🛠️ Preparação do Ambiente
 
-> 💡 **Boa notícia:** dos Blocos 1 ao 3 você precisa apenas de um editor de texto e do Git. O PostgreSQL só entra na Aula 13 — mas instale antes, para não perder aula com download.
+> 💡 **Boa notícia:** nos Blocos 1 e 2 você precisa apenas de um editor de texto e do Git. O PostgreSQL entra na Aula 11 — mas instale antes, para não perder aula com download.
 
 ## 1. O repositório de exercícios
 
@@ -37,7 +37,7 @@ Qualquer editor serve, mas você vai escrever muito Markdown com diagramas dentr
 
 Alternativa sem instalar nada: [mermaid.live](https://mermaid.live) — cole o diagrama e veja o resultado na hora. É onde você vai depurar o diagrama que não renderiza.
 
-## 3. PostgreSQL (a partir da Aula 13)
+## 3. PostgreSQL (a partir da Aula 11)
 
 ### macOS
 
@@ -139,9 +139,9 @@ Escolha **um**:
 
 O curso versiona diagramas em **Mermaid**, que é texto. Mas para rascunhar no papel digital:
 
-- **[brModelo](https://www.sis4.com/brModelo/)** — gratuito, brasileiro, desenha em **notação de Chen** e converte para o modelo lógico. É o mais próximo do livro;
-- **[dbdiagram.io](https://dbdiagram.io/)** — rápido, notação pé-de-galinha, exporta SQL;
-- **[draw.io](https://app.diagrams.net/)** — desenho livre, tem estêncil de ER.
+- **[dbdiagram.io](https://dbdiagram.io/)** — rápido, notação pé-de-galinha (a mesma do Mermaid), exporta SQL;
+- **[draw.io](https://app.diagrams.net/)** — desenho livre, tem estêncil de ER;
+- **[brModelo](https://www.sis4.com/brModelo/)** — gratuito e brasileiro, desenha em **notação de Chen**. Útil se você for acompanhar os diagramas do livro-base.
 
 > 📏 **Regra do curso:** rascunhe onde quiser, **entregue em Mermaid**. Imagem não faz *diff*, não recebe comentário de linha no Pull Request e envelhece mal.
 
@@ -151,7 +151,7 @@ O curso versiona diagramas em **Mermaid**, que é texto. Mas para rascunhar no p
 - [ ] Um commit de teste já apareceu no GitHub;
 - [ ] Editor com preview de Markdown funcionando (ou [mermaid.live](https://mermaid.live) aberto num favorito);
 - [ ] Um diagrama Mermaid de teste renderizou — copie o do [guia de notações](notacoes-der.md) e confira;
-- [ ] `psql --version` responde (pode ficar para antes da Aula 13);
+- [ ] `psql --version` responde (pode ficar para antes da Aula 11);
 - [ ] Banco `curso_bd` criado e `\dt` executa sem erro (idem).
 
 ---

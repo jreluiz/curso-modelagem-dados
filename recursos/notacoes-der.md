@@ -1,93 +1,16 @@
-# 📐 Notações de DER em 10 minutos
+# 📐 Desenhando o DER em Mermaid
 
-Um mesmo modelo pode ser desenhado de várias formas. Este curso usa **duas**, e por motivos diferentes:
+Um mesmo modelo pode ser desenhado de várias formas. **Este curso usa uma só: Mermaid `erDiagram`.**
 
-| Notação | Onde usamos | Por quê |
-|---------|-------------|---------|
-| **Chen** | No quadro, no papel e nas suas respostas escritas | É a notação do livro-base e a linguagem comum da teoria: separa visualmente entidade, relacionamento e atributo |
-| **Mermaid `erDiagram`** | Nos arquivos `.md` do repositório | O GitHub renderiza sozinho, é texto puro (versiona e faz *diff* de verdade) e cabe dentro de um Pull Request |
+O motivo é prático. O GitHub renderiza sozinho, é texto puro (versiona e faz *diff* de verdade), cabe dentro de um Pull Request e é uma variante da notação **pé-de-galinha** (*crow's foot*), que é a que você vai encontrar em toda ferramenta de mercado.
 
-Uma terceira, **pé-de-galinha** (*crow's foot*), você vai encontrar em toda ferramenta de mercado — Mermaid é uma variante dela. Vale reconhecer.
+> 📖 O livro-base desenha em **Chen** — losangos e elipses. Você não precisa desenhar em Chen neste curso, mas precisa **ler**. A seção 5 tem a meia página que basta para isso.
 
 ---
 
-## 1. Chen — a notação da teoria
+## 1. O primeiro diagrama
 
-Três formas geométricas, três conceitos:
-
-```mermaid
-flowchart LR
-    E[ENTIDADE] --- R{RELACIONAMENTO} --- A((atributo))
-```
-
-Um modelo completo em Chen:
-
-```mermaid
-flowchart LR
-    matricula(("<u>matricula</u>")) --- ALUNO[ALUNO]
-    nome((nome)) --- ALUNO
-    ALUNO ---|N| PEGA{PEGA}
-    PEGA ---|M| LIVRO[LIVRO]
-    PEGA --- data((data_retirada))
-    LIVRO --- isbn(("<u>isbn</u>"))
-    LIVRO --- titulo((titulo))
-```
-
-### O vocabulário completo, e como escrevê-lo em Mermaid
-
-Toda linha desta tabela renderiza no GitHub. É a razão de o curso desenhar Chen em `flowchart` e não em `erDiagram`: o `erDiagram` não tem losango nem elipse.
-
-| Elemento | Como se desenha | Em Mermaid `flowchart` |
-|---|---|---|
-| Entidade forte | Retângulo simples | `ALUNO[ALUNO]` |
-| Entidade fraca | Retângulo de **linha dupla** | `DEPENDENTE[[DEPENDENTE]]` |
-| Relacionamento | Losango | `PEGA{PEGA}` |
-| Relacionamento identificador | Losango de **linha dupla** | `POSSUI{{POSSUI}}` |
-| Atributo | Elipse ligada à entidade | `nome((nome))` |
-| Atributo-chave | Elipse com o nome **sublinhado** | `id(("<u>id</u>"))` |
-| Atributo parcial (de entidade fraca) | Nome com **sublinhado tracejado** | `n(("<i>numero</i>"))` + nota em texto |
-| Atributo multivalorado | Elipse de **linha dupla** | `tel(((telefone)))` |
-| Atributo derivado | Elipse **tracejada** | `idade((idade))` + nota `derivado de …` |
-| Atributo composto | Elipses filhas penduradas na elipse-mãe | `end((endereco)) --- rua((rua))` |
-| Cardinalidade | Número junto à linha | `ALUNO ---\|N\| PEGA` |
-| Participação total | **Linha dupla** entre entidade e relacionamento | `ALUNO ===\|1\| PEGA` |
-| Participação parcial | Linha simples | `ALUNO ---\|1\| PEGA` |
-| Especialização | Triângulo com **d** (disjunta) ou **o** (sobreposta) | `USUARIO --- d{d} --- ALUNO` + nota em texto |
-
-> 💡 Duas coisas o `flowchart` não desenha: a elipse **tracejada** do atributo derivado e o **sublinhado tracejado** da chave parcial. Nos dois casos, use a forma simples e diga em texto — a mesma regra da seção 4.
-
-> ⚠️ **A cardinalidade em Chen fica do lado "errado" para muita gente.** O `N` escrito perto de `ALUNO` significa *"N alunos participam"*, e não *"um aluno pega N livros"*. Leia sempre a frase inteira em voz alta: **N alunos pegam M livros**.
-
----
-
-## 2. Notação (min,max) — a que não deixa dúvida
-
-Escreve os dois números junto de cada lado: **(mínimo, máximo) de participações de UMA instância daquela entidade**.
-
-```mermaid
-flowchart LR
-    ALUNO[ALUNO] ---|"(0,5)"| PEGA{PEGA}
-    PEGA ---|"(0,1)"| EXEMPLAR[EXEMPLAR]
-```
-
-Lê-se: um aluno pega de 0 a 5 exemplares; um exemplar é pego por 0 ou 1 aluno.
-
-E aqui está o ganho: o **mínimo** codifica a participação e o **máximo** codifica a cardinalidade, tudo no mesmo par.
-
-| Par | Significado |
-|:---:|---|
-| `(0,1)` | Participação **parcial**, no máximo um |
-| `(1,1)` | Participação **total**, exatamente um |
-| `(0,N)` | Participação parcial, vários |
-| `(1,N)` | Participação **total**, pelo menos um |
-
-> 💡 Quando alguém discutir se um relacionamento é 1:N ou N:M, peça o `(min,max)` dos dois lados. A discussão acaba em dez segundos.
-
----
-
-## 3. Mermaid `erDiagram` — a notação que versiona
-
-O mesmo modelo do item 1, em texto:
+Duas tabelas ligadas, com seus atributos. Isto é o que você escreve:
 
 ````markdown
 ```mermaid
@@ -114,7 +37,7 @@ erDiagram
 ```
 ````
 
-Que o GitHub renderiza assim:
+E isto é o que o GitHub mostra:
 
 ```mermaid
 erDiagram
@@ -139,34 +62,41 @@ erDiagram
     }
 ```
 
-### A tabela de conversão que você vai consultar sempre
+Três coisas para reparar: os nomes das tabelas em maiúsculas, os atributos entre chaves com `PK` e `FK` marcados, e o símbolo `||--o{` no meio da linha — que é onde mora toda a informação de cardinalidade.
 
-O símbolo tem duas metades: a **de fora** diz o máximo, a **de dentro** diz o mínimo.
+---
 
-| Mermaid | Lê-se | Chen equivalente |
-|---------|-------|------------------|
-| `\|\|--\|\|` | um e apenas um ↔ um e apenas um | 1:1, participação total dos dois lados |
-| `\|\|--o{` | um ↔ zero ou vários | 1:N, parcial do lado N |
-| `\|\|--\|{` | um ↔ um ou vários | 1:N, **total** do lado N |
-| `\|o--o{` | zero ou um ↔ zero ou vários | 1:N, parcial dos dois lados |
-| `}o--o{` | zero ou vários ↔ zero ou vários | N:M |
-| `}\|--\|{` | um ou vários ↔ um ou vários | N:M, total dos dois lados |
+## 2. A tabela de conversão que você vai consultar sempre
 
-Memorize as quatro peças e você monta qualquer combinação:
+O símbolo tem duas metades: a **de fora** diz o máximo (*quantos?*), a **de dentro** diz o mínimo (*pode zero?*).
 
-| Peça | Mínimo | Máximo |
-|:---:|:---:|:---:|
-| `\|\|` | 1 | 1 |
-| `\|o` | 0 | 1 |
-| `}\|` | 1 | N |
-| `}o` | 0 | N |
+| Peça | Mínimo | Máximo | Lê-se |
+|:---:|:---:|:---:|---|
+| `\|\|` | 1 | 1 | um e apenas um |
+| `\|o` | 0 | 1 | zero ou um |
+| `}\|` | 1 | N | um ou vários |
+| `}o` | 0 | N | zero ou vários |
+
+Combine duas peças e você tem qualquer relacionamento:
+
+| Mermaid | Lê-se | Na prática |
+|---------|-------|------------|
+| `\|\|--o{` | um ↔ zero ou vários | **1:N** — o caso mais comum de todos |
+| `\|\|--\|{` | um ↔ um ou vários | 1:N em que o lado N é obrigatório |
+| `\|\|--\|\|` | um ↔ um | 1:1, obrigatório dos dois lados |
+| `\|o--o{` | zero ou um ↔ zero ou vários | 1:N em que os dois lados são opcionais |
+| `}o--o{` | zero ou vários ↔ zero ou vários | **N:M** — vira tabela associativa |
 
 > ⚠️ **Do lado esquerdo, o símbolo vem espelhado.** Escreve-se `||--o{`, nunca `||--{o`. Se o diagrama não renderizar, este é o primeiro suspeito.
 
-### Linha sólida × tracejada
+> 💡 Quando alguém discutir se um relacionamento é 1:N ou N:M, faça as duas perguntas separadas — *"quantos?"* e *"pode zero?"* — de cada lado. A discussão acaba em dez segundos, e as quatro respostas já são o símbolo.
 
-- `--` **relacionamento identificador** — use quando a entidade da direita é **fraca** e depende da esquerda para existir;
-- `..` **relacionamento não identificador** — o caso comum.
+---
+
+## 3. Linha sólida × tracejada
+
+- `--` **linha sólida:** a tabela da direita **depende** da esquerda para existir e para se identificar;
+- `..` **linha tracejada:** apenas referencia. É o caso comum.
 
 ```mermaid
 erDiagram
@@ -174,28 +104,59 @@ erDiagram
     PRODUTO ||..o{ ITEM_PEDIDO : "aparece em"
 ```
 
-`ITEM_PEDIDO` é fraco em relação a `PEDIDO` (linha sólida: sem pedido, não existe item), mas apenas referencia `PRODUTO` (linha tracejada).
+`ITEM_PEDIDO` é dependente de `PEDIDO` (linha sólida: sem pedido, não existe item), mas apenas referencia `PRODUTO` (linha tracejada).
 
 ---
 
-## 4. O que o Mermaid **não** desenha
+## 4. O que o Mermaid não desenha
 
-Nem toda a expressividade de Chen cabe no `erDiagram`. Quando faltar símbolo, **escreva em texto abaixo do diagrama** — perder a informação é pior que perder a beleza:
+Quando faltar símbolo, **escreva em texto abaixo do diagrama** — perder a informação é pior que perder a beleza:
 
 | Conceito | Como registrar no seu `.md` |
 |---|---|
-| Atributo multivalorado | Não existe. Já modele como entidade separada e comente o porquê |
+| Atributo multivalorado | Não existe. Já modele como tabela separada e comente o porquê |
 | Atributo derivado | Comentário na linha do atributo: `int idade "derivado de data_nascimento"` |
 | Atributo composto | Achate em vários atributos (`end_rua`, `end_numero`) e diga que formam `endereco` |
-| Especialização | Um relacionamento `\|\|--\|\|` de cada subclasse para a superclasse, mais uma nota `> Especialização disjunta e total.` |
-| Agregação | Não existe. Descreva em texto qual relacionamento foi tratado como entidade |
-| Relacionamento ternário | Não existe. Modele a entidade associativa e explique que ela representa um ternário |
+| Regra de negócio | Nunca cabe no diagrama. Escreva a lista abaixo dele |
 
 > 📏 **Regra do curso:** todo diagrama Mermaid vem seguido de um parágrafo em português dizendo **o que ele afirma sobre o mundo**. O diagrama mostra a forma; o texto carrega o compromisso.
 
 ---
 
-## 5. Escrevendo Mermaid que renderiza de primeira
+## 5. Chen em meia página — só para ler o livro
+
+Chen usa três formas geométricas para três conceitos: **retângulo** é entidade, **losango** é relacionamento, **elipse** é atributo.
+
+```mermaid
+flowchart LR
+    matricula(("<u>matricula</u>")) --- ALUNO[ALUNO]
+    nome((nome)) --- ALUNO
+    ALUNO ---|N| PEGA{PEGA}
+    PEGA ---|M| LIVRO[LIVRO]
+    PEGA --- data((data_retirada))
+    LIVRO --- isbn(("<u>isbn</u>"))
+    LIVRO --- titulo((titulo))
+```
+
+O suficiente para atravessar o livro:
+
+| Em Chen | Significa | No Mermaid deste curso |
+|---|---|---|
+| Retângulo | Entidade | Nome da tabela em maiúsculas |
+| Retângulo de linha dupla | Entidade fraca (nós dizemos **dependente**) | Linha sólida `--` vinda da dona |
+| Losango | Relacionamento | A linha entre duas tabelas |
+| Losango de linha dupla | Relacionamento identificador | Linha sólida `--` |
+| Elipse | Atributo | Linha dentro das chaves `{ }` |
+| Elipse com nome sublinhado | Atributo-chave | Marcador `PK` |
+| Elipse de linha dupla | Atributo multivalorado | Vira tabela separada |
+| Número junto à linha (`1`, `N`, `M`) | Cardinalidade | As peças `\|\|`, `}o`… da seção 2 |
+| Linha dupla entre entidade e losango | Participação total | O mínimo `1` do símbolo |
+
+> ⚠️ **A cardinalidade em Chen fica do lado "errado" para muita gente.** O `N` escrito perto de `ALUNO` significa *"N alunos participam"*, não *"um aluno pega N livros"*. Leia sempre a frase inteira em voz alta: **N alunos pegam M livros**. É por isso que o curso prefere o pé-de-galinha, em que o símbolo fica encostado na tabela que ele descreve.
+
+---
+
+## 6. Escrevendo Mermaid que renderiza de primeira
 
 Os cinco tropeços que consomem a aula inteira:
 

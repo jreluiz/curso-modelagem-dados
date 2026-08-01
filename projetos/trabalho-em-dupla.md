@@ -1,6 +1,6 @@
 # 👥 Trabalho em Dupla — Modelagem via Pull Request
 
-> 📅 **Quando:** Bloco 3, após a [Aula 10](../bloco-3-modelo-relacional/aula-10-mapeamento-er-relacional/README.md).
+> 📅 **Quando:** ao fim do Bloco 2, após a [Aula 08](../bloco-2-do-minimundo-ao-esquema/aula-08-estudo-de-caso/README.md).
 > 🎯 **O que se aprende aqui e em nenhum outro lugar:** defender uma decisão de modelagem para alguém que discorda — e mudar de ideia quando o argumento do outro é melhor.
 
 Modelar sozinho esconde um problema: você nunca descobre que o seu modelo só faz sentido na sua cabeça. Este trabalho existe para que **outra pessoa leia o seu DER e pergunte "por quê?"**.
@@ -30,7 +30,7 @@ git checkout main
 git pull
 git checkout -b der-conceitual        # branch com nome do que você vai fazer
 # ... trabalha ...
-git add . && git commit -m "Adiciona DER conceitual com 7 entidades"
+git add . && git commit -m "Adiciona DER com 6 entidades"
 git push -u origin der-conceitual
 # Abre o PR no GitHub e pede a revisão do colega
 ```
@@ -43,21 +43,22 @@ git push -u origin der-conceitual
 
 | Quem | Entrega | Branch |
 |---|---|---|
-| **A** | Enunciado do minimundo (3–5 parágrafos) + DER conceitual em Mermaid + lista de regras de negócio | `der-conceitual` |
-| **B** | Mapeamento para o esquema relacional + análise de normalização até 3FN | `esquema-relacional` |
+| **A** | Enunciado do minimundo (3–5 parágrafos) + DER em Mermaid + lista de regras de negócio | `der-conceitual` |
+| **B** | Mapeamento para o esquema relacional + análise de normalização até a 3FN | `esquema-relacional` |
 
-B só pode começar depois que o PR de A estiver aberto — mas **não precisa esperar o merge**. Trabalhar sobre um modelo em revisão é realista e é onde as divergências aparecem.
+B só pode começar depois que o PR de A estiver aberto — mas **não precisa esperar o merge**. Trabalhar sobre um modelo em revisão é realista, e é onde as divergências aparecem.
 
 ### Rodada 2 — Revisão cruzada
 
 Cada um revisa o PR do outro **com comentários de linha**, cobrindo obrigatoriamente:
 
 - [ ] Toda cardinalidade lida em voz alta, nas duas direções — alguma frase é falsa?
-- [ ] Toda participação: existe algum `(0,N)` que deveria ser `(1,N)`?
-- [ ] Os [sete erros clássicos](../bloco-2-modelagem-conceitual/aula-08-estudo-de-caso-der/README.md#3-os-sete-erros-clássicos) da Aula 08;
-- [ ] Toda entidade fraca passa no teste da identificação (Aula 06)?
-- [ ] Alguma especialização não paga o próprio custo (Aula 07)?
-- [ ] Cada decomposição de normalização é **sem perda**?
+- [ ] Toda obrigatoriedade: existe algum `o{` que deveria ser `|{`, ou o contrário?
+- [ ] Os [cinco erros clássicos](../bloco-2-do-minimundo-ao-esquema/aula-08-estudo-de-caso/README.md) da Aula 08;
+- [ ] Algum atributo foi promovido a entidade sem necessidade (Aula 05)?
+- [ ] Toda tabela dependente passa no teste da identificação (Aula 04)?
+- [ ] Toda chave estrangeira está do lado N (Aula 03)?
+- [ ] Toda tabela está em 3FN — e, se alguma não estiver, a parada está justificada (Aula 07)?
 
 > 💡 **Uma revisão boa faz perguntas, não dá ordens.** *"Um cliente pode ter dois endereços de entrega ativos?"* é melhor que *"está errado"* — porque metade das vezes quem está errado é quem pergunta, e a pergunta descobre isso sem custo.
 
@@ -77,7 +78,7 @@ modelagem-<tema>/
 ├── minimundo.md           # o enunciado, em português corrido
 ├── der.md                 # o DER em Mermaid + regras de negócio
 ├── esquema-relacional.md  # o mapeamento, regra por regra
-├── normalizacao.md        # a análise 1FN → 3FN, relação por relação
+├── normalizacao.md        # a análise 1FN → 3FN, tabela por tabela
 └── divergencias.md        # ⭐ o diferencial deste trabalho
 ```
 
@@ -103,13 +104,13 @@ Registre **duas divergências reais** que a dupla teve. Para cada uma:
 
 Do modelo:
 
-- [ ] Mínimo de **6 entidades**;
-- [ ] Pelo menos um relacionamento **N:M** com **atributo próprio**;
-- [ ] Pelo menos uma **entidade fraca** ou uma **especialização**, com a classificação justificada;
-- [ ] Todas as cardinalidades em `(min,max)`, nos dois lados;
+- [ ] Mínimo de **5 entidades**;
+- [ ] Pelo menos um relacionamento **N:M** com **atributo próprio** na tabela associativa;
+- [ ] Pelo menos um **autorrelacionamento** ou uma **tabela dependente**, com a classificação justificada;
+- [ ] Todos os relacionamentos com o símbolo completo nos dois lados (`||--o{`, `}o--o{`…);
 - [ ] Lista **numerada** de regras de negócio que o diagrama não expressa;
 - [ ] Esquema relacional com PKs, FKs e **ação referencial escolhida e justificada** para cada FK;
-- [ ] Análise de normalização relação por relação, com a **verificação de perda** de cada decomposição.
+- [ ] Análise de normalização tabela por tabela, dizendo em que forma normal cada uma está e **por quê**.
 
 Do processo:
 
