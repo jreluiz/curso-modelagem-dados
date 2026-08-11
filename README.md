@@ -4,6 +4,7 @@
 > 🎒 Não é preciso saber programar — o curso começa numa planilha que deu errado, não no teclado.
 
 ## 🎯 Objetivos do curso
+teste
 
 Ao final do curso, você será capaz de:
 
