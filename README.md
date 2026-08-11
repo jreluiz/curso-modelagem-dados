@@ -89,6 +89,7 @@ Consulte o [guia de preparação do ambiente](recursos/ambiente.md): PostgreSQL,
 
 ## ⚡ Links rápidos
 
+- 📅 [Cronograma da turma 2026/2](CRONOGRAMA.md) — as datas dos encontros, se você está cursando isto numa disciplina
 - 📐 [Desenhando o DER em Mermaid](recursos/notacoes-der.md) — a notação do curso, e meia página de Chen para ler o livro
 - 🧯 [Erros comuns](recursos/erros-comuns.md) — da FK do lado errado ao `violates foreign key constraint`
 - 🌍 [Catálogo de minimundos](recursos/minimundos.md) — 12 enunciados para praticar
