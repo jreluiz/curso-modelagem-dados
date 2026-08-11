@@ -166,11 +166,9 @@ se a linha ainda significa alguma coisa.
 
 Na pasta `aula-04/`:
 
-1. **`ex01.md`** — classifique sete violações nas quatro restrições;
-2. **`ex02.md`** — escreva o domínio de cada atributo do seu modelo;
-3. **`ex03.md`** — escolha a ação referencial das seis FKs da Biblioteca;
-4. **`ex04.md`** — o relatório que voltou vazio por causa de um nulo;
-5. **Desafio 🌶️ `ex05.md`** — projete uma cascata que apaga o que ninguém queria.
+1. **`ex01.md`** — classifique cinco violações nas quatro restrições;
+2. **`ex02.md`** — a `devolucao` vazia: que nulo é esse, e por que a consulta voltou vazia;
+3. **`ex03.md`** — escolha a ação referencial das quatro FKs da Biblioteca.
 
 ---
 

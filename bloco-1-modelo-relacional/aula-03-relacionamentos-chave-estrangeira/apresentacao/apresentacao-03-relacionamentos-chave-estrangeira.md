@@ -178,11 +178,9 @@ Uma FK que referencia **a própria tabela**. Vale tudo o que você já sabe.
 
 Na pasta `aula-03/`:
 
-1. **`ex01.md`** — classifique cinco pares em 1:1 / 1:N / N:M e diga onde a FK mora;
-2. **`ex02.md`** — corrija um modelo com a FK do lado errado;
-3. **`ex03.md`** — modele aluno × projeto com **função** e **data de entrada**;
-4. **`ex04.md`** — categorias dentro de categorias, com instância de três níveis;
-5. **Desafio 🌶️ `ex05.md`** — reservas com fila, e a chave que o item (d) quebra.
+1. **`ex01.md`** — classifique quatro pares da Biblioteca em 1:1 / 1:N / N:M e diga onde a FK mora;
+2. **`ex02.md`** — corrija `OBRA(isbn, titulo, tombo_exemplar)`, com a FK do lado errado;
+3. **`ex03.md`** — modele aluno × clube de leitura com a **data de entrada**.
 
 ---
 

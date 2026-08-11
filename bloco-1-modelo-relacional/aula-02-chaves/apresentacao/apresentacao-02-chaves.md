@@ -164,11 +164,9 @@ A chave artificial é a PK.
 
 Na pasta `aula-02/`:
 
-1. **`ex01.md`** — liste todas as chaves candidatas de `FUNCIONARIO` e prove a minimalidade;
-2. **`ex02.md`** — escolha a PK com os três critérios, um parágrafo cada;
-3. **`ex03.md`** — três equipes, três PKs: descreva o evento que quebra cada uma;
-4. **`ex04.md`** — modele professor × disciplina × semestre e prove a chave;
-5. **Desafio 🌶️ `ex05.md`** — defenda a chave natural contra a padronização por `id`.
+1. **`ex01.md`** — classifique cinco conjuntos em superchave / candidata / nenhum dos dois;
+2. **`ex02.md`** — escolha a PK de `ALUNO` com os três critérios, uma linha cada;
+3. **`ex03.md`** — ache a chave de `RESERVA_SALA` e prove que ela é mínima.
 
 ---
 

@@ -141,11 +141,23 @@ São duas linhas para uma pessoa só, e o banco não viu problema nenhum — a c
 
 Na pasta `aula-02/` do seu repositório:
 
-1. **`ex01.md`** — dada a relação `FUNCIONARIO(matricula, cpf, nome, email_corporativo, ramal, setor)`, em que o e-mail corporativo é gerado a partir do nome e o ramal é reaproveitado quando alguém sai: liste **todas as chaves candidatas** e explique, em uma linha cada, por que as demais colunas não formam candidata. *Confira assim: para cada candidata que você listou, tire uma coluna e mostre que a identificação se perde. Se não perder, não era candidata.*
-2. **`ex02.md`** — escolha a **chave primária** de `FUNCIONARIO` e justifique com os três critérios da seção 4, um parágrafo por critério. Depois diga quais ficaram como chaves alternativas e o que o banco precisa garantir sobre elas. *Confira assim: a sua justificativa tem que sobreviver à pergunta "e se a pessoa mudar de setor, de ramal e de e-mail no mesmo dia?".*
-3. **`ex03.md`** — três equipes escolheram PKs diferentes para uma tabela de clientes: a primeira usou `cpf`, a segunda `email`, a terceira um `id` artificial. Para **cada uma**, descreva um evento concreto do mundo real que quebra ou incomoda aquela escolha, e diga o que acontece com os dados quando ele ocorre. *Confira assim: as três têm problema — inclusive a artificial. Se você achou que uma é perfeita, procure de novo.*
-4. **`ex04.md`** — modele a tabela que registra **quais professores lecionam quais disciplinas em quais semestres**, sabendo que o mesmo professor pode dar a mesma disciplina em semestres diferentes, e que dois professores podem dividir a mesma disciplina no mesmo semestre. Escreva o esquema, sublinhe a chave e prove que ela é mínima. *Confira assim: teste a sua chave contra as duas frases do enunciado — ela precisa permitir as duas.*
-5. **Desafio 🌶️ `ex05.md`** — o time decidiu que **toda** tabela do sistema terá uma coluna `id` artificial, sem exceção, "para padronizar". Escreva o argumento contrário: escolha **duas** tabelas em que a chave natural seria melhor e defenda cada uma com um caso concreto de uso — uma consulta, uma conferência com papel, uma importação de arquivo — que fica pior com a chave artificial. Depois, honestamente: descreva **um** caso em que a padronização do time está certa. *Confira assim: se você não conseguiu escrever o terceiro parágrafo, provavelmente não entendeu o argumento do outro lado.*
+1. **`ex01.md`** — na relação `ALUNO(matricula, cpf, email, nome)` da seção 3, classifique cada conjunto abaixo em **superchave**, **chave candidata** ou **nenhum dos dois**: (a) `(matricula)`; (b) `(nome)`; (c) `(cpf, nome)`; (d) `(email)`; (e) `(matricula, cpf, email, nome)`. *Confira assim: quatro dos cinco são superchaves, e só dois deles são candidatas. O que sobra não identifica linha nenhuma.*
+2. **`ex02.md`** — `ALUNO` tem três chaves candidatas: `matricula`, `cpf` e `email`. Escolha a **chave primária** e escreva **uma linha por critério** da seção 4 — estabilidade, obrigatoriedade e simplicidade — dizendo como cada candidata se sai. Ao final, diga quais ficaram como chaves alternativas. *Confira assim: a candidata que você escolheu precisa ganhar nos três critérios. Se ela perde em algum, escreva por que ainda assim é a melhor.*
+3. **`ex03.md`** — a biblioteca reserva salas de estudo por horário:
+
+   ```
+   RESERVA_SALA
+   ┌──────────┬────────────┬───────┬───────────┐
+   │ cod_sala │ data       │ hora  │ matricula │
+   ├──────────┼────────────┼───────┼───────────┤
+   │ S-102    │ 2026-03-02 │ 14:00 │  2023101  │
+   │ S-102    │ 2026-03-02 │ 16:00 │  2023102  │
+   │ S-103    │ 2026-03-02 │ 14:00 │  2023101  │
+   │ S-102    │ 2026-03-09 │ 14:00 │  2023102  │
+   └──────────┴────────────┴───────┴───────────┘
+   ```
+
+   Escreva a chave candidata desta tabela e **prove que ela é mínima**: tire uma coluna de cada vez e aponte as duas linhas que passam a colidir. *Confira assim: a chave tem três colunas, e cada uma das três remoções faz um par de linhas colidir.*
 
 ## 🧠 Revisão
 

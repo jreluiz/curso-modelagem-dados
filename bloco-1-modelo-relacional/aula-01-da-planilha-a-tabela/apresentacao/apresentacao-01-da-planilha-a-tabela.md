@@ -160,11 +160,9 @@ Esquema você projeta uma vez. Instância muda o tempo todo.
 
 Na pasta `aula-01/`:
 
-1. **`ex01.md`** — ache uma planilha real e liste **todo dado escrito mais de uma vez**;
-2. **`ex02.md`** — classifique quatro situações nas três anomalias;
-3. **`ex03.md`** — separe a planilha de uma clínica em tabelas, uma por assunto;
-4. **`ex04.md`** — escreva o esquema de cada tabela, com grau e cardinalidade;
-5. **Desafio 🌶️ `ex05.md`** — um caso em que a **planilha** é a escolha certa.
+1. **`ex01.md`** — classifique quatro situações da planilha da seção 1 nas três anomalias;
+2. **`ex02.md`** — separe a planilha das salas de estudo em tabelas, uma por assunto;
+3. **`ex03.md`** — escreva o esquema de cada tabela, com grau e cardinalidade.
 
 ---
 
