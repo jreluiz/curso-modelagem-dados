@@ -132,8 +132,6 @@ Isto é um **esquema**: o desenho, o formato, o que não muda de um dia para o o
 
 > 💡 Escrever o esquema é o gesto mais barato do curso e o que mais economiza discussão. Antes de desenhar qualquer diagrama, escreva as relações em uma linha cada e leia em voz alta.
 
-> 📖 A definição formal de relação, os termos e as propriedades do modelo relacional abrem o capítulo do livro-base dedicado ao modelo. Vale ler em paralelo com esta aula — é curto e usa exatamente este vocabulário.
-
 ## 🏋️ Exercícios da aula
 
 Na pasta `aula-01/` do seu repositório:
