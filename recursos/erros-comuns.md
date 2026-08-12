@@ -1,6 +1,8 @@
 # 🧯 Erros Comuns
 
-Duas metades: os erros de **modelagem** (que ninguém aponta para você, porque o modelo não "roda") e os erros do **PostgreSQL** (que aparecem em letras vermelhas). Os primeiros são mais caros.
+Num curso de modelagem não existe compilador: o modelo errado não reclama, não fica vermelho, não avisa. Ele só custa caro depois. Este catálogo é o substituto — a lista das concepções erradas que aparecem todo semestre, com o sintoma, a causa e a cura.
+
+Duas metades: os erros de **modelagem** (Blocos 1 e 2) e os erros de **abstração e normalização** (Blocos 3 e 4).
 
 ---
 
@@ -8,7 +10,7 @@ Duas metades: os erros de **modelagem** (que ninguém aponta para você, porque 
 
 ### Promover um atributo a entidade sem necessidade
 
-**Sintoma:** o modelo tem uma tabela `SEXO`, com duas linhas: "M" e "F". Ou uma tabela `ESTADO_CIVIL` com quatro.
+**Sintoma:** o modelo tem uma entidade `SEXO`, com duas ocorrências: "M" e "F". Ou uma `ESTADO_CIVIL` com quatro.
 
 **Causa:** confundir "é um valor de domínio limitado" com "é uma coisa do mundo com identidade própria".
 
@@ -20,23 +22,23 @@ Duas metades: os erros de **modelagem** (que ninguém aponta para você, porque 
 
 ### O N:M que ninguém viu
 
-**Sintoma:** o modelo diz que `PEDIDO` tem uma FK para `PRODUTO`. Aí chega o primeiro pedido com dois produtos.
+**Sintoma:** o modelo diz que um `PEDIDO` se liga a um `PRODUTO` só. Aí chega o primeiro pedido com dois produtos.
 
 **Causa:** ler o relacionamento em uma direção só. "Um pedido tem um produto" parece verdade quando você imagina o pedido mais simples possível.
 
-**Cura:** leia **sempre nas duas direções**, e sempre no plural: *"Um pedido pode conter **vários** produtos?"* e *"Um produto pode aparecer em **vários** pedidos?"* Dois "sim" = N:M = precisa de **tabela associativa**. Não existe N:M direto entre duas tabelas — a FK não tem onde caber.
+**Cura:** leia **sempre nas duas direções**, e sempre no plural: *"Um pedido pode conter **vários** produtos?"* e *"Um produto pode aparecer em **vários** pedidos?"* Dois "sim" = N:M. E repare que os atributos do relacionamento (quantidade, preço da vez) só têm onde morar **no losango** — não cabem em nenhuma das duas entidades.
 
 ---
 
 ### A chave estrangeira do lado errado
 
-**Sintoma:** num 1:N entre `DEPARTAMENTO` e `FUNCIONARIO`, a FK foi parar em `DEPARTAMENTO`. Aí o primeiro departamento com dois funcionários obriga a repetir a linha inteira do departamento.
+**Sintoma:** num 1:N entre `DEPARTAMENTO` e `FUNCIONARIO`, a chave estrangeira foi parar em `DEPARTAMENTO`. Aí o primeiro departamento com dois funcionários obriga a repetir a linha inteira do departamento.
 
 **Causa:** copiar a direção da seta do diagrama em vez de perguntar de que lado cabe um valor só.
 
-**Cura:** **a FK mora sempre do lado N** — do lado que tem um só do outro. Um funcionário tem um departamento: a coluna `departamento_id` cabe na linha do funcionário. Um departamento tem muitos funcionários: não cabe uma coluna com muitos valores, porque a célula guarda um valor só.
+**Cura:** **a chave estrangeira mora sempre do lado N** — do lado que tem um só do outro. Um funcionário tem um departamento: a coluna cabe na linha do funcionário. Um departamento tem muitos funcionários: não cabe uma coluna com muitos valores, porque a célula guarda um valor só.
 
-> ⚠️ Teste de uma linha: *"desse lado, quantos do outro cabem?"* Se a resposta for "vários", a FK **não** é aqui.
+> ⚠️ Teste de uma linha: *"desse lado, quantos do outro cabem?"* Se a resposta for "vários", a chave estrangeira **não** é aqui.
 
 ---
 
@@ -46,49 +48,49 @@ Duas metades: os erros de **modelagem** (que ninguém aponta para você, porque 
 
 **Causa:** são eixos **independentes**. O primeiro responde *"quantos, no máximo?"*; o segundo responde *"pode zero?"*.
 
-**Cura:** todo lado de todo relacionamento tem **duas** respostas. Um departamento tem no máximo 1 gerente (quantos) e obrigatoriamente 1 gerente (não pode zero). São afirmações diferentes sobre o mundo, e no esquema viram coisas diferentes: a primeira decide onde a FK mora, a segunda decide se ela é `NOT NULL`.
+**Cura:** todo lado de todo relacionamento tem **duas** respostas. Um departamento tem no máximo 1 gerente (quantos) e obrigatoriamente 1 gerente (não pode zero). São afirmações diferentes sobre o mundo: a primeira decide onde a chave estrangeira mora, a segunda decide se ela aceita valor nulo — e é ela que vira a **linha dupla** da participação total no diagrama.
 
 ---
 
-### Entidade dependente × entidade com FK obrigatória
+### Entidade dependente × entidade com vínculo obrigatório
 
-**Sintoma:** tudo que tem FK `NOT NULL` é tratado como parte da outra tabela, com `ON DELETE CASCADE` em tudo.
+**Sintoma:** tudo que tem vínculo obrigatório é tratado como parte da outra entidade, e some junto quando ela some.
 
 **Causa:** confundir *dependência de existência* com *dependência de identificação*.
 
 **Cura:** a entidade dependente é a que **não consegue se identificar sozinha** — a chave dela inclui a chave da dona. `DEPENDENTE` de um funcionário é dependente: existem dois "João" e só o par (funcionário, nome) distingue. Já `PEDIDO` tem número próprio e único: mesmo que exija cliente, se identifica sozinho.
 
-> ⚠️ Teste decisivo: **tire a tabela dona e pergunte se a chave ainda identifica.** Se a resposta for não, é dependente — e só aí `CASCADE` é a ação certa.
+> ⚠️ Teste decisivo: **tire a entidade dona e pergunte se a chave ainda identifica.** Se a resposta for não, é dependente — e só aí apagar em cascata é o comportamento certo.
 
 ---
 
-### FK apontando para atributo que não é chave
+### Chave estrangeira apontando para o que não é chave
 
-**Sintoma:** `PEDIDO.nome_cliente` referenciando `CLIENTE.nome`.
+**Sintoma:** um pedido que guarda o **nome** do cliente para referenciá-lo.
 
 **Causa:** referenciar o que é legível em vez do que é identificador.
 
-**Cura:** chave estrangeira referencia **chave primária ou candidata (`UNIQUE`)** — nada mais. Nome não é único, e se fosse, mudaria. O nome legível você busca com uma junção.
+**Cura:** chave estrangeira referencia **chave primária ou candidata** — nada mais. Nome não é único, e se fosse, mudaria. O nome legível você busca seguindo a ligação.
 
 ---
 
 ### Chave primária composta desnecessária
 
-**Sintoma:** `PRODUTO` com PK `(codigo, nome, fabricante)`.
+**Sintoma:** `PRODUTO` com chave `(codigo, nome, fabricante)`.
 
-**Causa:** achar que a PK precisa "descrever" a linha.
+**Causa:** achar que a chave precisa "descrever" a linha.
 
-**Cura:** a chave é o **conjunto mínimo** que identifica. Se `codigo` já identifica, acrescentar qualquer coisa não é chave candidata — é desperdício que se propaga para toda FK que apontar para ela.
+**Cura:** a chave é o **conjunto mínimo** que identifica. Se `codigo` já identifica, acrescentar qualquer coisa não é chave candidata — é desperdício que se propaga para toda referência que apontar para ela.
 
 ---
 
-### A tabela que não foi normalizada por preguiça
+### A entidade que não foi normalizada por preguiça
 
-**Sintoma:** `PEDIDO(numero, data, cliente_id, cliente_nome, cliente_cidade, ...)` — "é que assim eu não preciso de junção".
+**Sintoma:** `PEDIDO(numero, data, cliente_id, cliente_nome, cliente_cidade, …)` — "é que assim eu não preciso ir buscar em outro lugar".
 
 **Causa:** otimizar antes de existir problema, e pagar com o dado errado em dois lugares.
 
-**Cura:** o nome do cliente depende do **cliente**, não do pedido — é 3FN e a regra é uma frase: *todo atributo depende da chave, e de nada além dela*. Quando o cliente muda de cidade, a versão duplicada não muda junto, e aí ninguém sabe qual é a verdadeira.
+**Cura:** o nome do cliente depende do **cliente**, não do pedido — é 3FN, e a regra é uma frase: *todo atributo depende da chave, e de nada além dela*. Quando o cliente muda de cidade, a versão duplicada não muda junto, e aí ninguém sabe qual é a verdadeira.
 
 > 💡 Desnormalizar é decisão legítima — **depois** de medir, com o motivo escrito e alguém responsável por manter as cópias em dia. Antes disso é só erro com nome bonito.
 
@@ -112,96 +114,114 @@ Duas metades: os erros de **modelagem** (que ninguém aponta para você, porque 
 
 ---
 
-## Parte 2 — Erros do PostgreSQL
+## Parte 2 — Erros de abstração e normalização
 
-### `ERROR: relation "aluno" does not exist`
+### Especialização que não precisava existir
 
-**Causa:** a tabela não foi criada, você está no banco errado, ou — o caso mais cruel — criou com aspas duplas e maiúsculas: `CREATE TABLE "Aluno"`.
+**Sintoma:** `CLIENTE` especializado em `CLIENTE_ATIVO` e `CLIENTE_INATIVO`, e a única diferença entre as duas é… ser ativo.
 
-**Cura:** `\dt` no `psql` lista as tabelas do banco atual e `\c curso_bd` troca de banco. Sobre as aspas: o PostgreSQL **normaliza tudo para minúsculas** quando você não usa aspas, mas preserva exatamente o que está entre elas. `"Aluno"` e `aluno` viram nomes diferentes. **Nunca use aspas duplas em nome de tabela ou coluna** — é o único conselho deste arquivo que não tem exceção.
+**Causa:** confundir *estado* com *tipo*.
 
----
-
-### `ERROR: insert or update on table "emprestimo" violates foreign key constraint "emprestimo_cpf_fkey"` — `DETAIL: Key (cpf)=(12345678901) is not present in table "aluno".`
-
-**Causa:** integridade referencial funcionando exatamente como você pediu. Está tentando referenciar algo que não existe.
-
-**Cura:** insira na ordem das dependências — **primeiro as tabelas referenciadas, depois as que referenciam**. No script de carga, a ordem é sempre: tabelas independentes → tabelas dependentes → tabelas associativas. Se o erro aparece num `DELETE`, é o inverso: alguém ainda aponta para a linha que você quer apagar; ou apague os dependentes antes, ou declare `ON DELETE CASCADE` sabendo o que está autorizando.
+**Cura:** especialização se justifica quando a subclasse tem **atributos próprios ou relacionamentos próprios** que as outras não têm. Se a única diferença cabe num atributo `situacao`, use o atributo. Pergunte: *"o que eu guardo sobre esta subclasse que não faz sentido guardar sobre a outra?"* Se a resposta for "nada", não há especialização.
 
 ---
 
-### `ERROR: duplicate key value violates unique constraint "aluno_pkey"`
+### Herança usada para papel temporário
 
-**Causa:** duas linhas com a mesma chave primária. Em carga de teste, quase sempre é o script rodado duas vezes.
+**Sintoma:** `PESSOA` especializada em `ALUNO` e `EX_ALUNO`. Aí o aluno se forma.
 
-**Cura:** para recomeçar limpo, `TRUNCATE TABLE aluno CASCADE;` ou rode o `01-ddl.sql` de novo (ele começa com `DROP TABLE IF EXISTS`). Em produção isso é outra conversa — ali o erro está te protegendo.
+**Causa:** modelar como tipo aquilo que é **papel** — e papel muda com o tempo, tipo não.
 
----
+**Cura:** herança é para o que a coisa **é** e não deixa de ser. Um aluno que se forma continua sendo pessoa e passa a ter outro papel; se ele "trocasse de classe", todo o histórico ligado a ele teria de migrar junto. Papel que muda vira **relacionamento com período**, não subclasse.
 
-### `ERROR: column "a.nome" must appear in the GROUP BY clause or be used in an aggregate function`
-
-**Causa:** o campeão de todas as aulas de SQL. Você pediu um campo linha-a-linha ao lado de um resultado de grupo.
-
-```sql
-SELECT nome, COUNT(*) FROM aluno GROUP BY curso;   -- ✗ qual nome? são 40 alunos no grupo
-```
-
-**Cura:** todo campo do `SELECT` que **não** está dentro de uma função de agregação precisa estar no `GROUP BY`. Ou agrupe por ele, ou agregue-o (`MAX(nome)`), ou tire-o da consulta.
+> ⚠️ Teste: *"isso pode mudar durante a vida do registro?"* Se pode, não é especialização.
 
 ---
 
-### `ERROR: null value in column "titulo" of relation "livro" violates not-null constraint`
+### Subclasses que se sobrepõem, tratadas como disjuntas
 
-**Causa:** faltou valor numa coluna obrigatória — geralmente porque o `INSERT` não listou as colunas e a ordem saiu trocada.
+**Sintoma:** `FUNCIONARIO` especializado em `PROFESSOR` e `PESQUISADOR`, e chega alguém que é os dois.
 
-**Cura:** **sempre liste as colunas** no `INSERT`: `INSERT INTO livro (isbn, titulo, ano) VALUES (...)`. Mais longo de escrever, imune a mudança de esquema, e o erro vira legível.
+**Causa:** assumir disjunção sem perguntar.
 
----
-
-### `ERROR: syntax error at or near ")"`
-
-**Causa:** vírgula sobrando antes do parêntese que fecha o `CREATE TABLE` — o erro mais comum do mundo em DDL.
-
-**Cura:** a última coluna e a última restrição **não** levam vírgula. O PostgreSQL informa a posição (`LINE 7:`); conte a partir dali para trás.
+**Cura:** toda especialização responde a **duas** perguntas independentes — *"uma ocorrência pode estar em mais de uma subclasse?"* (disjunta × sobreposta) e *"toda ocorrência precisa estar em alguma?"* (total × parcial). São quatro combinações possíveis, e você **escolhe uma e escreve qual**. O diagrama que não diz qual é está incompleto.
 
 ---
 
-### `ERROR: operator does not exist: character varying = integer`
+### Agregação confundida com relacionamento comum
 
-**Causa:** comparar texto com número — normalmente uma FK declarada como `VARCHAR` de um lado e `INTEGER` do outro.
+**Sintoma:** um relacionamento ligado diretamente a outro relacionamento, sem nada em volta.
 
-**Cura:** os dois lados de uma FK precisam do **mesmo tipo**. Se o erro aparece num `WHERE`, converta explicitamente (`WHERE cpf = '123'::varchar`), mas entenda por que o tipo estava errado antes de converter.
+**Causa:** perceber que "isso precisa se relacionar com aquilo" e ligar as duas coisas sem se perguntar o que está sendo tratado como unidade.
 
----
-
-### A consulta com `NOT IN` que devolve zero linhas sem motivo
-
-**Causa:** não é erro, é `NULL`. Se a subconsulta de um `NOT IN` retorna **um único `NULL`**, o resultado inteiro é vazio — porque "x não está na lista" é indecidível quando a lista contém desconhecido.
-
-```sql
-SELECT * FROM aluno WHERE cpf NOT IN (SELECT cpf FROM emprestimo);  -- vazio se algum cpf for NULL
-```
-
-**Cura:** use `NOT EXISTS`, que trata `NULL` como você espera:
-
-```sql
-SELECT * FROM aluno a WHERE NOT EXISTS (SELECT 1 FROM emprestimo e WHERE e.cpf = a.cpf);
-```
+**Cura:** agregação existe quando **um relacionamento inteiro passa a se comportar como uma entidade** para poder participar de outro relacionamento. O caso clássico: `MEDICO` **atende** `PACIENTE` — e é *esse atendimento* que gera uma prescrição. A prescrição não se liga ao médico nem ao paciente separadamente: liga-se ao par. Desenhe o retângulo em volta do losango e diga por escrito qual é a unidade agregada.
 
 ---
 
-### O `UPDATE` sem `WHERE`
+### Classe UML com atributo que é entidade
 
-**Sintoma:** `UPDATE 4127` quando você esperava `UPDATE 1`.
+**Sintoma:** a classe `Pedido` tem um atributo `cliente: String`.
 
-**Cura preventiva, e vale para o resto da carreira:** escreva o comando primeiro como `SELECT`, confira o número de linhas, e só então troque `SELECT *` por `UPDATE ... SET`. Em trabalho sério, embrulhe em transação:
+**Causa:** traduzir o DER para UML atributo por atributo, sem notar que aquele "atributo" era uma entidade do outro lado de um relacionamento.
 
-```sql
-BEGIN;
-UPDATE livro SET ano = 2020 WHERE isbn = '978-85-1234-567-8';
--- confira o resultado; se estiver errado: ROLLBACK;
-COMMIT;
-```
+**Cura:** o que era **entidade** no DER vira **classe** na UML, e o relacionamento vira **associação** — uma linha entre as duas classes, com multiplicidade nas pontas. Atributo de classe guarda valor; ligação entre coisas do mundo é associação. Se o tipo do atributo é o nome de outra classe do seu diagrama, ele deveria ser uma associação.
+
+---
+
+### A 1FN "resolvida" com `telefone1`, `telefone2`, `telefone3`
+
+**Sintoma:** o atributo multivalorado virou três colunas numeradas.
+
+**Causa:** entender a 1FN como "não pode ter lista na célula" e parar aí.
+
+**Cura:** três colunas numeradas **não estão em 1FN de verdade** — só escondem o problema e criam três novos: o cliente com quatro telefones não cabe, o cliente com um telefone desperdiça duas colunas, e procurar um número exige olhar em três lugares. Atributo multivalorado vira **entidade própria**, com um relacionamento 1:N. Sempre.
+
+---
+
+### Aplicar a 2FN onde ela é automática
+
+**Sintoma:** páginas de análise de dependência parcial numa tabela cuja chave tem **uma coluna só**.
+
+**Causa:** seguir o roteiro sem olhar a chave.
+
+**Cura:** a 2FN trata de **dependência parcial** — atributo que depende de *parte* da chave. Se a chave tem uma coluna só, não existe "parte" dela, e toda tabela em 1FN com chave simples **já está em 2FN**, sem fazer nada. A análise da 2FN só tem trabalho quando a chave é composta.
+
+---
+
+### Confundir a 2FN com a 3FN
+
+**Sintoma:** o aluno decompõe corretamente, mas chama de 2FN o que era 3FN, e a justificativa escrita não bate com o que ele fez.
+
+**Causa:** as duas tratam de "atributo no lugar errado", e a diferença está em **de quem** ele depende.
+
+**Cura:** duas frases, e vale decorar:
+
+- **2FN** — o atributo depende de **parte da chave**. Só existe com chave composta. É *dependência parcial*;
+- **3FN** — o atributo depende de **outro atributo não-chave**, que por sua vez depende da chave. É *dependência transitiva*.
+
+Em `ALUNO(matricula, nome, cod_curso, nome_curso)`, o `nome_curso` depende de `cod_curso`, que depende de `matricula`. Chave simples, então nada de 2FN — é 3FN.
+
+---
+
+### Aplicar a 4FN onde só existe uma dependência multivalorada
+
+**Sintoma:** uma tabela com uma única lista independente é "decomposta" em duas, e uma delas fica com uma coluna só.
+
+**Causa:** ver multivalorado e disparar o procedimento.
+
+**Cura:** a 4FN resolve o problema de **duas ou mais** dependências multivaloradas independentes na mesma tabela — o produto cartesiano acidental, em que 3 telefones e 2 cursos viram 6 linhas que não significam nada. Com **uma** só, não há independência para separar e não há o que decompor: a 1FN já resolveu.
+
+---
+
+### Normalizar até quebrar
+
+**Sintoma:** o esquema chegou à 4FN, e agora existe uma informação que o modelo não consegue mais representar.
+
+**Causa:** decompor sem verificar se a junção das partes reconstrói o original.
+
+**Cura:** toda decomposição precisa ser **sem perda** — remontando as tabelas, você tem de obter exatamente as linhas de antes, nem mais nem menos. Na prática, no nível deste curso: a coluna pela qual você separou precisa ser **chave em pelo menos uma** das duas tabelas resultantes. Se não for, você acabou de inventar linhas que nunca existiram.
+
+> 💡 Normalizar não é esporte. O objetivo é eliminar redundância que causa contradição — não atingir o número mais alto de forma normal.
 
 ---
 

@@ -5,20 +5,22 @@ As apresentações de cada aula são escritas em **Markdown** e convertidas em P
 Cada aula guarda a sua apresentação numa subpasta `apresentacao/`, ao lado do material escrito:
 
 ```
-bloco-2-do-minimundo-ao-esquema/aula-08-estudo-de-caso/
-├── README.md                               # a aula escrita
-├── exemplos/                               # artefatos citados pela aula
+bloco-2-modelos-de-banco-de-dados/aula-08-agregacao-e-estudo-de-caso/
+├── README.md                                      # a aula escrita
+├── exemplos/                                      # artefatos citados pela aula
 └── apresentacao/
-    ├── apresentacao-08-estudo-de-caso.md   # a fonte   ← edite este
-    ├── apresentacao-08-estudo-de-caso.pdf  # o gerado  ← projete este
-    └── img/                                # opcional, só se houver diagrama
-        ├── der-usuarios.mmd                # diagrama para projeção
-        └── der-usuarios.svg                # gerado do .mmd
+    ├── apresentacao-08-agregacao-e-estudo-de-caso.md   # a fonte   ← edite este
+    ├── apresentacao-08-agregacao-e-estudo-de-caso.pdf  # o gerado  ← projete este
+    └── img/                                       # opcional, só se houver diagrama
+        ├── der-biblioteca.mmd                     # diagrama para projeção
+        └── der-biblioteca.svg                     # gerado do .mmd
 ```
 
-O `img/` fica **dentro** de `apresentacao/`: os diagramas são feitos para projeção e não são usados pelo README da aula. Nenhum dos 16 decks atuais precisa dele — os diagramas destes slides cabem em desenho ASCII —, mas o `gerar.sh` continua convertendo todo `.mmd` que encontrar.
+O `img/` fica **dentro** de `apresentacao/`: os diagramas são feitos para projeção e não são usados pelo README da aula. O `gerar.sh` converte todo `.mmd` que encontrar.
 
 **O `.md` e o `.pdf` são versionados.** O `.md` para o `git diff` mostrar o que mudou; o `.pdf` para abrir na aula sem depender de gerar nada na hora.
+
+> 🚧 **Nenhum deck existe hoje.** Os 16 são o passo 9 do plano, depois das 16 aulas escritas — as linhas `> 🎬 Slides da aula:` das aulas já publicadas apontam para PDFs que ainda serão gerados.
 
 Cada aula aponta para o seu PDF logo abaixo do título, numa linha `> 🎬 Slides da aula:`.
 

@@ -1,43 +1,53 @@
 # 📅 Cronograma — Turma 2026/2
 
-## 1º Bimestre — do modelo relacional ao esquema normalizado
+## 1º Bimestre — dos fundamentos ao DER
 
-- [x] **11/08** · Aula 01 — [Da planilha à tabela](bloco-1-modelo-relacional/aula-01-da-planilha-a-tabela/README.md)
-- [ ] **18/08** · Aula 02 — [Chaves: como identificar uma linha](bloco-1-modelo-relacional/aula-02-chaves/README.md)
-- [ ] **25/08** · Aula 03 — [Relacionamentos e chave estrangeira](bloco-1-modelo-relacional/aula-03-relacionamentos-chave-estrangeira/README.md)
-- [ ] **01/09** · Aula 04 — [Integridade e o valor nulo](bloco-1-modelo-relacional/aula-04-integridade-e-nulo/README.md) · fecha o Bloco 1
-- [ ] **08/09** · Aula 05 — [O minimundo e o DER](bloco-2-do-minimundo-ao-esquema/aula-05-minimundo-e-der/README.md)
-- [ ] **15/09** · Aula 06 — [Do DER às tabelas](bloco-2-do-minimundo-ao-esquema/aula-06-do-der-as-tabelas/README.md)
-- [ ] **22/09** · Aula 07 — [Normalização até a 3FN](bloco-2-do-minimundo-ao-esquema/aula-07-normalizacao/README.md) · revisão das Aulas 01–07 em casa
+- [x] **11/08** · Aula 01 — [A redundância e a resposta do SGBD](bloco-1-fundamentos-de-bancos-de-dados/aula-01-redundancia-e-o-sgbd/README.md)
+- [ ] **18/08** · Aula 02 — [De onde vêm os bancos de dados](bloco-1-fundamentos-de-bancos-de-dados/aula-02-de-onde-vem-os-bancos/README.md)
+- [ ] **25/08** · Aula 03 — [Os elementos de um banco de dados](bloco-1-fundamentos-de-bancos-de-dados/aula-03-elementos-de-um-banco/README.md)
+- [ ] **01/09** · Aula 04 — [Requisitos, OLTP e OLAP](bloco-1-fundamentos-de-bancos-de-dados/aula-04-requisitos-oltp-e-olap/README.md) · fecha o Bloco 1
+- [ ] **08/09** · Aula 05 — [Projeto de BD: conceitual, lógico e físico](bloco-2-modelos-de-banco-de-dados/aula-05-projeto-conceitual-logico-fisico/README.md)
+- [ ] **15/09** · Aula 06 — [A notação gráfica e os tipos de entidade](bloco-2-modelos-de-banco-de-dados/aula-06-notacao-e-tipos-de-entidade/README.md)
+- [ ] **22/09** · Aula 07 — [Do relacional à integridade referencial](bloco-2-modelos-de-banco-de-dados/aula-07-relacional-e-integridade/README.md) · revisão das Aulas 01–07 em casa
 - [ ] **29/09** · 📝 **Avaliação Oficial — 1º bimestre** · Aulas 01 a 07
 
 > 🗓️ Notas do 1º bimestre lançadas até **09/10**.
 
-## 2º Bimestre — do SGBD ao SQL
+## 2º Bimestre — do DER à normalização
 
-- [ ] **06/10** · Aula 08 — [Estudo de caso](bloco-2-do-minimundo-ao-esquema/aula-08-estudo-de-caso/README.md) · fecha o Bloco 2 · 🚀 lança o [trabalho em dupla](projetos/trabalho-em-dupla.md)
-- [ ] **13/10** · Aulas 09 + 10 — [Por que um SGBD existe](bloco-3-o-sgbd-na-pratica/aula-09-por-que-um-sgbd-existe/README.md) e [Arquitetura e independência de dados](bloco-3-o-sgbd-na-pratica/aula-10-arquitetura-independencia/README.md) · encontro duplo, exercícios em casa
-- [ ] **20/10** · Aula 11 — [PostgreSQL na prática](bloco-3-o-sgbd-na-pratica/aula-11-postgresql-na-pratica/README.md) · laboratório: instalação e o banco `curso_bd`
-- [ ] **27/10** · Aula 12 — [O que o SGBD garante](bloco-3-o-sgbd-na-pratica/aula-12-o-que-o-sgbd-garante/README.md) · fecha o Bloco 3 · 📦 entrega do trabalho em dupla
-- [ ] **03/11** · Aula 13 — [SQL DDL: criando o esquema](bloco-4-sql-basico/aula-13-sql-ddl/README.md) · 🚀 lança o [projeto final](projetos/projeto-final.md)
-- [ ] **10/11** · Aula 14 — [SQL DML e o `SELECT` simples](bloco-4-sql-basico/aula-14-sql-dml-e-select/README.md)
-- [ ] **17/11** · Aula 15 — [Junções e agregação](bloco-4-sql-basico/aula-15-juncoes-e-agregacao/README.md) · revisão das Aulas 08–15 em casa
+- [ ] **06/10** · Aula 08 — [Agregação e estudo de caso](bloco-2-modelos-de-banco-de-dados/aula-08-agregacao-e-estudo-de-caso/README.md) · fecha o Bloco 2
+- [ ] **13/10** · Aulas 09 + 10 — [Como se conduz uma modelagem](bloco-3-abordagem-entidade-relacionamento/aula-09-como-se-conduz-uma-modelagem/README.md) e [O mesmo caso em duas notações](bloco-3-abordagem-entidade-relacionamento/aula-10-o-mesmo-caso-em-duas-notacoes/README.md) · **encontro duplo**, exercícios em casa
+- [ ] **20/10** · Aula 11 — [Especialização, generalização e as ferramentas](bloco-3-abordagem-entidade-relacionamento/aula-11-especializacao-e-generalizacao/README.md)
+- [ ] **27/10** · Aula 12 — [Ferramentas CASE na prática](bloco-3-abordagem-entidade-relacionamento/aula-12-ferramentas-case-na-pratica/README.md) · fecha o Bloco 3 · laboratório com a ferramenta
+- [ ] **03/11** · Aula 13 — [Por que normalizar](bloco-4-normalizacao-de-dados/aula-13-por-que-normalizar/README.md)
+- [ ] **10/11** · Aula 14 — [Dependência funcional, 1FN e 2FN](bloco-4-normalizacao-de-dados/aula-14-dependencia-funcional-1fn-2fn/README.md)
+- [ ] **17/11** · Aula 15 — [Aplicando a 1FN e a 2FN](bloco-4-normalizacao-de-dados/aula-15-aplicando-1fn-e-2fn/README.md) · revisão das Aulas 08–15 em casa
 - [ ] **24/11** · 📝 **Avaliação Oficial — 2º bimestre** · Aulas 08 a 15
 
-> 🗓️ Notas do 2º bimestre lançadas até **04/12** — por isso o projeto final vence em 01/12.
+> 🗓️ Notas do 2º bimestre lançadas até **04/12**.
 
 ## Fechamento
 
-- [ ] **01/12** · Aula 16 — [Revisão e próximos passos](bloco-4-sql-basico/aula-16-revisao-proximos-passos/README.md) · 📦 entrega do projeto final
-- [ ] **08/12** · Devolutiva da avaliação, apresentação dos projetos e encerramento
+- [ ] **01/12** · Aula 16 — [3FN e 4FN](bloco-4-normalizacao-de-dados/aula-16-3fn-e-4fn/README.md) · fecha o Bloco 4 e o curso
+- [ ] **08/12** · Devolutiva da avaliação e encerramento
 
 > ⚠️ 01/12 e 08/12 caem no período de bancas (01 a 12/12) — são as duas terças mais sujeitas a remarcação. Tudo que é insubstituível já foi dado antes delas.
+
+## Decisões deste cronograma
+
+Duas escolhas que não se deduzem das datas:
+
+- **As Aulas 09 e 10 dividem o encontro de 13/10.** É o que faz 16 aulas caberem em 18 terças com as 2 avaliações oficiais. O par funciona bem junto: a Aula 10 retoma em UML o mesmo caso que a 09 conduziu em DER;
+- **A 4FN da Aula 16 não entra na avaliação.** A Aula 16 cai depois da prova do 2º bimestre, e isso foi aceito de propósito: puxá-la para antes exigiria dobrar dois encontros, e a 4FN é o tópico do curso com menor peso prático. As Aulas 13 a 15 — conceito, dependência funcional, 1FN, 2FN e 3FN — estão todas dentro da avaliação.
+
+**A revisão não ocupa encontro.** As 8 questões de `revisao/README.md` de cada aula são feitas fora da sala e compõem a nota da parte prática. Foi isso que liberou os slots para as 16 aulas caberem.
 
 ## Datas do calendário que não são aula
 
 | Data | O que acontece |
 |:---:|----------------|
 | 07/09 · 12/10 · 02/11 | Feriados — todos numa segunda-feira; nenhuma terça é perdida |
+| 15/11 | Feriado num domingo |
 | 09/10 | Limite de lançamento das notas do 1º bimestre |
 | 04/12 | Limite de lançamento das notas do 2º bimestre |
 | 07 a 09/12 | Avaliações de 2ª chamada |

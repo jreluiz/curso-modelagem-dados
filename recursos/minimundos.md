@@ -1,25 +1,27 @@
 # 🌍 Catálogo de Minimundos
 
-Doze enunciados prontos para modelar. Servem aos exercícios das aulas, ao [trabalho em dupla](../projetos/trabalho-em-dupla.md) e ao [projeto final](../projetos/projeto-final.md) — a ideia é que nem todo mundo modele a mesma coisa e as revisões entre colegas fiquem interessantes.
+Doze enunciados prontos para modelar. Servem aos **exercícios autorais** — o terceiro exercício das Aulas 04, 08, 12 e 16, o único lugar do curso em que você recorta uma realidade que não é a Biblioteca. A ideia é que nem todo mundo modele a mesma coisa.
 
 **Como usar:** escolha um, leia duas vezes, grife os substantivos (candidatos a entidade) e os verbos (candidatos a relacionamento) e comece pelo que o enunciado repete mais. Cada minimundo traz uma lista de **armadilhas** — não olhe antes de tentar.
 
-| # | Minimundo | Dificuldade | O que treina |
-|:---:|-----------|:---:|---|
-| 1 | [Videolocadora de bairro](#1-videolocadora-de-bairro) | ⭐ | Título × exemplar, o clássico do curso |
-| 2 | [Clínica veterinária](#2-clínica-veterinária) | ⭐ | 1:N encadeado, atributo multivalorado |
-| 3 | [Academia de ginástica](#3-academia-de-ginástica) | ⭐⭐ | N:M com atributo, horário |
-| 4 | [Oficina mecânica](#4-oficina-mecânica) | ⭐⭐ | Ordem de serviço, peça × serviço |
-| 5 | [Hotel](#5-hotel) | ⭐⭐ | Período, tipo × unidade, ocupação |
-| 6 | [Escola de idiomas](#6-escola-de-idiomas) | ⭐⭐ | Turma, pré-requisito (autorrelacionamento) |
-| 7 | [E-commerce](#7-e-commerce) | ⭐⭐ | Entidade dependente, histórico de preço |
-| 8 | [Transportadora](#8-transportadora) | ⭐⭐⭐ | Rota com ordem, histórico de situação |
-| 9 | [Campeonato esportivo](#9-campeonato-esportivo) | ⭐⭐⭐ | Autorrelacionamento com papéis |
-| 10 | [Congresso científico](#10-congresso-científico) | ⭐⭐⭐ | N:M múltiplos, ordem no relacionamento |
-| 11 | [Hospital](#11-hospital) | ⭐⭐⭐ | Ocupação por período, prescrição |
-| 12 | [Rede de bibliotecas](#12-rede-de-bibliotecas) | ⭐⭐⭐ | Reserva × empréstimo, multi-unidade |
+| # | Minimundo | Dificuldade | A partir de | O que treina |
+|:---:|-----------|:---:|:---:|---|
+| 1 | [Videolocadora de bairro](#1-videolocadora-de-bairro) | ⭐ | Bloco 1 | Título × exemplar, o clássico do curso |
+| 2 | [Clínica veterinária](#2-clínica-veterinária) | ⭐ | Bloco 1 | 1:N encadeado, atributo multivalorado |
+| 3 | [Academia de ginástica](#3-academia-de-ginástica) | ⭐⭐ | Bloco 2 | N:M com atributo, horário |
+| 4 | [Oficina mecânica](#4-oficina-mecânica) | ⭐⭐ | Bloco 2 | Ordem de serviço, peça × serviço |
+| 5 | [Hotel](#5-hotel) | ⭐⭐ | Bloco 2 | Período, tipo × unidade, ocupação |
+| 6 | [Escola de idiomas](#6-escola-de-idiomas) | ⭐⭐ | Bloco 2 | Turma, pré-requisito (autorrelacionamento) |
+| 7 | [E-commerce](#7-e-commerce) | ⭐⭐ | Bloco 3 | **Especialização**, entidade dependente, histórico de preço |
+| 8 | [Transportadora](#8-transportadora) | ⭐⭐⭐ | Bloco 2 | Rota com ordem, histórico de situação |
+| 9 | [Campeonato esportivo](#9-campeonato-esportivo) | ⭐⭐⭐ | Bloco 2 | Autorrelacionamento com papéis |
+| 10 | [Congresso científico](#10-congresso-científico) | ⭐⭐⭐ | Bloco 3 | Papel × tipo — quando **não** usar herança |
+| 11 | [Hospital](#11-hospital) | ⭐⭐⭐ | Bloco 3 | **Especialização total e disjunta**, ocupação por período |
+| 12 | [Rede de bibliotecas](#12-rede-de-bibliotecas) | ⭐⭐⭐ | Bloco 2 | Reserva × empréstimo, multi-unidade |
 
-> ⚠️ A **Biblioteca Universitária** não está nesta lista de propósito: ela é o caso trabalhado nas aulas, com o modelo publicado na [Aula 08](../bloco-2-do-minimundo-ao-esquema/aula-08-estudo-de-caso/exemplos/minimundo.md). Usá-la em projeto seria copiar a resposta.
+> 💡 A coluna **"a partir de"** diz de qual bloco em diante você tem as ferramentas para modelar o enunciado inteiro. Os de ⭐ servem já ao exercício autoral da Aula 04.
+
+> ⚠️ A **Biblioteca Universitária** não está nesta lista de propósito: ela é o caso trabalhado nas aulas, com o modelo publicado na [Aula 08](../bloco-2-modelos-de-banco-de-dados/aula-08-agregacao-e-estudo-de-caso/README.md). Usá-la num exercício autoral seria copiar a resposta.
 
 ---
 
@@ -109,6 +111,8 @@ Professores têm formação e os idiomas que lecionam.
 
 A loja vende produtos de categorias organizadas em hierarquia (Eletrônicos → Áudio → Fones). Cada produto tem código, descrição, peso e a categoria a que pertence.
 
+Alguns produtos exigem dados que só fazem sentido para eles: **livros** têm ISBN, autor e número de páginas; **eletrônicos** têm voltagem e prazo de garantia; **vestuário** tem tamanho e cor. Nenhum produto é de dois desses tipos — mas a loja também vende muita coisa que não é nenhum dos três e não precisa de dado extra algum.
+
 O preço de um produto **muda ao longo do tempo**, e todo pedido precisa preservar o preço praticado na data da compra.
 
 Clientes cadastram-se com CPF, nome, e-mail e podem ter vários endereços de entrega, cada um com apelido ("casa", "trabalho").
@@ -119,7 +123,7 @@ O envio tem transportadora, código de rastreio e data prevista. Um pedido pode 
 
 Clientes avaliam produtos que compraram, com nota de 1 a 5 e comentário.
 
-> **Armadilhas:** o item de pedido é entidade dependente do pedido; sem o preço praticado no item, mudar o preço reescreve o passado; a hierarquia de categorias é autorrelacionamento 1:N; a avaliação só existe para quem comprou — isso é restrição, e ela deve estar registrada em texto.
+> **Armadilhas:** a especialização de produto é **parcial e disjunta** — compare com o [Hospital](#11-hospital), que é total, e diga no diagrama qual é qual; o item de pedido é entidade dependente do pedido; sem o preço praticado no item, mudar o preço reescreve o passado; a hierarquia de categorias é autorrelacionamento 1:N e **não** é especialização; a avaliação só existe para quem comprou — isso é restrição, e ela deve estar registrada em texto.
 
 ---
 
@@ -165,13 +169,15 @@ Trabalhos aceitos são apresentados em sessões, que ocorrem em uma sala, num di
 
 Participantes inscrevem-se na edição (categoria: estudante, profissional, palestrante) e podem assistir às sessões.
 
-> **Armadilhas:** a ordem dos autores é atributo do relacionamento, não do autor; "autor de correspondência" também é do relacionamento; a restrição de instituição não cabe no diagrama — registre em texto; a mesma pessoa pode ser autor, revisor e participante — resolva com **uma** tabela de pessoas e papéis, não com três cadastros.
+> **Armadilhas:** a ordem dos autores é atributo do relacionamento, não do autor; "autor de correspondência" também é do relacionamento; a restrição de instituição não cabe no diagrama — registre em texto; a mesma pessoa pode ser autor, revisor e participante — e esta é a armadilha central: **papel não é herança.** Autor, revisor e participante são coisas que uma pessoa *faz*, não coisas que ela *é*, e mudam de uma edição para a outra. Resolva com **uma** entidade `PESSOA` e relacionamentos, nunca com especialização nem com três cadastros. Compare com o [Hospital](#11-hospital), onde a especialização é o caminho certo.
 
 ---
 
 ## 11. Hospital
 
-O hospital tem pacientes (prontuário, nome, data de nascimento, tipo sanguíneo, convênio) e profissionais. De cada profissional interessam nome, o conselho e o número de registro (CRM, COREN…), a função e o setor.
+O hospital tem pacientes (prontuário, nome, data de nascimento, tipo sanguíneo, convênio) e profissionais (matrícula, nome, data de admissão, setor).
+
+Todo profissional é de **um de três tipos**, e cada tipo guarda coisas que os outros não guardam: **médicos** têm CRM e especialidade, e só eles prescrevem; **enfermeiros** têm COREN e a escala de turno a que pertencem; **técnicos** têm o registro no conselho da sua área e a lista de equipamentos em que são habilitados. Ninguém é de dois tipos ao mesmo tempo, e não existe profissional que não seja de nenhum.
 
 Consultas ambulatoriais têm data, hora, médico, paciente e o diagnóstico registrado com o código do CID.
 
@@ -181,7 +187,7 @@ Durante a internação, prescrevem-se medicamentos (dose, via, frequência, per�
 
 Exames são solicitados por um médico para um paciente, com data de solicitação, data de realização e o resultado.
 
-> **Armadilhas:** leito ocupado "por vez" exige período, não uma FK sobrescrita; a prescrição tem atributos próprios e não é um simples N:M; quarto → ala → leito é 1:N encadeado, e é onde se erra a direção da FK; profissional é **uma** tabela com função e conselho como atributos — três tabelas quase iguais é o erro que este minimundo testa.
+> **Armadilhas:** a especialização de profissional é **total e disjunta** — o enunciado afirma as duas coisas numa frase só, ache qual e registre ambas no diagrama; **setor não é especialização**, é atributo, porque um profissional muda de setor sem mudar de tipo; leito ocupado "por vez" exige período, não uma ligação sobrescrita; a prescrição tem atributos próprios e não é um simples N:M; quarto → ala → leito é 1:N encadeado, e é onde se erra a direção da ligação.
 
 ---
 
@@ -203,13 +209,13 @@ Multas por atraso são calculadas por dia e podem ser pagas ou perdoadas por um 
 
 ---
 
-## Escolhendo um minimundo para o projeto final
+## Escolhendo um minimundo para o exercício autoral
 
-Três critérios, nesta ordem:
+Este catálogo abastece o **terceiro exercício das Aulas 04, 08, 12 e 16** — os quatro pontos do curso em que você recorta uma realidade própria, em vez de estender a Biblioteca. Três critérios, nesta ordem:
 
 1. **Você entende o domínio?** Modelar bem exige saber quando o enunciado está mentindo. Um domínio que você conhece de verdade — o trabalho de alguém da família, um hobby, a rotina de um lugar que você frequenta — vale mais que um tema "impressionante";
-2. **Ele tem no mínimo 5 entidades, um N:M e um autorrelacionamento ou uma entidade dependente?** Menos que isso não exercita o curso;
-3. **Ele cabe em duas semanas?** Modelar o Instagram inteiro não é ambição, é falta de recorte. Recortar é a primeira habilidade do modelador.
+2. **Ele exercita o que a aula acabou de ensinar?** Use a coluna *"a partir de"* da tabela: um minimundo de Bloco 3 escolhido na Aula 08 vai pedir especialização, que você ainda não viu;
+3. **Ele cabe numa noite de estudo?** Modelar o Instagram inteiro não é ambição, é falta de recorte. Recortar é a primeira habilidade do modelador.
 
 > 💡 Minimundo próprio é bem-vindo e até incentivado — escreva o enunciado no mesmo formato dos daqui (três a cinco parágrafos, em português corrido, sem nomear entidades ou tabelas) e valide o recorte antes de começar a desenhar.
 

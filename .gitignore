@@ -4,6 +4,12 @@ gabaritos/
 # Planejamento do professor
 PLANEJAMENTO.md
 
+# Ferramentas de verificação do professor
+ferramentas/
+
+# Documentos de design (spec e plano da reformulação)
+docs/
+
 # Dumps e backups de banco
 *.dump
 *.backup

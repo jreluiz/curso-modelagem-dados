@@ -1,6 +1,6 @@
 # 🛠️ Preparação do Ambiente
 
-> 💡 **Boa notícia:** nos Blocos 1 e 2 você precisa apenas de um editor de texto e do Git. O PostgreSQL entra na Aula 11 — mas instale antes, para não perder aula com download.
+> 💡 **Boa notícia:** nos **Blocos 1 e 2 você precisa apenas de um editor de texto e do Git.** Os diagramas são escritos em Mermaid, que o GitHub renderiza sozinho — nada a instalar. A **ferramenta CASE** entra no **Bloco 3**, na Aula 12.
 
 ## 1. O repositório de exercícios
 
@@ -37,122 +37,53 @@ Qualquer editor serve, mas você vai escrever muito Markdown com diagramas dentr
 
 Alternativa sem instalar nada: [mermaid.live](https://mermaid.live) — cole o diagrama e veja o resultado na hora. É onde você vai depurar o diagrama que não renderiza.
 
-## 3. PostgreSQL (a partir da Aula 11)
+## 3. A ferramenta CASE (a partir do Bloco 3)
 
-### macOS
+A partir da Aula 12 o curso usa uma **ferramenta CASE**: um programa que desenha o modelo, verifica consistência e converte o conceitual em lógico. Escolha **uma** das duas.
 
-```bash
-brew install postgresql@15
-brew services start postgresql@15
-```
+### brModelo — a recomendada
 
-Se o comando `psql` não for encontrado depois disso, acrescente ao seu `~/.zshrc`:
+É gratuita, brasileira, nasceu no meio acadêmico e é a única da lista que desenha em **notação de Chen**, a mesma das Aulas 06 a 11.
 
-```bash
-export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
-```
-
-### Windows
-
-Baixe o instalador em [postgresql.org/download/windows](https://www.postgresql.org/download/windows/). Durante a instalação:
-
-- **Anote a senha** do usuário `postgres` — ela é pedida em todo acesso e não há como recuperá-la sem trabalho;
-- Mantenha a porta padrão **5432**;
-- Marque o **pgAdmin 4** para instalar junto.
-
-### Linux (Debian/Ubuntu)
+1. Baixe em **[sis4.com/brModelo](https://www.sis4.com/brModelo/)**;
+2. É um programa **Java** — se ele não abrir, o que falta é o Java. Confira com:
 
 ```bash
-sudo apt update
-sudo apt install postgresql postgresql-client
-sudo systemctl start postgresql
+java -version
 ```
 
-### Verificação (nos três sistemas)
+Se responder "command not found", instale o [Java](https://www.java.com/pt-BR/download/) e tente de novo.
 
-```bash
-psql --version
-```
+3. Abra e faça o teste de dois minutos: crie duas entidades, ligue com um losango, ponha cardinalidade nas duas pontas e mande **converter para o modelo lógico**. Se saiu um esquema de tabelas, seu ambiente está pronto.
 
-Deve responder algo como `psql (PostgreSQL) 15.x`. Se responder "command not found", a instalação não terminou ou o `PATH` não foi atualizado — reabra o terminal antes de concluir que deu errado.
+> ⚠️ **A ferramenta escreve a cardinalidade no formato `(min,max)`**, que **não** é o do curso: o par ao lado de uma entidade diz quantas vezes **cada ocorrência dela** participa do relacionamento. É a colocação oposta à do `1`/`N` das aulas. O teste que resolve sem decorar convenção: leia a ligação em voz alta — *"uma editora publica muitos livros"* — e veja se o diagrama afirma isso.
 
-## 4. O banco do curso
+### draw.io — a alternativa sem instalar
 
-```bash
-createdb curso_bd          # macOS e Linux
-psql -d curso_bd           # abre o terminal do banco
-```
+Se você estiver num laboratório onde não pode instalar programas, use o **[draw.io](https://app.diagrams.net/)**, que roda no navegador. Ele tem estêncil de ER e desenha as formas de Chen à mão — mas **não converte para o modelo lógico**: essa parte você faz no papel, com as regras da Aula 07.
 
-No Windows, ou se o `createdb` reclamar de usuário, use:
+## 4. Para rascunhar
 
-```bash
-psql -U postgres
-```
+Nada disso é obrigatório, mas ajuda:
 
-e, já dentro do `psql`:
+- **[dbdiagram.io](https://dbdiagram.io/)** — rápido, notação pé-de-galinha, bom para esboçar tabelas;
+- **[mermaid.live](https://mermaid.live)** — o mais próximo do que você entrega, porque é a mesma sintaxe.
 
-```sql
-CREATE DATABASE curso_bd;
-\c curso_bd
-```
-
-### Os comandos do `psql` que valem decorar
-
-| Comando | O que faz |
-|---------|-----------|
-| `\l` | Lista os bancos |
-| `\c curso_bd` | Conecta a um banco |
-| `\dt` | Lista as tabelas do banco atual |
-| `\d aluno` | Mostra a estrutura da tabela `aluno` (colunas, tipos, chaves, restrições) |
-| `\d+ aluno` | O mesmo, com tamanho e descrição |
-| `\di` | Lista os índices |
-| `\i arquivo.sql` | Executa um script |
-| `\x` | Alterna a saída para vertical (salva vidas em tabela larga) |
-| `\timing` | Passa a mostrar o tempo de cada consulta |
-| `\?` | Ajuda dos comandos `\` |
-| `\q` | Sai |
-
-> 💡 `\d nome_da_tabela` é o comando mais útil do curso: ele mostra o seu modelo lógico como o banco realmente o entendeu. Use-o toda vez que uma restrição não se comportar como você esperava.
-
-Para rodar um script sem entrar no `psql`:
-
-```bash
-psql -d curso_bd -f ex01.sql
-```
-
-E para parar no primeiro erro em vez de seguir adiante deixando estrago:
-
-```bash
-psql -d curso_bd -v ON_ERROR_STOP=1 -f ex01.sql
-```
-
-## 5. Cliente gráfico (opcional, mas recomendado)
-
-Escolha **um**:
-
-- **[pgAdmin 4](https://www.pgadmin.org/)** — vem com o instalador do Windows. Feito só para PostgreSQL, mostra bem as restrições e o plano de execução;
-- **[DBeaver Community](https://dbeaver.io/)** — funciona com qualquer banco, tem editor de SQL confortável e **gera o diagrama do banco** a partir das tabelas existentes (útil na Aula 13 para conferir se o seu DDL produziu o modelo que você desenhou).
-
-> ⚠️ Cliente gráfico é conforto, não substituto. As aulas mostram os comandos no `psql` porque é o que existe em qualquer servidor, e porque clicar não ensina a ler mensagem de erro.
-
-## 6. Ferramentas de diagrama (opcional)
-
-O curso versiona diagramas em **Mermaid**, que é texto. Mas para rascunhar no papel digital:
-
-- **[dbdiagram.io](https://dbdiagram.io/)** — rápido, notação pé-de-galinha (a mesma do Mermaid), exporta SQL;
-- **[draw.io](https://app.diagrams.net/)** — desenho livre, tem estêncil de ER;
-- **[brModelo](https://www.sis4.com/brModelo/)** — gratuito e brasileiro, desenha em **notação de Chen**. Útil se você for acompanhar os diagramas do livro-base.
-
-> 📏 **Regra do curso:** rascunhe onde quiser, **entregue em Mermaid**. Imagem não faz *diff*, não recebe comentário de linha no Pull Request e envelhece mal.
+> 📏 **Regra do curso:** rascunhe onde quiser, **entregue em Mermaid**. A imagem exportada da ferramenta acompanha a entrega quando o modelo é grande demais para o Mermaid — mas nunca sozinha. Imagem não faz *diff*, não recebe comentário de linha no Pull Request e envelhece mal.
 
 ## ✅ Checklist final
+
+Para começar o curso:
 
 - [ ] Repositório `exercicios-modelagem-dados` criado, público e clonado;
 - [ ] Um commit de teste já apareceu no GitHub;
 - [ ] Editor com preview de Markdown funcionando (ou [mermaid.live](https://mermaid.live) aberto num favorito);
-- [ ] Um diagrama Mermaid de teste renderizou — copie o do [guia de notações](notacoes-der.md) e confira;
-- [ ] `psql --version` responde (pode ficar para antes da Aula 11);
-- [ ] Banco `curso_bd` criado e `\dt` executa sem erro (idem).
+- [ ] Um diagrama Mermaid de teste renderizou — copie o do [guia de notações](notacoes-der.md) e confira.
+
+Para o Bloco 3 (pode ficar para antes da Aula 12):
+
+- [ ] brModelo abre, ou o draw.io está acessível no seu navegador;
+- [ ] o teste de dois minutos da seção 3 produziu um esquema lógico.
 
 ---
 

@@ -4,63 +4,57 @@
 > 🎒 Não é preciso saber programar — o curso começa numa planilha que deu errado, não no teclado.
 
 ## 🎯 Objetivos do curso
-teste
 
 Ao final do curso, você será capaz de:
 
-- Separar uma planilha em **tabelas** e explicar as três anomalias que isso resolve;
-- Escolher **chaves** com critério e ligar tabelas por **chave estrangeira**, sabendo de que lado ela mora;
-- Declarar as **restrições de integridade** que fazem o banco recusar dado errado;
-- Ler um **minimundo** em português e transformá-lo num **DER** em Mermaid, com as perguntas ao cliente escritas;
-- **Mapear** o diagrama para um esquema relacional e **normalizá-lo** até a 3FN, defendendo cada decisão;
-- Instalar o **PostgreSQL**, criar o banco e entender o que um SGBD garante que uma planilha não garante;
-- Escrever o **DDL** que dá vida ao modelo e as **consultas** que respondem perguntas de verdade;
-- Trabalhar como um profissional: todo modelo versionado com Git e revisado via GitHub.
+- Reconhecer a **redundância** num conjunto de dados e nomear as três **anomalias** que ela produz;
+- Explicar o que um **banco de dados** e um **SGBD** fazem — e o que eles não fazem por você;
+- Situar os **modelos de dados** na ordem em que surgiram e escolher um SGBD com critério;
+- Escrever a **política de segurança** de um banco: quem pode ler, alterar e nunca apagar;
+- Conduzir um **levantamento de requisitos** e decidir se o banco é **OLTP** ou **OLAP**;
+- Desenhar um **DER na notação de Chen** — retângulo, losango e elipse — e traduzi-lo em **modelo lógico**;
+- Aplicar **especialização, generalização e agregação**, e converter o DER em **diagrama de classes UML**;
+- Usar uma **ferramenta CASE** para produzir e documentar um modelo;
+- **Normalizar** um esquema até a **4FN**, defendendo cada decomposição por escrito;
+- Trabalhar como um profissional: todo modelo versionado com Git e justificado por escrito.
 
 ## 🗺️ Plano de aulas
 
-### Bloco 1 — O modelo relacional: tabelas, chaves e relacionamentos
+### Bloco 1 — Fundamentos de Bancos de Dados
 
 | Aula | Tema | Conteúdo |
 |:---:|------|----------|
-| 01 | [Da planilha à tabela](bloco-1-modelo-relacional/aula-01-da-planilha-a-tabela/README.md) | As três anomalias, relação e tupla, grau e cardinalidade, esquema |
-| 02 | [Chaves: como identificar uma linha](bloco-1-modelo-relacional/aula-02-chaves/README.md) | Superchave, candidata, primária, composta, natural × artificial |
-| 03 | [Relacionamentos e chave estrangeira](bloco-1-modelo-relacional/aula-03-relacionamentos-chave-estrangeira/README.md) | Ligação por valor, 1:1, 1:N, N:M, tabela associativa, autorrelacionamento |
-| 04 | [Integridade e o valor nulo](bloco-1-modelo-relacional/aula-04-integridade-e-nulo/README.md) | As quatro restrições, os três sentidos do nulo, ações referenciais |
+| 01 | [A redundância e a resposta do SGBD](bloco-1-fundamentos-de-bancos-de-dados/aula-01-redundancia-e-o-sgbd/README.md) | Redundância, as três anomalias, banco de dados, SGBD, as quatro garantias |
+| 02 | [De onde vêm os bancos de dados](bloco-1-fundamentos-de-bancos-de-dados/aula-02-de-onde-vem-os-bancos/README.md) | Arquivos, hierárquico, rede, Codd, NoSQL, principais SGBD, política de segurança |
+| 03 | [Os elementos de um banco de dados](bloco-1-fundamentos-de-bancos-de-dados/aula-03-elementos-de-um-banco/README.md) | Tabela, tupla, domínio, entidade, os quatro tipos de atributo, as quatro etapas |
+| 04 | [Requisitos, OLTP e OLAP](bloco-1-fundamentos-de-bancos-de-dados/aula-04-requisitos-oltp-e-olap/README.md) | As quatro perguntas, fontes de requisito, OLTP, OLAP, granularidade |
 
-### Bloco 2 — Do minimundo ao esquema relacional
-
-| Aula | Tema | Conteúdo |
-|:---:|------|----------|
-| 05 | [O minimundo e o DER](bloco-2-do-minimundo-ao-esquema/aula-05-minimundo-e-der/README.md) | Recortar a realidade, entidade × atributo, Mermaid `erDiagram` |
-| 06 | [Do DER às tabelas](bloco-2-do-minimundo-ao-esquema/aula-06-do-der-as-tabelas/README.md) | As cinco regras de mapeamento e o que a tradução perde |
-| 07 | [Normalização até a 3FN](bloco-2-do-minimundo-ao-esquema/aula-07-normalizacao/README.md) | Dependência funcional sem fórmula, 1FN, 2FN, 3FN, quando não normalizar |
-| 08 | [Estudo de caso](bloco-2-do-minimundo-ao-esquema/aula-08-estudo-de-caso/README.md) | O roteiro em 6 passos, os cinco erros clássicos, validar com o cliente |
-
-### Bloco 3 — O SGBD na prática
+### Bloco 2 — Modelos de Banco de Dados
 
 | Aula | Tema | Conteúdo |
 |:---:|------|----------|
-| 09 | [Por que um SGBD existe](bloco-3-o-sgbd-na-pratica/aula-09-por-que-um-sgbd-existe/README.md) | Os quatro pecados do arquivo solto, o que o SGBD garante, os atores |
-| 10 | [Arquitetura e independência de dados](bloco-3-o-sgbd-na-pratica/aula-10-arquitetura-independencia/README.md) | Esquema × instância, três níveis, DDL/DML/DCL, catálogo |
-| 11 | [PostgreSQL na prática](bloco-3-o-sgbd-na-pratica/aula-11-postgresql-na-pratica/README.md) | Instalar, `psql`, criar o banco, ler o catálogo, os tipos de dados |
-| 12 | [O que o SGBD garante](bloco-3-o-sgbd-na-pratica/aula-12-o-que-o-sgbd-garante/README.md) | Transação, `COMMIT`/`ROLLBACK`, ACID, concorrência, permissões, backup |
+| 05 | [Projeto de BD: conceitual, lógico e físico](bloco-2-modelos-de-banco-de-dados/aula-05-projeto-conceitual-logico-fisico/README.md) | Projeto de banco de dados, os três modelos e o que cada um decide |
+| 06 | [A notação gráfica e os tipos de entidade](bloco-2-modelos-de-banco-de-dados/aula-06-notacao-e-tipos-de-entidade/README.md) | Formas de Chen, entidade forte e fraca, relacionamento, cardinalidade, participação |
+| 07 | [Do relacional à integridade referencial](bloco-2-modelos-de-banco-de-dados/aula-07-relacional-e-integridade/README.md) | Relação e tupla, chaves, chave estrangeira, as três integridades, políticas de exclusão |
+| 08 | [Agregação e estudo de caso](bloco-2-modelos-de-banco-de-dados/aula-08-agregacao-e-estudo-de-caso/README.md) | Agregação, entidade associativa e o projeto completo da Biblioteca, do minimundo ao esquema |
 
-### Bloco 4 — SQL básico
+### Bloco 3 — Abordagem Entidade-Relacionamento
 
 | Aula | Tema | Conteúdo |
 |:---:|------|----------|
-| 13 | [SQL DDL: criando o esquema](bloco-4-sql-basico/aula-13-sql-ddl/README.md) | `CREATE TABLE`, restrições nomeadas, `ON DELETE`, `ALTER`, os erros |
-| 14 | [SQL DML e o `SELECT` simples](bloco-4-sql-basico/aula-14-sql-dml-e-select/README.md) | `INSERT`/`UPDATE`/`DELETE`, `WHERE`, `ORDER BY`, `IS NULL`, `LIKE` |
-| 15 | [Junções e agregação](bloco-4-sql-basico/aula-15-juncoes-e-agregacao/README.md) | `JOIN`, `LEFT JOIN`, `GROUP BY`, `HAVING`, subconsulta, `VIEW` |
-| 16 | [Revisão e próximos passos](bloco-4-sql-basico/aula-16-revisao-proximos-passos/README.md) | O mapa do curso, o que ficou de fora, NoSQL, ORM |
+| 09 | [Como se conduz uma modelagem](bloco-3-abordagem-entidade-relacionamento/aula-09-como-se-conduz-uma-modelagem/README.md) | As quatro estratégias, descrição em alto nível e expandida, dicionário de dados, registro de decisão |
+| 10 | [O mesmo caso em duas notações](bloco-3-abordagem-entidade-relacionamento/aula-10-o-mesmo-caso-em-duas-notacoes/README.md) | Classe, associação, multiplicidade, herança em UML e a tabela de conversão a partir do DER |
+| 11 | [Especialização, generalização e as ferramentas](bloco-3-abordagem-entidade-relacionamento/aula-11-especializacao-e-generalizacao/README.md) | Total × parcial, disjunta × sobreposta, quando não especializar, e o que é uma ferramenta CASE |
+| 12 | [Ferramentas CASE na prática](bloco-3-abordagem-entidade-relacionamento/aula-12-ferramentas-case-na-pratica/README.md) | Upper e lower CASE, as ferramentas de hoje, o brModelo e a revisão da conversão automática |
 
-## 📦 Projetos práticos
+### Bloco 4 — Normalização de Dados
 
-| Projeto | Quando | Modalidade |
-|---------|:---:|------------|
-| [Trabalho em dupla — Modelagem via Pull Request](projetos/trabalho-em-dupla.md) | Após a Aula 08 | Dupla (PRs revisados) |
-| [Projeto final — Do minimundo ao banco rodando](projetos/projeto-final.md) | Após a Aula 15 | Individual |
+| Aula | Tema | Conteúdo |
+|:---:|------|----------|
+| 13 | [Por que normalizar](bloco-4-normalizacao-de-dados/aula-13-por-que-normalizar/README.md) | Conceito, objetivos, o panorama das formas normais e até onde normalizar |
+| 14 | [Dependência funcional, 1FN e 2FN](bloco-4-normalizacao-de-dados/aula-14-dependencia-funcional-1fn-2fn/README.md) | Dependência funcional, valor atômico, dependência parcial e a definição da 2FN |
+| 15 | [Aplicando a 1FN e a 2FN](bloco-4-normalizacao-de-dados/aula-15-aplicando-1fn-e-2fn/README.md) | A decomposição passo a passo, a conferência sem perda e a definição da 3FN |
+| 16 | [3FN e 4FN](bloco-4-normalizacao-de-dados/aula-16-3fn-e-4fn/README.md) | A 3FN aplicada, dependência multivalorada, a 4FN e o fechamento do curso |
 
 ## 🔁 O ritual Git de toda aula
 
@@ -73,8 +67,7 @@ git pull                                 # atualiza (se você usa mais de um PC)
 
 # ── Durante a aula ──
 mkdir aula-XX-tema && cd aula-XX-tema     # uma pasta por aula
-# ... lê o minimundo, desenha o esquema, escreve a justificativa ...
-psql -d curso_bd -f ex01.sql              # a partir da Aula 11
+# ... lê o enunciado, desenha o diagrama, escreve a justificativa ...
 git add .
 git commit -m "Resolve exercícios da aula XX"   # commit por exercício concluído
 
@@ -86,22 +79,39 @@ git push                                  # sem push = sem entrega!
 
 ## 🛠️ Ambiente
 
-Consulte o [guia de preparação do ambiente](recursos/ambiente.md): PostgreSQL, cliente gráfico, o banco `curso_bd` e o seu repositório de exercícios. Nos Blocos 1 e 2 você precisa apenas de um editor de texto — **o banco entra na Aula 11**.
+Consulte o [guia de preparação do ambiente](recursos/ambiente.md). Nos **Blocos 1 e 2 você precisa apenas de um editor de texto e do Git** — os diagramas são escritos em Mermaid, que o GitHub renderiza sozinho. A **ferramenta CASE** (brModelo ou draw.io) entra no Bloco 3.
 
 ## ⚡ Links rápidos
 
-- 📅 [Cronograma da turma 2026/2](CRONOGRAMA.md) — as datas dos encontros, se você está cursando isto numa disciplina
-- 📐 [Desenhando o DER em Mermaid](recursos/notacoes-der.md) — a notação do curso, e meia página de Chen para ler o livro
-- 🧯 [Erros comuns](recursos/erros-comuns.md) — da FK do lado errado ao `violates foreign key constraint`
-- 🌍 [Catálogo de minimundos](recursos/minimundos.md) — 12 enunciados para praticar
+- 📅 [Cronograma da turma 2026/2](CRONOGRAMA.md) — as datas dos encontros, se você está cursando isto numa turma
+- 📐 [Desenhando o DER na notação de Chen](recursos/notacoes-der.md) — a notação do curso, com a tabela de formas e as duas limitações do Mermaid
+- 🧯 [Erros comuns](recursos/erros-comuns.md) — vinte erros de modelagem, abstração e normalização, com sintoma, causa e cura
+- 🌍 [Catálogo de minimundos](recursos/minimundos.md) — 12 enunciados para os exercícios autorais
 - 🔗 [Links úteis](recursos/links-uteis.md)
 - 📚 [Curso de Git e GitHub](https://github.com/jreluiz/curso-git-github) (pré-requisito)
 
-## 📖 Livro-base
+## 📚 Bibliografia
 
-GUIMARÃES, Célio Cardoso. **Fundamentos de Bancos de Dados: Modelagem, Projeto e Linguagem SQL**. Campinas: Editora da Unicamp.
+**Livro-base:**
 
-As aulas marcam com `> 📖` onde aprofundar cada tema. O curso é autocontido — o livro é o passo seguinte, não um pré-requisito. Alguns assuntos ficaram **deliberadamente de fora** (álgebra relacional, BCNF, projeto físico); a [Aula 16](bloco-4-sql-basico/aula-16-revisao-proximos-passos/README.md) diz quais são e por onde continuar.
+- HEUSER, Carlos Alberto. **Projeto de Banco de Dados**. 6. ed. Porto Alegre: Bookman, 2009. (Série Livros Didáticos Informática UFRGS, v. 4)
+
+**Bibliografia de apoio:**
+
+| Obra | Onde ela ajuda mais |
+|---|---|
+| GUIMARÃES, Célio Cardoso. **Fundamentos de Bancos de Dados: Modelagem, Projeto e Linguagem SQL**. Campinas: Editora da Unicamp. | Bloco 1 — a motivação histórica e a evolução dos modelos |
+| ELMASRI, Ramez; NAVATHE, Shamkant B. **Sistemas de Banco de Dados**. 7. ed. São Paulo: Pearson, 2018. | Bloco 3 — abordagem entidade-relacionamento e notação UML |
+| MACHADO, Felipe Nery Rodrigues. **Banco de Dados: Projeto e Implementação**. 3. ed. São Paulo: Érica. | Bloco 1 (OLTP e OLAP) e Bloco 3 (ferramentas CASE) |
+| DATE, C. J. **Introdução a Sistemas de Bancos de Dados**. 8. ed. Rio de Janeiro: Elsevier, 2004. | Bloco 4 — dependência funcional e formas normais com rigor |
+| SILBERSCHATZ, A.; KORTH, H. F.; SUDARSHAN, S. **Sistema de Banco de Dados**. 7. ed. Rio de Janeiro: LTC, 2020. | apoio geral, em todos os blocos |
+| FOWLER, Martin. **UML Essencial**. 3. ed. Porto Alegre: Bookman, 2005. | Bloco 3 — diagrama de classes e herança |
+| CHEN, Peter Pin-Shan. *The Entity-Relationship Model — Toward a Unified View of Data*. ACM TODS, 1976. | a notação do curso, no artigo original |
+| CODD, E. F. *A Relational Model of Data for Large Shared Data Banks*. CACM, 1970. | Bloco 1 — o artigo que criou o modelo relacional |
+
+As aulas marcam com `> 📖` onde aprofundar cada tema. **O curso é autocontido** — os livros são o passo seguinte, não um pré-requisito.
+
+Alguns assuntos ficaram **deliberadamente de fora**: SQL (DDL, DML e consultas), álgebra relacional, BCNF, projeto físico e relacionamento ternário. A [Aula 16](bloco-4-normalizacao-de-dados/aula-16-3fn-e-4fn/README.md) diz quais são e por onde continuar.
 
 ---
 
