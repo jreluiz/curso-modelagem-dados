@@ -34,7 +34,17 @@ Tenha em mãos, no papel ou no editor:
                        esquema lógico transcrito em texto no seu .md
 ```
 
-> ⚠️ **A ferramenta usa `(min,max)`, o curso usa `1`/`N`/`M`.** O par escrito ao lado de uma entidade diz quantas vezes **cada ocorrência dela** participa do relacionamento — colocação oposta à das aulas. O teste que resolve em cinco segundos, sem decorar convenção: leia *"uma editora publica muitos livros"* e veja se o diagrama afirma isso.
+> ⚠️ **A ferramenta usa `(min,max)`, o curso usa `1`/`N`/`M`.** O par escrito ao lado de uma entidade diz quantas vezes **cada ocorrência dela** participa do relacionamento — o que joga o "muitos" para o lado oposto:
+
+```
+   O curso   [EDITORA] ──1──  {PUBLICA}  ──N── [LIVRO]
+                                           ↑ o "muitos" fica junto de LIVRO
+
+   brModelo  [EDITORA] ─(1,n)─ {PUBLICA} ─(1,1)─ [LIVRO]
+                         ↑ o "muitos" fica junto de EDITORA
+```
+
+O teste que resolve em cinco segundos, sem decorar convenção: leia *"uma editora publica muitos livros"* e veja se o diagrama afirma isso.
 
 ## 3. O checklist da conversão
 

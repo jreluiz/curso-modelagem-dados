@@ -56,7 +56,7 @@ Se responder "command not found", instale o [Java](https://www.java.com/pt-BR/do
 
 3. Abra e faça o teste de dois minutos: crie duas entidades, ligue com um losango, ponha cardinalidade nas duas pontas e mande **converter para o modelo lógico**. Se saiu um esquema de tabelas, seu ambiente está pronto.
 
-> ⚠️ **A ferramenta escreve a cardinalidade no formato `(min,max)`**, que **não** é o do curso: o par ao lado de uma entidade diz quantas vezes **cada ocorrência dela** participa do relacionamento. É a colocação oposta à do `1`/`N` das aulas. O teste que resolve sem decorar convenção: leia a ligação em voz alta — *"uma editora publica muitos livros"* — e veja se o diagrama afirma isso.
+> ⚠️ **A ferramenta escreve a cardinalidade no formato `(min,max)`**, que **não** é o do curso: o par ao lado de uma entidade diz quantas vezes **cada ocorrência dela** participa do relacionamento, o que joga o "muitos" para o lado oposto ao das aulas. Os dois desenhos estão lado a lado na [Aula 12](../bloco-3-abordagem-entidade-relacionamento/aula-12-ferramentas-case-na-pratica/README.md#3-o-roteiro-no-brmodelo). O teste que resolve sem decorar convenção: leia a ligação em voz alta — *"uma editora publica muitos livros"* — e veja se o diagrama afirma isso.
 
 ### draw.io — a alternativa sem instalar
 

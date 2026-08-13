@@ -85,7 +85,15 @@ flowchart LR
     PEGA ---|M| LIVRO[LIVRO]
 ```
 
-> ⚠️ **O `N` encostado em `ALUNO` significa "N alunos participam", não "um aluno pega N livros".** Em Chen, o número diz **quantas ocorrências daquela entidade** entram no relacionamento. Leia sempre a frase inteira em voz alta: **N alunos pegam M livros**.
+> ⚠️ **O número fica junto da entidade que ele conta.** O `N` encostado em `ALUNO` significa "N alunos participam", não "um aluno pega N livros". Leia sempre a frase inteira em voz alta: **N alunos pegam M livros**.
+
+A regra cabe num desenho, e vale para todo diagrama deste curso:
+
+```
+   [EDITORA] ──1── {PUBLICA} ──N── [LIVRO]
+    ↑                               ↑
+    └─ "1 editora"                  └─ "N livros"
+```
 
 Os três casos que você vai usar o tempo todo:
 

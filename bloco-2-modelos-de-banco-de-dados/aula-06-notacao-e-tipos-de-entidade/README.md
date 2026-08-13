@@ -83,7 +83,15 @@ flowchart LR
 
 O 1:N é o caso mais comum de todos. O 1:1 é raro e merece desconfiança — se duas entidades andam sempre juntas e uma nunca existe sem a outra, muitas vezes são **uma entidade só**, partida sem necessidade.
 
-> ⚠️ **A armadilha do lado, que derruba todo mundo na primeira vez.** Em Chen, o número encostado em `EDITORA` diz **quantas editoras** entram na ligação, não quantos livros a editora publica. Leia sempre a frase inteira: *"uma editora publica N livros"* — o `1` fica do lado da editora e o `N` do lado do livro.
+> ⚠️ **A armadilha do lado, que derruba todo mundo na primeira vez.** Em Chen, **o número fica junto da entidade que ele conta.** O `N` encostado em `LIVRO` diz *"N livros"* — não *"a editora publica N"*.
+
+```
+   [EDITORA] ──1── {PUBLICA} ──N── [LIVRO]
+    ↑                               ↑
+    └─ "1 editora"                  └─ "N livros"
+```
+
+Cubra o resto do desenho com o dedo e leia só um número com a entidade colada nele. Depois junte as duas pontas numa frase: *"uma editora publica N livros"*. É esse par de leituras que decide o desenho — e é a mesma checagem que serve para qualquer diagrama que você receber pronto.
 
 Os dois desenhos abaixo têm os mesmos elementos e afirmam coisas opostas. Este está **errado** para a biblioteca:
 

@@ -96,7 +96,13 @@ Em UML viram **um símbolo só**.
 
 ## O lado do número é o mesmo nas duas
 
-O `0..*` encostado em `Evento` diz *"uma sala recebe de zero a muitos eventos"* — exatamente como o `N` encostado em `EVENTO` no DER.
+```
+   Chen   [SALA] ──1── {RECEBE} ──N── [EVENTO]
+                                  ↑
+   UML    Sala "1" ─── recebe ─── "0..*" Evento
+                                  ↑
+          a marca de "muitos" está junto de EVENTO
+```
 
 **A conversão é direta, ponta por ponta.**
 

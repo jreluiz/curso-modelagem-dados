@@ -62,7 +62,17 @@ O guia de instalação está em [`recursos/ambiente.md`](../../recursos/ambiente
    6. REVISÃO          o passo que ninguém faz, e é a seção 4.
 ```
 
-> ⚠️ **A ferramenta escreve a cardinalidade no formato `(min,max)`**, e ele **não** é o do curso. O par `(1,n)` colocado ao lado de uma entidade diz quantas vezes **cada ocorrência dela** participa do relacionamento — o oposto da colocação do `1`/`N` das nossas aulas. Ao transportar um diagrama do caderno para a ferramenta, confira relacionamento por relacionamento lendo a frase em voz alta: *"uma editora publica muitos livros"*. Se a frase continuar verdadeira, está certo, seja qual for o símbolo.
+> ⚠️ **A ferramenta escreve a cardinalidade no formato `(min,max)`**, e ele **não** é o do curso. O par `(1,n)` colocado ao lado de uma entidade diz quantas vezes **cada ocorrência dela** participa do relacionamento — e isso joga o "muitos" para o lado oposto:
+
+```
+   O curso   [EDITORA] ──1──  {PUBLICA}  ──N── [LIVRO]
+                                           ↑ o "muitos" fica junto de LIVRO
+
+   brModelo  [EDITORA] ─(1,n)─ {PUBLICA} ─(1,1)─ [LIVRO]
+                         ↑ o "muitos" fica junto de EDITORA
+```
+
+Os dois desenhos afirmam **o mesmo fato** — *"uma editora publica muitos livros"* — com os símbolos espelhados. Ao transportar um diagrama do caderno para a ferramenta, confira relacionamento por relacionamento lendo a frase em voz alta. Se a frase continuar verdadeira, está certo, seja qual for o símbolo.
 
 ## 4. O que a conversão automática entrega
 

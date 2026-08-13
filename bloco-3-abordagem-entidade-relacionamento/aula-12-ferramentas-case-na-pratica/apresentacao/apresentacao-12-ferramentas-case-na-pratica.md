@@ -95,16 +95,17 @@ Comece pelo modelo, não pelo *download*.
 
 ---
 
-<!-- _class: lead -->
-
 ## ⚠️ A ferramenta usa `(min,max)`
 
-O par ao lado de uma entidade diz
-quantas vezes **cada ocorrência dela**
-participa do relacionamento.
+```
+   O curso   [EDITORA] ──1──  {PUBLICA}  ──N── [LIVRO]
+                                           ↑ junto de LIVRO
 
-É o oposto da colocação das aulas.
-Leia a frase em voz alta e confira.
+   brModelo  [EDITORA] ─(1,n)─ {PUBLICA} ─(1,1)─ [LIVRO]
+                         ↑ junto de EDITORA
+```
+
+**O mesmo fato, com os símbolos espelhados.** Leia a frase em voz alta e confira.
 
 ---
 

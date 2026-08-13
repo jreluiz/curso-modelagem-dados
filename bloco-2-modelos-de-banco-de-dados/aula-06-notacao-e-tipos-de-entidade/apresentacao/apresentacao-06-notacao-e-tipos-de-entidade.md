@@ -125,15 +125,17 @@ O **1:N** é o caso mais comum. O **1:1** merece desconfiança.
 
 ---
 
-<!-- _class: lead -->
-
 ## ⚠️ A armadilha do lado
 
-O número encostado em `EDITORA`
-diz **quantas editoras** entram na ligação.
+```
+   [EDITORA] ──1── {PUBLICA} ──N── [LIVRO]
+    ↑                               ↑
+    └─ "1 editora"                  └─ "N livros"
+```
 
-Leia a frase inteira:
-*"uma editora publica N livros"*.
+**O número fica junto da entidade que ele conta.**
+
+Cubra o resto com o dedo, leia um número por vez — e depois junte: *"uma editora publica N livros"*.
 
 ---
 

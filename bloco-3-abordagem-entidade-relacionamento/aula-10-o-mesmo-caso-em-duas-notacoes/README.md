@@ -73,7 +73,17 @@ A multiplicidade é mais expressiva que o `1`, `N`, `M` de Chen, porque diz **du
 
 > 💡 **É a fusão dos dois eixos da Aula 06.** "Quantos?" e "pode zero?" eram duas perguntas com duas respostas em dois lugares do desenho; em UML elas viram um símbolo só. Por isso a conversão de UML para Chen precisa de atenção: `1..*` vira **duas** marcas no diagrama de Chen.
 
-**O lado em que o número fica é o mesmo nas duas notações.** O `0..*` encostado em `Evento` diz *"uma sala recebe de zero a muitos eventos"*, exatamente como o `N` encostado em `EVENTO` no diagrama da seção 1. A conversão é direta, ponta por ponta.
+**O lado em que o número fica é o mesmo nas duas notações** — a marca do "muitos" cai na mesma coluna:
+
+```
+   Chen   [SALA] ──1── {RECEBE} ──N── [EVENTO]
+                                  ↑
+   UML    Sala "1" ─── recebe ─── "0..*" Evento
+                                  ↑
+          nas duas, a marca de "muitos" está junto de EVENTO
+```
+
+O `0..*` encostado em `Evento` diz *"uma sala recebe de zero a muitos eventos"*, exatamente como o `N` encostado em `EVENTO`. A conversão é direta, ponta por ponta.
 
 > ⚠️ **Onde o lado troca de verdade é na notação `(min,max)`**, que você vai encontrar em parte da literatura e em algumas ferramentas. Lá, o par escrito ao lado de uma entidade diz quantas vezes **cada ocorrência dela** participa do relacionamento — e o `(1,n)` acaba do lado que aqui recebe o `1`. Ao ler um diagrama de outra fonte, a primeira pergunta é sempre *"que convenção é esta?"*, e a resposta se confirma lendo uma linha em voz alta e conferindo se ela é verdade no mundo.
 
