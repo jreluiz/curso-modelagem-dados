@@ -166,17 +166,22 @@ Na pasta `aula-15/` do seu repositório:
 
 3. **`ex03.md`** — no esquema `FUNCIONARIO(matricula_func, nome, cod_setor, nome_setor, ramal_setor)`, com chave `matricula_func`: liste as dependências funcionais, classifique o problema como **parcial ou transitivo** justificando pela chave, e diga em qual forma normal o esquema está. *Confere assim: a chave tem uma coluna só, e isso já responde metade da questão antes de você olhar qualquer atributo.*
 
+### 📤 Entrega
+
+Estes exercícios são feitos em sala e vão para o **seu repositório** `exercicios-modelagem-dados`:
+
+```bash
+cd ..                 # da pasta da aula para a raiz do repositório
+git add aula-15/
+git commit -m "Resolve exercícios da aula 15"
+git push
+```
+
+Confira no navegador que a pasta apareceu em `github.com/SEU-USUARIO/exercicios-modelagem-dados`.
+
 ## 🧠 Revisão
 
 [8 questões de múltipla escolha](revisao/README.md) para conferir se os conceitos ficaram sólidos. Responda sem consultar a aula — depois volte e corrija.
-
-## ✅ Entrega
-
-```bash
-git add aula-15/
-git commit -m "Resolve exercícios da aula 15 (aplicando a 1FN e a 2FN)"
-git push
-```
 
 ---
 

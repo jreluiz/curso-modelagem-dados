@@ -136,17 +136,22 @@ Na pasta `aula-04/` do seu repositório:
 
 3. **`ex03.md`** — **exercício autoral.** Escolha um minimundo de dificuldade ⭐ do [catálogo](../../recursos/minimundos.md) — Videolocadora ou Clínica veterinária —, leia-o duas vezes e entregue: **oito perguntas** de levantamento que você faria ao cliente, e **uma decisão** dizendo se o banco desse sistema é OLTP, OLAP ou os dois, com a justificativa. *Confere assim: as oito perguntas precisam ser sobre o minimundo que você escolheu, não sobre a biblioteca — e a decisão OLTP/OLAP precisa dizer **quem** vai usar o sistema e **para quê**, não só repetir as características da aula.*
 
+### 📤 Entrega
+
+Estes exercícios são feitos em sala e vão para o **seu repositório** `exercicios-modelagem-dados`:
+
+```bash
+cd ..                 # da pasta da aula para a raiz do repositório
+git add aula-04/
+git commit -m "Resolve exercícios da aula 04"
+git push
+```
+
+Confira no navegador que a pasta apareceu em `github.com/SEU-USUARIO/exercicios-modelagem-dados`.
+
 ## 🧠 Revisão
 
 [8 questões de múltipla escolha](revisao/README.md) para conferir se os conceitos ficaram sólidos. Responda sem consultar a aula — depois volte e corrija.
-
-## ✅ Entrega
-
-```bash
-git add aula-04/
-git commit -m "Resolve exercícios da aula 04 (requisitos, OLTP e OLAP)"
-git push
-```
 
 ---
 

@@ -174,17 +174,22 @@ Na pasta `aula-12/` do seu repositório:
 
 3. **`ex03.md`** — **exercício autoral.** Escolha um minimundo do [catálogo](../../recursos/minimundos.md) marcado como "a partir do Bloco 3" — E-commerce, Congresso científico ou Hospital — e entregue o projeto conceitual completo, agora com o que o bloco acrescentou: (i) as **regras numeradas**; (ii) o **DER em Mermaid**, incluindo **pelo menos uma especialização** classificada nos dois eixos; (iii) o **esquema lógico**; (iv) **dois registros de decisão** no formato da Aula 09, sendo um deles sobre a especialização. *Confere assim: no Congresso científico e no Hospital, a especialização que parece óbvia é uma armadilha — um dos dois pede papel, não subtipo, e a sua decisão precisa dizer qual dos três testes da Aula 11 você aplicou.*
 
+### 📤 Entrega
+
+Estes exercícios são feitos em sala e vão para o **seu repositório** `exercicios-modelagem-dados`:
+
+```bash
+cd ..                 # da pasta da aula para a raiz do repositório
+git add aula-12/
+git commit -m "Resolve exercícios da aula 12"
+git push
+```
+
+Confira no navegador que a pasta apareceu em `github.com/SEU-USUARIO/exercicios-modelagem-dados`.
+
 ## 🧠 Revisão
 
 [8 questões de múltipla escolha](revisao/README.md) para conferir se os conceitos ficaram sólidos. Responda sem consultar a aula — depois volte e corrija.
-
-## ✅ Entrega
-
-```bash
-git add aula-12/
-git commit -m "Resolve exercícios da aula 12 (ferramentas CASE)"
-git push
-```
 
 ---
 

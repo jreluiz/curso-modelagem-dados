@@ -163,17 +163,22 @@ Na pasta `aula-05/` do seu repositório:
 
 3. **`ex03.md`** — o estagiário entregou este "modelo conceitual" da sala de estudos: *"Tabela `tb_sala` com `id_sala` inteiro autoincremento, `capacidade` inteiro, `andar` char(2) e índice por andar. Cada sala é reservada por um aluno, e a reserva guarda `data_hora` no formato `timestamp`."* Aponte **tudo o que não pertence a um modelo conceitual**, dizendo a que nível cada coisa pertence, e reescreva o fragmento como modelo conceitual de verdade — em português, com entidades, atributos e relacionamento. *Confere assim: há pelo menos quatro invasões de outros níveis no texto dele, e o seu modelo reescrito não pode conter nenhuma palavra de tipo de dado.*
 
+### 📤 Entrega
+
+Estes exercícios são feitos em sala e vão para o **seu repositório** `exercicios-modelagem-dados`:
+
+```bash
+cd ..                 # da pasta da aula para a raiz do repositório
+git add aula-05/
+git commit -m "Resolve exercícios da aula 05"
+git push
+```
+
+Confira no navegador que a pasta apareceu em `github.com/SEU-USUARIO/exercicios-modelagem-dados`.
+
 ## 🧠 Revisão
 
 [8 questões de múltipla escolha](revisao/README.md) para conferir se os conceitos ficaram sólidos. Responda sem consultar a aula — depois volte e corrija.
-
-## ✅ Entrega
-
-```bash
-git add aula-05/
-git commit -m "Resolve exercícios da aula 05 (conceitual, lógico e físico)"
-git push
-```
 
 ---
 

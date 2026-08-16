@@ -168,17 +168,22 @@ Na pasta `aula-07/` do seu repositório:
 
 3. **`ex03.md`** — para cada operação abaixo sobre o esquema da seção 6, diga **qual integridade** ela viola (domínio, entidade ou referencial) ou, se não viola nenhuma, **qual política de exclusão** você adotaria e por quê: (a) cadastrar um empréstimo com `matricula` de um aluno inexistente; (b) cadastrar um exemplar sem `numero_ex`; (c) gravar `disponivel?` na coluna `situacao`, cujo domínio tem quatro valores fixos; (d) apagar uma editora que publicou 40 livros do acervo; (e) apagar uma obra que tem três exemplares na estante. *Confere assim: três violam integridade e duas são decisão de política — e as duas de política recebem respostas **diferentes**, por causa da participação que o DER da Aula 06 mostra.*
 
+### 📤 Entrega
+
+Estes exercícios são feitos em sala e vão para o **seu repositório** `exercicios-modelagem-dados`:
+
+```bash
+cd ..                 # da pasta da aula para a raiz do repositório
+git add aula-07/
+git commit -m "Resolve exercícios da aula 07"
+git push
+```
+
+Confira no navegador que a pasta apareceu em `github.com/SEU-USUARIO/exercicios-modelagem-dados`.
+
 ## 🧠 Revisão
 
 [8 questões de múltipla escolha](revisao/README.md) para conferir se os conceitos ficaram sólidos. Responda sem consultar a aula — depois volte e corrija.
-
-## ✅ Entrega
-
-```bash
-git add aula-07/
-git commit -m "Resolve exercícios da aula 07 (relacional, chaves e integridade)"
-git push
-```
 
 ---
 

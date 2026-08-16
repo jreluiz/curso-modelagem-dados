@@ -141,17 +141,22 @@ Na pasta `aula-03/` do seu repositório:
 
 3. **`ex03.md`** — desenhe em Mermaid `flowchart`, na notação de Chen, a entidade `EXEMPLAR` com **cinco atributos**: o que identifica (sublinhado), pelo menos um multivalorado **ou** derivado, e os demais simples. Abaixo do diagrama, escreva o parágrafo em português dizendo o que ele afirma sobre o mundo. *Confere assim: abra o arquivo no preview do GitHub — se o diagrama aparecer como código cru em vez de desenho, há erro de sintaxe. A [notação](../../recursos/notacoes-der.md) tem a lista dos cinco tropeços mais comuns.*
 
+### 📤 Entrega
+
+Estes exercícios são feitos em sala e vão para o **seu repositório** `exercicios-modelagem-dados`:
+
+```bash
+cd ..                 # da pasta da aula para a raiz do repositório
+git add aula-03/
+git commit -m "Resolve exercícios da aula 03"
+git push
+```
+
+Confira no navegador que a pasta apareceu em `github.com/SEU-USUARIO/exercicios-modelagem-dados`.
+
 ## 🧠 Revisão
 
 [8 questões de múltipla escolha](revisao/README.md) para conferir se os conceitos ficaram sólidos. Responda sem consultar a aula — depois volte e corrija.
-
-## ✅ Entrega
-
-```bash
-git add aula-03/
-git commit -m "Resolve exercícios da aula 03 (elementos, entidades e atributos)"
-git push
-```
 
 ---
 

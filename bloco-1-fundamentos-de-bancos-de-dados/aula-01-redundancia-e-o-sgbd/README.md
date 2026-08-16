@@ -135,17 +135,22 @@ Na pasta `aula-01/` do seu repositório:
 
 3. **`ex03.md`** — a biblioteca decidiu trocar a planilha por um SGBD e o diretor perguntou "para quê?". Escreva as **quatro garantias** da seção 6 e, para cada uma, **uma frase** contando o que aconteceria na biblioteca sem ela — um problema concreto, com pessoas e livros, não uma definição. *Confere assim: se a sua frase serviria igual para uma padaria, ela ainda é uma definição. Reescreva citando empréstimo, exemplar ou aluno.*
 
+### 📤 Entrega
+
+Estes exercícios são feitos em sala e vão para o **seu repositório** `exercicios-modelagem-dados`:
+
+```bash
+cd ..                 # da pasta da aula para a raiz do repositório
+git add aula-01/
+git commit -m "Resolve exercícios da aula 01"
+git push
+```
+
+Confira no navegador que a pasta apareceu em `github.com/SEU-USUARIO/exercicios-modelagem-dados`.
+
 ## 🧠 Revisão
 
 [8 questões de múltipla escolha](revisao/README.md) para conferir se os conceitos ficaram sólidos. Responda sem consultar a aula — depois volte e corrija.
-
-## ✅ Entrega
-
-```bash
-git add aula-01/
-git commit -m "Resolve exercícios da aula 01 (redundância e SGBD)"
-git push
-```
 
 ---
 

@@ -164,17 +164,22 @@ Na pasta `aula-09/` do seu repositório:
 
 3. **`ex03.md`** — o modelo de eventos ganhou uma regra nova: *"um evento pode ter um palestrante convidado externo, que não é aluno nem professor e de quem se guarda nome, instituição e telefone"*. Entregue três coisas: o **trecho de dicionário de dados** da entidade nova (uma linha por atributo, no formato da seção 4), **um registro de decisão** `D-03` com a alternativa que você descartou, e **uma frase** dizendo em que ponto do roteiro da seção 5 essa mudança entraria se o modelo estivesse sendo feito do zero. *Confere assim: a sua alternativa descartada tem que ser plausível — "não fazer nada" não é alternativa. A mais comum aqui é guardar o palestrante como atributo de `EVENTO`, e ela tem um defeito concreto que você precisa nomear.*
 
+### 📤 Entrega
+
+Estes exercícios são feitos em sala e vão para o **seu repositório** `exercicios-modelagem-dados`:
+
+```bash
+cd ..                 # da pasta da aula para a raiz do repositório
+git add aula-09/
+git commit -m "Resolve exercícios da aula 09"
+git push
+```
+
+Confira no navegador que a pasta apareceu em `github.com/SEU-USUARIO/exercicios-modelagem-dados`.
+
 ## 🧠 Revisão
 
 [8 questões de múltipla escolha](revisao/README.md) para conferir se os conceitos ficaram sólidos. Responda sem consultar a aula — depois volte e corrija.
-
-## ✅ Entrega
-
-```bash
-git add aula-09/
-git commit -m "Resolve exercícios da aula 09 (condução e documentação da modelagem)"
-git push
-```
 
 ---
 

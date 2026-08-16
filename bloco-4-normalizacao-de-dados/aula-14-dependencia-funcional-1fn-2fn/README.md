@@ -164,17 +164,22 @@ Na pasta `aula-14/` do seu repositório:
 
 3. **`ex03.md`** — dada a tabela `EMPRESTIMO_DETALHE(matricula, isbn, data_retirada, nome_aluno, titulo_livro)`, com chave `(matricula, isbn)`: liste todas as **dependências funcionais** no formato da seção 3, marque quais são **parciais** e responda se a tabela está em **2FN**, justificando em duas linhas. *Confere assim: são quatro dependências, duas delas parciais — e a resposta sobre a 2FN não é "sim" nem "não" sem citar qual dependência decide.*
 
+### 📤 Entrega
+
+Estes exercícios são feitos em sala e vão para o **seu repositório** `exercicios-modelagem-dados`:
+
+```bash
+cd ..                 # da pasta da aula para a raiz do repositório
+git add aula-14/
+git commit -m "Resolve exercícios da aula 14"
+git push
+```
+
+Confira no navegador que a pasta apareceu em `github.com/SEU-USUARIO/exercicios-modelagem-dados`.
+
 ## 🧠 Revisão
 
 [8 questões de múltipla escolha](revisao/README.md) para conferir se os conceitos ficaram sólidos. Responda sem consultar a aula — depois volte e corrija.
-
-## ✅ Entrega
-
-```bash
-git add aula-14/
-git commit -m "Resolve exercícios da aula 14 (dependência funcional, 1FN e 2FN)"
-git push
-```
 
 ---
 

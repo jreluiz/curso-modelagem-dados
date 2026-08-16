@@ -141,17 +141,22 @@ Na pasta `aula-02/` do seu repositório:
 
 3. **`ex03.md`** — escreva a política de segurança do banco da biblioteca para os três perfis da seção 6, agora incluindo um quarto: o **estagiário**, que ajuda no balcão mas ainda está em treinamento. Para cada perfil, diga o que pode ler, o que pode alterar e o que nunca pode — e escreva **uma linha** explicando como o princípio do menor privilégio decidiu o caso do estagiário. *Confere assim: nenhum dos quatro perfis apaga histórico, e o estagiário precisa ter menos permissão que o atendente em pelo menos um ponto concreto.*
 
+### 📤 Entrega
+
+Estes exercícios são feitos em sala e vão para o **seu repositório** `exercicios-modelagem-dados`:
+
+```bash
+cd ..                 # da pasta da aula para a raiz do repositório
+git add aula-02/
+git commit -m "Resolve exercícios da aula 02"
+git push
+```
+
+Confira no navegador que a pasta apareceu em `github.com/SEU-USUARIO/exercicios-modelagem-dados`.
+
 ## 🧠 Revisão
 
 [8 questões de múltipla escolha](revisao/README.md) para conferir se os conceitos ficaram sólidos. Responda sem consultar a aula — depois volte e corrija.
-
-## ✅ Entrega
-
-```bash
-git add aula-02/
-git commit -m "Resolve exercícios da aula 02 (evolução, SGBD e segurança)"
-git push
-```
 
 ---
 

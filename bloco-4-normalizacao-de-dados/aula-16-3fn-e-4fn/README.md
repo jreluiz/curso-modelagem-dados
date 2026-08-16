@@ -164,17 +164,22 @@ Na pasta `aula-16/` do seu repositório:
 
 3. **`ex03.md`** — **exercício autoral.** Escolha um minimundo do [catálogo](../../recursos/minimundos.md) que você **ainda não usou** e entregue: (i) uma tabela única e desnormalizada que represente o minimundo, com ao menos **oito colunas** e um problema de cada tipo — não atômico, parcial e transitivo; (ii) a normalização até a **3FN**, passo a passo, no formato da Aula 15; (iii) a **conferência** de cada decomposição; (iv) um parágrafo dizendo se o esquema final coincide com o DER que você desenharia para o mesmo minimundo — e, se não coincidir, qual dos dois você revisaria. *Confere assim: o item (iv) é o que mais ensina. Se os dois caminhos deram esquemas diferentes, um deles tem um erro, e encontrá-lo vale mais que o exercício inteiro.*
 
+### 📤 Entrega
+
+Estes exercícios são feitos em sala e vão para o **seu repositório** `exercicios-modelagem-dados`:
+
+```bash
+cd ..                 # da pasta da aula para a raiz do repositório
+git add aula-16/
+git commit -m "Resolve exercícios da aula 16"
+git push
+```
+
+Confira no navegador que a pasta apareceu em `github.com/SEU-USUARIO/exercicios-modelagem-dados`.
+
 ## 🧠 Revisão
 
 [8 questões de múltipla escolha](revisao/README.md) para conferir se os conceitos ficaram sólidos. Responda sem consultar a aula — depois volte e corrija.
-
-## ✅ Entrega
-
-```bash
-git add aula-16/
-git commit -m "Resolve exercícios da aula 16 (3FN e 4FN)"
-git push
-```
 
 ---
 

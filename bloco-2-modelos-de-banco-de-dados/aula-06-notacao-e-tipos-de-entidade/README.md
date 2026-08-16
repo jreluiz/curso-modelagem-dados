@@ -178,17 +178,22 @@ Na pasta `aula-06/` do seu repositório:
 
 3. **`ex03.md`** — desenhe em Mermaid, na notação de Chen, o fragmento da **reserva de salas**: uma sala tem código, capacidade e andar; um aluno reserva salas para uma data e um horário; uma reserva é sempre de um aluno e de uma sala. Ponha a **cardinalidade** nos quatro lados, a **participação total** onde ela existir e o atributo `data_hora` no lugar certo. Abaixo, escreva o parágrafo em português dizendo o que o diagrama afirma. *Confere assim: `data_hora` tem que estar pendurado no losango — se ele coube dentro de `SALA` ou de `ALUNO`, releia a seção 3. E abra o preview do GitHub: bloco que aparece como código cru tem erro de sintaxe.*
 
+### 📤 Entrega
+
+Estes exercícios são feitos em sala e vão para o **seu repositório** `exercicios-modelagem-dados`:
+
+```bash
+cd ..                 # da pasta da aula para a raiz do repositório
+git add aula-06/
+git commit -m "Resolve exercícios da aula 06"
+git push
+```
+
+Confira no navegador que a pasta apareceu em `github.com/SEU-USUARIO/exercicios-modelagem-dados`.
+
 ## 🧠 Revisão
 
 [8 questões de múltipla escolha](revisao/README.md) para conferir se os conceitos ficaram sólidos. Responda sem consultar a aula — depois volte e corrija.
-
-## ✅ Entrega
-
-```bash
-git add aula-06/
-git commit -m "Resolve exercícios da aula 06 (notação e tipos de entidade)"
-git push
-```
 
 ---
 

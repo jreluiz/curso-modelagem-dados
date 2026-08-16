@@ -162,17 +162,22 @@ Na pasta `aula-13/` do seu repositório:
 
 3. **`ex03.md`** — a secretaria quer manter a tabela como está, e argumenta: *"assim a gente vê tudo numa tela só, sem precisar juntar nada"*. Escreva a resposta que você daria, em no máximo **oito linhas**, contendo: o que você concorda no argumento dela, qual problema concreto a tabela vai causar (com um exemplo da própria secretaria) e o que você propõe. *Confere assim: se a sua resposta não tem nenhuma frase concordando com ela, você não respondeu ao argumento — e o argumento da tela única é legítimo, tem inclusive uma solução técnica que não exige desnormalizar.*
 
+### 📤 Entrega
+
+Estes exercícios são feitos em sala e vão para o **seu repositório** `exercicios-modelagem-dados`:
+
+```bash
+cd ..                 # da pasta da aula para a raiz do repositório
+git add aula-13/
+git commit -m "Resolve exercícios da aula 13"
+git push
+```
+
+Confira no navegador que a pasta apareceu em `github.com/SEU-USUARIO/exercicios-modelagem-dados`.
+
 ## 🧠 Revisão
 
 [8 questões de múltipla escolha](revisao/README.md) para conferir se os conceitos ficaram sólidos. Responda sem consultar a aula — depois volte e corrija.
-
-## ✅ Entrega
-
-```bash
-git add aula-13/
-git commit -m "Resolve exercícios da aula 13 (por que normalizar)"
-git push
-```
 
 ---
 

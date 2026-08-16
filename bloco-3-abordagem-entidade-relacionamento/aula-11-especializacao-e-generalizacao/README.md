@@ -171,17 +171,22 @@ Na pasta `aula-11/` do seu repositório:
 
 3. **`ex03.md`** — desenhe em Mermaid a especialização do item (c) do `ex01` — `EVENTO` em `OFICINA` e `PALESTRA` — na **notação de Chen** com o círculo e a linha de participação corretos, e depois a mesma coisa em **classes UML**. Abaixo, escreva a classificação nos dois eixos e **uma linha** dizendo o que a versão UML deixou de registrar. *Confere assim: a resposta da última linha é a mesma para qualquer especialização desenhada em UML — está no fim da seção 5.*
 
+### 📤 Entrega
+
+Estes exercícios são feitos em sala e vão para o **seu repositório** `exercicios-modelagem-dados`:
+
+```bash
+cd ..                 # da pasta da aula para a raiz do repositório
+git add aula-11/
+git commit -m "Resolve exercícios da aula 11"
+git push
+```
+
+Confira no navegador que a pasta apareceu em `github.com/SEU-USUARIO/exercicios-modelagem-dados`.
+
 ## 🧠 Revisão
 
 [8 questões de múltipla escolha](revisao/README.md) para conferir se os conceitos ficaram sólidos. Responda sem consultar a aula — depois volte e corrija.
-
-## ✅ Entrega
-
-```bash
-git add aula-11/
-git commit -m "Resolve exercícios da aula 11 (especialização e generalização)"
-git push
-```
 
 ---
 

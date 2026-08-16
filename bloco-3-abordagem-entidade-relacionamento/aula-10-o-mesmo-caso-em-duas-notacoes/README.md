@@ -179,17 +179,22 @@ Na pasta `aula-10/` do seu repositório:
 
 3. **`ex03.md`** — a biblioteca resolveu registrar os **funcionários**: todos têm matrícula funcional, nome e ramal; os **atendentes** têm turno; os **bibliotecários** têm número de registro no conselho profissional. Desenhe o diagrama de classes com a herança, e escreva **um parágrafo** dizendo o que aconteceria com esse modelo se ele fosse desenhado em DER de Chen puro, sem o triângulo. *Confere assim: o seu parágrafo precisa citar o que seria repetido — e a resposta não é "nada muda", porque Chen puro não tem símbolo para herança.*
 
+### 📤 Entrega
+
+Estes exercícios são feitos em sala e vão para o **seu repositório** `exercicios-modelagem-dados`:
+
+```bash
+cd ..                 # da pasta da aula para a raiz do repositório
+git add aula-10/
+git commit -m "Resolve exercícios da aula 10"
+git push
+```
+
+Confira no navegador que a pasta apareceu em `github.com/SEU-USUARIO/exercicios-modelagem-dados`.
+
 ## 🧠 Revisão
 
 [8 questões de múltipla escolha](revisao/README.md) para conferir se os conceitos ficaram sólidos. Responda sem consultar a aula — depois volte e corrija.
-
-## ✅ Entrega
-
-```bash
-git add aula-10/
-git commit -m "Resolve exercícios da aula 10 (DER e classes UML)"
-git push
-```
 
 ---
 

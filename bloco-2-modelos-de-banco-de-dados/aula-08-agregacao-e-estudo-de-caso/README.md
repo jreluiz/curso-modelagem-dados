@@ -170,17 +170,22 @@ Na pasta `aula-08/` do seu repositório:
 
 3. **`ex03.md`** — **exercício autoral.** Escolha um minimundo de dificuldade ⭐⭐ do [catálogo](../../recursos/minimundos.md) — Academia, Oficina mecânica, Hotel ou Escola de idiomas — e entregue o projeto conceitual completo, na ordem da seção 4: (i) a lista de **regras numeradas** que você extraiu do enunciado, com no mínimo oito; (ii) o **DER em Mermaid**, com cardinalidade e participação nos dois lados de cada relacionamento; (iii) o **esquema lógico**; (iv) o resultado das **quatro perguntas** da seção 6, escrito. *Confere assim: cada relacionamento do seu DER tem que apontar para pelo menos uma regra da sua lista — o que não aponta para regra nenhuma é invenção sua e deve sair, e a regra que não virou desenho precisa aparecer na lista em texto.*
 
+### 📤 Entrega
+
+Estes exercícios são feitos em sala e vão para o **seu repositório** `exercicios-modelagem-dados`:
+
+```bash
+cd ..                 # da pasta da aula para a raiz do repositório
+git add aula-08/
+git commit -m "Resolve exercícios da aula 08"
+git push
+```
+
+Confira no navegador que a pasta apareceu em `github.com/SEU-USUARIO/exercicios-modelagem-dados`.
+
 ## 🧠 Revisão
 
 [8 questões de múltipla escolha](revisao/README.md) para conferir se os conceitos ficaram sólidos. Responda sem consultar a aula — depois volte e corrija.
-
-## ✅ Entrega
-
-```bash
-git add aula-08/
-git commit -m "Resolve exercícios da aula 08 (agregação e estudo de caso)"
-git push
-```
 
 ---
 
