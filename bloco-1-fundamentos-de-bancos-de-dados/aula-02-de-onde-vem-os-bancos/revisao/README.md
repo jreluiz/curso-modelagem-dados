@@ -4,7 +4,11 @@
 
 **Sem gabarito, de propósito.** Cada questão termina com a seção da aula onde a resposta está. Responda **tudo primeiro**, sem consultar — só depois volte às seções indicadas e corrija.
 
-As três últimas são marcadas **[ENADE]**: seguem o formato do exame, com cinco alternativas e enunciado mais longo.
+📝 **As respostas vão pelo formulário:** [responder a revisão da Aula 02](https://docs.google.com/forms/d/e/1FAIpQLSdJJwys9vPqt4fYh3bVB5jw2aqlRvzgpMS_2YnXg_3cNrgiEA/viewform)
+
+Leia as 8 questões aqui e decida suas respostas antes de abrir o formulário: é **uma resposta por aluno**, com conta Google, e não dá para editar depois de enviar. Ele também pede seu usuário do GitHub. Se o seu nome não estiver na lista da turma, marque a última opção e escreva o nome completo no campo seguinte.
+
+As três últimas são marcadas **[ENADE]**: trazem um **texto-base** com uma situação concreta, seguido do comando. São mais longas de ler e cobram interpretação, não memória — as alternativas continuam simples, como nas demais.
 
 ---
 
@@ -83,11 +87,10 @@ Um aluno mudou de endereço e comunicou a secretaria, que atualizou o cadastro d
 
 Considerando a situação descrita, o problema que ela ilustra é:
 
-- **A)** a ausência de autenticação, que permitiu alterações não identificadas no cadastro;
-- **B)** a dependência de formato, que impediu a secretaria de acrescentar campos ao arquivo;
-- **C)** a falta de controle de simultaneidade entre os três sistemas no momento da gravação;
-- **D)** a redundância entre sistemas, com o mesmo dado mantido em vários arquivos independentes;
-- **E)** a ausência de auditoria, que impossibilitou descobrir quem alterou o endereço do aluno.
+- **a)** a dependência de formato, que impediu a secretaria de acrescentar campos ao arquivo;
+- **b)** a falta de controle de simultaneidade entre os três sistemas no momento da gravação;
+- **c)** a redundância entre sistemas, com o mesmo dado mantido em vários arquivos independentes;
+- **d)** a ausência de autenticação, que permitiu alterações não identificadas no cadastro.
 
 ↩︎ *Aula 02, seção 1 — Antes do banco: o programa que sabia tudo*
 
@@ -97,21 +100,16 @@ Considerando a situação descrita, o problema que ela ilustra é:
 
 **[ENADE]**
 
-Avalie as asserções a seguir e a relação proposta entre elas.
+Uma equipe vai construir o sistema acadêmico de uma faculdade: matrícula, histórico escolar, lançamento de notas e emissão de documentos. Na reunião de definição da arquitetura, um dos desenvolvedores propôs adotar um banco NoSQL de documentos, com o argumento de que o modelo relacional "é dos anos 1970 e já foi superado".
 
-I. O modelo relacional continua sendo o mais utilizado em sistemas corporativos.
+O coordenador da equipe observou que o sistema terá algumas dezenas de usuários simultâneos, dados fortemente relacionados entre si e regras que não podem ser violadas em hipótese alguma — como um aluno não poder ter duas matrículas ativas no mesmo curso.
 
-PORQUE
+Considerando a situação descrita, a proposta do desenvolvedor deve ser recusada porque:
 
-II. Os bancos NoSQL surgiram para substituir o modelo relacional, que não é capaz de armazenar grandes volumes de dados.
-
-A respeito dessas asserções, assinale a opção correta.
-
-- **A)** As asserções I e II são proposições verdadeiras, e a II é uma justificativa correta da I;
-- **B)** As asserções I e II são proposições verdadeiras, mas a II não é uma justificativa correta da I;
-- **C)** A asserção I é uma proposição verdadeira, e a II é uma proposição falsa;
-- **D)** A asserção I é uma proposição falsa, e a II é uma proposição verdadeira;
-- **E)** As asserções I e II são proposições falsas.
+- **a)** o NoSQL não substituiu o relacional: ele abre mão de parte das garantias para distribuir dados em muitas máquinas, e não é esse o problema deste sistema;
+- **b)** bancos NoSQL não são capazes de armazenar o volume de dados que um sistema acadêmico acumula ao longo de vários anos;
+- **c)** o modelo relacional é mais rápido que o NoSQL em qualquer cenário, e o desempenho é o critério que decide a escolha;
+- **d)** bancos NoSQL não possuem política de segurança, o que impediria a faculdade de atender às exigências da LGPD.
 
 ↩︎ *Aula 02, seção 4 — Depois do relacional*
 
@@ -121,21 +119,16 @@ A respeito dessas asserções, assinale a opção correta.
 
 **[ENADE]**
 
-A respeito dos pilares de uma política de segurança de banco de dados, avalie as afirmações a seguir.
+Numa biblioteca, um atendente devidamente cadastrado entrou no sistema com usuário e senha e apagou seis meses de histórico de empréstimos. A operação foi concluída sem erro algum. No dia seguinte, ao investigar o sumiço dos registros, a coordenação consultou o log do sistema e descobriu, em poucos minutos, qual conta havia executado a exclusão e em que horário.
 
-I. A autenticação verifica se o usuário é quem diz ser, e ocorre uma vez, na entrada do sistema.
+Na reunião seguinte, o responsável pelo sistema afirmou que a política de segurança do banco havia funcionado, uma vez que foi possível identificar quem executou a operação.
 
-II. A autorização verifica, a cada operação, se aquele usuário tem permissão para realizá-la.
+Considerando a situação descrita, a afirmação do responsável:
 
-III. A auditoria impede que operações indevidas sejam realizadas sobre os dados.
-
-É correto apenas o que se afirma em:
-
-- **A)** I e II;
-- **B)** I e III;
-- **C)** II e III;
-- **D)** I, II e III;
-- **E)** II.
+- **a)** procede, porque identificar o autor de uma operação indevida é a finalidade da política de segurança de um banco de dados;
+- **b)** não procede, porque a auditoria registra o que aconteceu mas não impede nada — o que falhou foi a autorização, que deveria ter recusado a exclusão;
+- **c)** não procede, porque o atendente conseguiu entrar no sistema com credenciais válidas, o que caracteriza uma falha de autenticação;
+- **d)** procede, desde que a coordenação restaure o histórico a partir da cópia de segurança mais recente, o que desfaz o efeito da exclusão.
 
 ↩︎ *Aula 02, seção 6 — Política de segurança de um banco de dados*
 

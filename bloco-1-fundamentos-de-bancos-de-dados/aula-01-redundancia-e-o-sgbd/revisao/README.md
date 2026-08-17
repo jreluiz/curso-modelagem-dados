@@ -4,7 +4,11 @@
 
 **Sem gabarito, de propósito.** Cada questão termina com a seção da aula onde a resposta está. Responda **tudo primeiro**, sem consultar — só depois volte às seções indicadas e corrija.
 
-As três últimas são marcadas **[ENADE]**: seguem o formato do exame, com cinco alternativas e enunciado mais longo. Leia com calma, que é assim que elas aparecem lá.
+📝 **As respostas vão pelo formulário:** [responder a revisão da Aula 01](https://docs.google.com/forms/d/e/1FAIpQLSeSfrJIQsOkjSccqwXQFNXzpfSsAx3sJ04jaVQMXiFXPGUVXA/viewform)
+
+Leia as 8 questões aqui e decida suas respostas antes de abrir o formulário: é **uma resposta por aluno**, com conta Google, e não dá para editar depois de enviar. Ele também pede seu usuário do GitHub. Se o seu nome não estiver na lista da turma, marque a última opção e escreva o nome completo no campo seguinte.
+
+As três últimas são marcadas **[ENADE]**: trazem um **texto-base** com uma situação concreta, seguido do comando. São mais longas de ler e cobram interpretação, não memória — as alternativas continuam simples, como nas demais.
 
 ---
 
@@ -83,11 +87,10 @@ Após alguns meses de uso, a coordenação percebeu que a mesma matrícula apare
 
 Considerando a situação descrita, a causa-raiz do problema é:
 
-- **A)** o erro de digitação do atendente, que deveria ter conferido o cadastro antes de salvar a linha;
-- **B)** o fato de o nome do aluno ser armazenado em toda linha de empréstimo, em vez de existir em um único lugar;
-- **C)** a ausência de um SGBD, que teria recusado automaticamente o nome escrito de forma divergente;
-- **D)** o uso da matrícula como identificador do aluno, quando o correto seria utilizar o CPF;
-- **E)** o tamanho da planilha, que ultrapassou o volume em que uma pessoa consegue conferir os dados manualmente.
+- **a)** o erro de digitação do atendente, que deveria ter conferido o cadastro antes de salvar a linha;
+- **b)** o fato de o nome do aluno ser armazenado em toda linha de empréstimo, em vez de existir em um único lugar;
+- **c)** a ausência de um SGBD, que teria recusado automaticamente o nome escrito de forma divergente;
+- **d)** o uso da matrícula como identificador do aluno, quando o correto seria utilizar o CPF.
 
 ↩︎ *Aula 01, seção 2 — Redundância: o dado escrito duas vezes*
 
@@ -97,21 +100,16 @@ Considerando a situação descrita, a causa-raiz do problema é:
 
 **[ENADE]**
 
-Avalie as asserções a seguir e a relação proposta entre elas.
+A biblioteca trocou a planilha por um banco de dados com SGBD. A equipe de desenvolvimento criou uma tabela de empréstimos com as mesmas colunas da planilha antiga — número do empréstimo, matrícula e nome do aluno, tombo e título do livro, data de retirada — e migrou para dentro dela os quatro mil registros existentes.
 
-I. Adotar um SGBD elimina a redundância de dados de um sistema.
+Seis meses depois, a coordenação encontrou de novo a mesma matrícula associada a duas grafias diferentes do nome do aluno, desta vez em empréstimos registrados já no sistema novo. O SGBD estava em produção, sem nenhuma falha registrada, e havia aceitado todas as gravações sem apontar erro.
 
-PORQUE
+Considerando a situação descrita, a contradição voltou a aparecer porque:
 
-II. Em um SGBD, cada dado é necessariamente armazenado uma única vez.
-
-A respeito dessas asserções, assinale a opção correta.
-
-- **A)** As asserções I e II são proposições verdadeiras, e a II é uma justificativa correta da I;
-- **B)** As asserções I e II são proposições verdadeiras, mas a II não é uma justificativa correta da I;
-- **C)** A asserção I é uma proposição verdadeira, e a II é uma proposição falsa;
-- **D)** A asserção I é uma proposição falsa, e a II é uma proposição verdadeira;
-- **E)** As asserções I e II são proposições falsas.
+- **a)** o SGBD obedece ao modelo que lhe foi dado, e o modelo migrado manteve o nome do aluno repetido em cada empréstimo;
+- **b)** a migração dos quatro mil registros foi feita sem que o SGBD verificasse os dados que já vinham errados da planilha;
+- **c)** faltou declarar uma regra de integridade proibindo que a coluna do nome do aluno recebesse duas grafias distintas;
+- **d)** o SGBD só elimina a redundância depois que as tabelas passam pelo processo de normalização, ainda não executado.
 
 ↩︎ *Aula 01, seção 7 — O que o SGBD não resolve sozinho*
 
@@ -121,21 +119,16 @@ A respeito dessas asserções, assinale a opção correta.
 
 **[ENADE]**
 
-A respeito das finalidades de um banco de dados e de um SGBD, avalie as afirmações a seguir.
+A direção de uma faculdade avalia trocar a planilha de empréstimos da biblioteca por um banco de dados com SGBD. O responsável de TI defendeu a proposta com um único argumento: as consultas ao acervo passariam a responder mais rápido, porque o SGBD é um programa otimizado e a planilha não é.
 
-I. O SGBD é a única via de acesso aos dados, e é justamente isso que torna possível verificar regras e controlar acessos simultâneos.
+Uma das bibliotecárias então observou que, na semana anterior, dois atendentes haviam registrado ao mesmo tempo a saída do último exemplar de uma obra, e que a planilha aceitou os dois registros sem qualquer aviso.
 
-II. Um banco de dados serve a vários usuários e a vários programas, e não apenas ao sistema que o criou.
+Considerando a situação descrita, a observação da bibliotecária é pertinente porque:
 
-III. O principal objetivo de se adotar um SGBD é aumentar a velocidade de acesso aos dados.
-
-É correto apenas o que se afirma em:
-
-- **A)** I;
-- **B)** II;
-- **C)** I e II;
-- **D)** I e III;
-- **E)** II e III.
+- **a)** demonstra que o ganho de desempenho prometido pelo responsável de TI só se confirma quando há poucos usuários simultâneos;
+- **b)** mostra que a planilha precisa ser substituída por um SGBD capaz de bloquear o arquivo enquanto um dos atendentes o mantiver aberto;
+- **c)** revela uma falha de integridade, já que a planilha aceitou um dado que violava a regra de haver um só exemplar disponível;
+- **d)** aponta um problema de acesso concorrente, que está entre as garantias de um SGBD — ao contrário do desempenho, que não está.
 
 ↩︎ *Aula 01, seção 6 — Para que serve: as quatro garantias*
 
