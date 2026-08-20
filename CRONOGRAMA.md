@@ -3,7 +3,7 @@
 ## 1º Bimestre — dos fundamentos ao DER
 
 - [x] **11/08** · Aula 01 — [A redundância e a resposta do SGBD](bloco-1-fundamentos-de-bancos-de-dados/aula-01-redundancia-e-o-sgbd/README.md)
-- [ ] **18/08** · Aula 02 — [De onde vêm os bancos de dados](bloco-1-fundamentos-de-bancos-de-dados/aula-02-de-onde-vem-os-bancos/README.md)
+- [x] **18/08** · Aula 02 — [De onde vêm os bancos de dados](bloco-1-fundamentos-de-bancos-de-dados/aula-02-de-onde-vem-os-bancos/README.md)
 - [ ] **25/08** · Aula 03 — [Os elementos de um banco de dados](bloco-1-fundamentos-de-bancos-de-dados/aula-03-elementos-de-um-banco/README.md)
 - [ ] **01/09** · Aula 04 — [Requisitos, OLTP e OLAP](bloco-1-fundamentos-de-bancos-de-dados/aula-04-requisitos-oltp-e-olap/README.md) · fecha o Bloco 1
 - [ ] **08/09** · Aula 05 — [Projeto de BD: conceitual, lógico e físico](bloco-2-modelos-de-banco-de-dados/aula-05-projeto-conceitual-logico-fisico/README.md)
