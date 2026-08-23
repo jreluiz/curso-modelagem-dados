@@ -158,6 +158,10 @@ Confira no navegador que a pasta apareceu em `github.com/SEU-USUARIO/exercicios-
 
 [8 questões de múltipla escolha](revisao/README.md) para conferir se os conceitos ficaram sólidos. Responda sem consultar a aula — depois volte e corrija.
 
+**A entrega é pelo formulário:** [responder a revisão da Aula 03](https://docs.google.com/forms/d/e/1FAIpQLSeBonzekOFuwleTMbKl4KU7CfSKD2YobUC09fcb-7NFymd5LA/viewform)
+
+Entre com uma conta Google, selecione seu nome na lista e informe seu usuário do GitHub — só o usuário, não o endereço do perfil. Se o seu nome ainda não estiver na lista, marque a última opção e escreva o nome completo no campo seguinte. É **uma resposta por aluno** e não dá para editar depois de enviar, então confira antes. A nota é liberada no AVA depois da revisão em sala e da divulgação do gabarito.
+
 ---
 
 ⬅️ [Aula 02 — De Onde Vêm os Bancos de Dados](../aula-02-de-onde-vem-os-bancos/README.md) | ➡️ [Aula 04 — Requisitos, OLTP e OLAP](../aula-04-requisitos-oltp-e-olap/README.md)

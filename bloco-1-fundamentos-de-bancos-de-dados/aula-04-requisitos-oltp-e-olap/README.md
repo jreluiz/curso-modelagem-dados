@@ -153,6 +153,10 @@ Confira no navegador que a pasta apareceu em `github.com/SEU-USUARIO/exercicios-
 
 [8 questões de múltipla escolha](revisao/README.md) para conferir se os conceitos ficaram sólidos. Responda sem consultar a aula — depois volte e corrija.
 
+**A entrega é pelo formulário:** [responder a revisão da Aula 04](https://docs.google.com/forms/d/e/1FAIpQLSdCMsHBHsOHvJQc_hqeJMYJq68YeJk1kcw_koRYbnwgJSND-A/viewform)
+
+Entre com uma conta Google, selecione seu nome na lista e informe seu usuário do GitHub — só o usuário, não o endereço do perfil. Se o seu nome ainda não estiver na lista, marque a última opção e escreva o nome completo no campo seguinte. É **uma resposta por aluno** e não dá para editar depois de enviar, então confira antes. A nota é liberada no AVA depois da revisão em sala e da divulgação do gabarito.
+
 ---
 
 ⬅️ [Aula 03 — Os Elementos de um Banco de Dados](../aula-03-elementos-de-um-banco/README.md) | ➡️ [Aula 05 — Projeto de Banco de Dados: Conceitual, Lógico e Físico](../../bloco-2-modelos-de-banco-de-dados/aula-05-projeto-conceitual-logico-fisico/README.md)

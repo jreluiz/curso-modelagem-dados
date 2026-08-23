@@ -4,7 +4,11 @@
 
 **Sem gabarito, de propósito.** Cada questão termina com a seção da aula onde a resposta está. Responda **tudo primeiro**, sem consultar — só depois volte às seções indicadas e corrija.
 
-As três últimas são marcadas **[ENADE]**: seguem o formato do exame, com cinco alternativas e enunciado mais longo.
+📝 **As respostas vão pelo formulário:** [responder a revisão da Aula 04](https://docs.google.com/forms/d/e/1FAIpQLSdCMsHBHsOHvJQc_hqeJMYJq68YeJk1kcw_koRYbnwgJSND-A/viewform)
+
+Leia as 8 questões aqui e decida suas respostas antes de abrir o formulário: é **uma resposta por aluno**, com conta Google, e não dá para editar depois de enviar. Ele também pede seu usuário do GitHub. Se o seu nome não estiver na lista da turma, marque a última opção e escreva o nome completo no campo seguinte.
+
+As três últimas são marcadas **[ENADE]**: trazem um **texto-base** com uma situação concreta, seguido do comando. São mais longas de ler e cobram interpretação, não memória — as alternativas continuam simples, como nas demais.
 
 ---
 
@@ -83,11 +87,10 @@ Paralelamente, a diretoria solicitou um painel que compare o desempenho das loja
 
 Considerando a situação apresentada, a solução adequada é:
 
-- **A)** utilizar uma base única e desnormalizada, atendendo às duas necessidades com o mesmo modelo;
-- **B)** manter uma base OLTP normalizada para as operações das lojas e uma base OLAP para as análises, alimentada por cargas periódicas;
-- **C)** adotar um banco de dados NoSQL, por ser o único capaz de atender simultaneamente aos dois tipos de carga;
-- **D)** manter a base única e restringir a execução do painel aos horários de menor movimento das lojas;
-- **E)** desnormalizar a base das lojas, de modo que as consultas do painel deixem de exigir junções.
+- **a)** adotar um banco de dados NoSQL, por ser o único capaz de atender simultaneamente aos dois tipos de carga;
+- **b)** manter uma base OLTP normalizada para as operações das lojas e uma base OLAP para as análises, alimentada por cargas periódicas;
+- **c)** desnormalizar a base das lojas, de modo que as consultas do painel deixem de exigir junções;
+- **d)** manter a base única e restringir a execução do painel aos horários de menor movimento das lojas.
 
 ↩︎ *Aula 04, seção 6 — Cenários e a convivência*
 
@@ -97,21 +100,16 @@ Considerando a situação apresentada, a solução adequada é:
 
 **[ENADE]**
 
-Avalie as asserções a seguir e a relação proposta entre elas.
+A equipe que mantém o banco da rede de lojas resolveu repetir, dentro de cada item vendido na base do caixa, o nome e a categoria do produto. A justificativa registrada em ata foi que "o banco analítico da empresa já é desnormalizado, e funciona bem".
 
-I. Em um banco de dados OLAP, admite-se a desnormalização do modelo.
+Três meses depois, a área de cadastro corrigiu o nome de um produto que estava grafado errado desde o começo. A partir dali, o relatório de vendas passou a exibir o mesmo produto sob dois nomes diferentes, conforme a data da venda.
 
-PORQUE
+Considerando a situação descrita, o erro da equipe foi:
 
-II. A normalização é uma técnica desnecessária quando o volume de dados envolvido é grande.
-
-A respeito dessas asserções, assinale a opção correta.
-
-- **A)** As asserções I e II são proposições verdadeiras, e a II é uma justificativa correta da I;
-- **B)** As asserções I e II são proposições verdadeiras, mas a II não é uma justificativa correta da I;
-- **C)** A asserção I é uma proposição verdadeira, e a II é uma proposição falsa;
-- **D)** A asserção I é uma proposição falsa, e a II é uma proposição verdadeira;
-- **E)** As asserções I e II são proposições falsas.
+- **a)** desnormalizar sem antes medir se as junções eram de fato o gargalo das consultas do caixa;
+- **b)** permitir que a área de cadastro alterasse o nome de um produto já usado em vendas registradas;
+- **c)** levar para uma base que sofre alterações uma decisão que só é legítima onde o dado é carregado uma vez e apenas lido;
+- **d)** repetir dois atributos em vez de um só, quando bastaria copiar a categoria para acelerar o relatório.
 
 ↩︎ *Aula 04, seção 5 — OLAP — o banco que analisa*
 
@@ -121,21 +119,16 @@ A respeito dessas asserções, assinale a opção correta.
 
 **[ENADE]**
 
-A respeito das fontes utilizadas no levantamento de requisitos, avalie as afirmações a seguir.
+Ao levantar os requisitos da biblioteca, a analista entrevistou o bibliotecário-chefe, que descreveu com clareza o fluxo de empréstimo e de devolução. Satisfeita com a riqueza do relato, ela deu a etapa por encerrada.
 
-I. A observação do trabalho em andamento revela passos do processo que o entrevistado não menciona espontaneamente.
+Semanas depois, ao examinar o formulário de empréstimo em papel, encontrou um campo "observação" preenchido à mão em cerca de um a cada dez registros. Ali estava anotado quando o exemplar voltou danificado, quem pagou o reparo e se o aluno ficou impedido de novos empréstimos — nada disso mencionado na entrevista.
 
-II. Um sistema legado mostra o comportamento real do processo, mas pode conter decisões equivocadas que seriam reproduzidas no novo modelo.
+Considerando a situação descrita, o que ela revela sobre o levantamento de requisitos é que:
 
-III. A entrevista, por ser conduzida junto a quem conhece o processo, dispensa a consulta às demais fontes.
-
-É correto apenas o que se afirma em:
-
-- **A)** I;
-- **B)** III;
-- **C)** I e III;
-- **D)** II e III;
-- **E)** I e II.
+- **a)** a entrevista foi mal conduzida, e o problema teria sido evitado com perguntas mais específicas ao bibliotecário-chefe;
+- **b)** o formulário em papel deveria ter sido substituído por um sistema antes do levantamento, para que os dados chegassem estruturados;
+- **c)** o campo "observação" é um vício do processo antigo, e levá-lo para o novo modelo reproduziria uma decisão equivocada do legado;
+- **d)** nenhuma fonte basta sozinha — o entrevistado não conta o que faz sem perceber que faz, e é o documento que expõe isso.
 
 ↩︎ *Aula 04, seção 2 — De onde vêm os requisitos*
 
