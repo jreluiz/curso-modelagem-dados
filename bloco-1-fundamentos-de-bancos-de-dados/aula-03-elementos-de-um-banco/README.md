@@ -12,9 +12,9 @@ Na Aula 01 separamos a planilha em três assuntos. Vamos olhar de perto um deles
    ┌───────────────┬────────────────────────┬──────┬────────────┐
    │ isbn          │ titulo                 │ ano  │ aquisicao  │
    ├───────────────┼────────────────────────┼──────┼────────────┤
-   │ 978-8535212 │ Banco de Dados         │ 2019 │ 2024-02-10 │
-   │ 978-8521637 │ Engenharia de Software │ 2021 │ 2024-02-10 │
-   │ 978-8574523 │ Redes de Computadores  │ 2018 │ 2025-08-03 │
+   │ 978-8535212 │ Banco de Dados         │ 2019 │ 2024-02-10   │
+   │ 978-8521637 │ Engenharia de Software │ 2021 │ 2024-02-10   │
+   │ 978-8574523 │ Redes de Computadores  │ 2018 │ 2025-08-03   │
    └───────────────┴────────────────────────┴──────┴────────────┘
 ```
 
