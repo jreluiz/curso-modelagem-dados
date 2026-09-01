@@ -1,0 +1,32 @@
+---
+config:
+  theme: base
+  fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif"
+  themeVariables:
+    fontSize: 20px
+    lineColor: "#336791"
+    primaryColor: "#eaf0f5"
+    primaryTextColor: "#1a1a1a"
+    primaryBorderColor: "#336791"
+  flowchart:
+    nodeSpacing: 30
+    rankSpacing: 46
+    padding: 16
+    wrappingWidth: 400
+---
+flowchart LR
+    B["O BALCÃO<br/>empréstimos,<br/>devoluções"]
+    O["BANCO OLTP<br/>normalizado<br/>dado atual"]
+    A["BANCO OLAP<br/>desnormalizado<br/>série histórica"]
+    R["RELATÓRIOS<br/>tendências,<br/>comparações"]
+
+    B --> O
+    O -- "carga programada,<br/>de madrugada" --> A
+    A --> R
+
+    classDef ponta fill:#fdfdfb,stroke:#336791,stroke-width:2px,color:#1a1a1a
+    classDef banco fill:#336791,stroke:#336791,stroke-width:3px,color:#ffffff
+    class B,R ponta
+    class O,A banco
+    linkStyle 0,2 stroke:#336791,stroke-width:3px
+    linkStyle 1 stroke:#b02a1c,stroke-width:4px

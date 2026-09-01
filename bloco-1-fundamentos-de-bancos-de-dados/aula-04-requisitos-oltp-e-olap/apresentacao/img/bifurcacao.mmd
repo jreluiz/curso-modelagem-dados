@@ -1,0 +1,31 @@
+---
+config:
+  theme: base
+  fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif"
+  themeVariables:
+    fontSize: 20px
+    lineColor: "#336791"
+    primaryColor: "#eaf0f5"
+    primaryTextColor: "#1a1a1a"
+    primaryBorderColor: "#336791"
+  flowchart:
+    nodeSpacing: 34
+    rankSpacing: 55
+    padding: 16
+    wrappingWidth: 420
+---
+flowchart LR
+    Q{"este banco<br/>existe para…"}
+    A["OPERAR o dia a dia<br/>'registrar o empréstimo<br/>enquanto o aluno espera'"]
+    B["ANALISAR o passado<br/>'quais assuntos foram mais<br/>procurados em 5 anos'"]
+    AO["OLTP"]
+    BO["OLAP"]
+
+    Q --> A --> AO
+    Q --> B --> BO
+
+    classDef perg fill:#eaf0f5,stroke:#336791,stroke-width:3px,color:#1a1a1a
+    classDef sigla fill:#336791,stroke:#336791,stroke-width:3px,color:#ffffff
+    class Q,A,B perg
+    class AO,BO sigla
+    linkStyle default stroke:#336791,stroke-width:3.5px

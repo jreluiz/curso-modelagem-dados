@@ -1,0 +1,39 @@
+---
+config:
+  theme: base
+  fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif"
+  themeVariables:
+    fontSize: 20px
+    lineColor: "#336791"
+    primaryColor: "#eaf0f5"
+    primaryTextColor: "#1a1a1a"
+    primaryBorderColor: "#336791"
+  flowchart:
+    nodeSpacing: 24
+    rankSpacing: 55
+    padding: 14
+    wrappingWidth: 400
+---
+flowchart LR
+    F["A FRASE<br/>'o aluno pega o livro<br/>e devolve em 15 dias'"]
+    Q1["QUANTOS?"]
+    Q2["PODE ZERO?"]
+    Q3["PRECISA DO<br/>HISTÓRICO?"]
+    Q4["QUEM PODE VER?"]
+    D1["a cardinalidade"]
+    D2["o que é obrigatório"]
+    D3["apagar ou preservar"]
+    D4["a política de acesso"]
+
+    F --> Q1 --> D1
+    F --> Q2 --> D2
+    F --> Q3 --> D3
+    F --> Q4 --> D4
+
+    classDef fala fill:#336791,stroke:#336791,stroke-width:3px,color:#ffffff
+    classDef perg fill:#eaf0f5,stroke:#336791,stroke-width:3px,color:#1a1a1a
+    classDef dec fill:#fdfdfb,stroke:#336791,stroke-width:2px,color:#1a1a1a
+    class F fala
+    class Q1,Q2,Q3,Q4 perg
+    class D1,D2,D3,D4 dec
+    linkStyle default stroke:#336791,stroke-width:3px

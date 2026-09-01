@@ -1,0 +1,31 @@
+---
+config:
+  theme: base
+  fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif"
+  themeVariables:
+    fontSize: 20px
+    lineColor: "#336791"
+    primaryColor: "#eaf0f5"
+    primaryTextColor: "#1a1a1a"
+    primaryBorderColor: "#336791"
+  flowchart:
+    nodeSpacing: 30
+    rankSpacing: 50
+    padding: 16
+    wrappingWidth: 400
+---
+flowchart TD
+    D["3,2 milhões de empréstimos"]
+    F["GRANULARIDADE FINA<br/>cada empréstimo<br/>———<br/>responde tudo<br/>relatório lento"]
+    M["GRANULARIDADE MÉDIA<br/>total por dia<br/>———<br/>perde a hora<br/>relatório rápido"]
+    G["GRANULARIDADE GROSSA<br/>total por mês<br/>———<br/>perde o dia<br/>quase instantâneo"]
+
+    D --> F
+    D --> M
+    D --> G
+
+    classDef origem fill:#336791,stroke:#336791,stroke-width:3px,color:#ffffff
+    classDef nivel fill:#eaf0f5,stroke:#336791,stroke-width:3px,color:#1a1a1a
+    class D origem
+    class F,M,G nivel
+    linkStyle default stroke:#336791,stroke-width:3px
