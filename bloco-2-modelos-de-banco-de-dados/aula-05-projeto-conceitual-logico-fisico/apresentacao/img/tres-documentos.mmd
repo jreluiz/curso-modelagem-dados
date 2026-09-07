@@ -1,0 +1,26 @@
+---
+config:
+  theme: base
+  fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif"
+  themeVariables:
+    fontSize: 20px
+    lineColor: "#336791"
+    primaryColor: "#eaf0f5"
+    primaryTextColor: "#1a1a1a"
+    primaryBorderColor: "#336791"
+  flowchart:
+    nodeSpacing: 24
+    rankSpacing: 55
+    padding: 14
+    wrappingWidth: 900
+---
+flowchart TD
+    C["<b>1 · O DESENHO</b> ─ ALUNO ──1── FAZ ──N── EMPRESTIMO"]
+    L["<b>2 · AS TABELAS</b> ─ EMPRESTIMO(numero, data, matricula → ALUNO)"]
+    F["<b>3 · O ARMAZENAMENTO</b> ─ matricula: inteiro de 4 bytes, indexado"]
+    C --> L --> F
+    class C ent
+    class L,F sch
+    classDef ent fill:#eaf0f5,stroke:#336791,stroke-width:3px,color:#1a1a1a
+    classDef sch fill:#fdfdfb,stroke:#336791,stroke-width:2px,color:#1a1a1a
+    linkStyle default stroke:#336791,stroke-width:3px
