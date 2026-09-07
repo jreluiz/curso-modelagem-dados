@@ -6,7 +6,7 @@
 
 - [Mermaid — `flowchart`](https://mermaid.js.org/syntax/flowchart.html) — **a sintaxe que este curso usa.** O DER em notação de Chen é montado com as formas do `flowchart`: `[retângulo]`, `{losango}`, `((elipse))`;
 - [mermaid.live](https://mermaid.live) — editor online, mostra o erro de sintaxe na hora. Depure aqui antes de commitar;
-- [Notação de Chen no Mermaid](notacoes-der.md) — o guia do curso: a tabela de formas, as três coisas que o Mermaid não desenha direito e a meia página de conversão para o pé-de-galinha.
+- [Notação de Chen no Mermaid](notacoes-der.md) — o guia do curso: a tabela de formas, o autorrelacionamento com papéis, as quatro coisas que o Mermaid não desenha direito e a meia página de conversão para o pé-de-galinha.
 
 > ⚠️ **Não use a página `entityRelationshipDiagram` do Mermaid.** Ela documenta o `erDiagram`, que desenha em **pé-de-galinha** e exige o tipo de cada coluna — ou seja, um modelo **lógico**. O curso desenha o **conceitual**, em Chen, e o `erDiagram` não tem como representar atributo em relacionamento, especialização nem agregação: os atributos moram dentro da caixa da entidade, e não existe losango onde pendurar nada.
 

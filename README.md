@@ -12,7 +12,7 @@ Ao final do curso, você será capaz de:
 - Situar os **modelos de dados** na ordem em que surgiram e escolher um SGBD com critério;
 - Escrever a **política de segurança** de um banco: quem pode ler, alterar e nunca apagar;
 - Conduzir um **levantamento de requisitos** e decidir se o banco é **OLTP** ou **OLAP**;
-- Desenhar um **DER na notação de Chen** — retângulo, losango e elipse — e traduzi-lo em **modelo lógico**;
+- Desenhar um **DER na notação de Chen** — retângulo, losango e elipse —, incluindo **autorrelacionamento com papéis**, e traduzi-lo em **modelo lógico**;
 - Aplicar **especialização, generalização e agregação**, e converter o DER em **diagrama de classes UML**;
 - Usar uma **ferramenta CASE** para produzir e documentar um modelo;
 - **Normalizar** um esquema até a **4FN**, defendendo cada decomposição por escrito;
@@ -34,7 +34,7 @@ Ao final do curso, você será capaz de:
 | Aula | Tema | Conteúdo |
 |:---:|------|----------|
 | 05 | [Projeto de BD: conceitual, lógico e físico](bloco-2-modelos-de-banco-de-dados/aula-05-projeto-conceitual-logico-fisico/README.md) | Projeto de banco de dados, os três modelos e o que cada um decide |
-| 06 | [A notação gráfica e os tipos de entidade](bloco-2-modelos-de-banco-de-dados/aula-06-notacao-e-tipos-de-entidade/README.md) | Formas de Chen, entidade forte e fraca, relacionamento, cardinalidade, participação |
+| 06 | [A notação gráfica e os tipos de entidade](bloco-2-modelos-de-banco-de-dados/aula-06-notacao-e-tipos-de-entidade/README.md) | Formas de Chen, entidade forte e fraca, os três tipos de relacionamento, participação, autorrelacionamento e papel |
 | 07 | [Do relacional à integridade referencial](bloco-2-modelos-de-banco-de-dados/aula-07-relacional-e-integridade/README.md) | Relação e tupla, chaves, chave estrangeira, as três integridades, políticas de exclusão |
 | 08 | [Agregação e estudo de caso](bloco-2-modelos-de-banco-de-dados/aula-08-agregacao-e-estudo-de-caso/README.md) | Agregação, entidade associativa e o projeto completo da Biblioteca, do minimundo ao esquema |
 
@@ -84,8 +84,8 @@ Consulte o [guia de preparação do ambiente](recursos/ambiente.md). Nos **Bloco
 ## ⚡ Links rápidos
 
 - 📅 [Cronograma da turma 2026/2](CRONOGRAMA.md) — as datas dos encontros, se você está cursando isto numa turma
-- 📐 [Desenhando o DER na notação de Chen](recursos/notacoes-der.md) — a notação do curso, com a tabela de formas e as duas limitações do Mermaid
-- 🧯 [Erros comuns](recursos/erros-comuns.md) — vinte erros de modelagem, abstração e normalização, com sintoma, causa e cura
+- 📐 [Desenhando o DER na notação de Chen](recursos/notacoes-der.md) — a notação do curso, com a tabela de formas, o autorrelacionamento e as quatro limitações do Mermaid
+- 🧯 [Erros comuns](recursos/erros-comuns.md) — vinte e dois erros de modelagem, abstração e normalização, com sintoma, causa e cura
 - 🌍 [Catálogo de minimundos](recursos/minimundos.md) — 12 enunciados para os exercícios autorais
 - 🔗 [Links úteis](recursos/links-uteis.md)
 - 📚 [Curso de Git e GitHub](https://github.com/jreluiz/curso-git-github) (pré-requisito)
