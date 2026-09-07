@@ -1,6 +1,6 @@
 # Aula 07 — Do Relacional à Integridade Referencial
 
-> 🎯 Objetivos: nomear os elementos do modelo relacional, escolher a chave primária entre as candidatas e converter um DER em esquema lógico com integridade referencial.
+> 🎯 Objetivos: nomear os elementos do modelo relacional, escolher a chave primária entre as candidatas e converter um DER — inclusive um autorrelacionamento — em esquema lógico com integridade referencial.
 > 🎬 Slides da aula: [apresentacao-07-relacional-e-integridade.pdf](apresentacao/apresentacao-07-relacional-e-integridade.pdf)
 
 ## 1. A tabela, agora com os nomes formais
@@ -46,6 +46,22 @@ Escolhe-se a chave primária por três critérios, nesta ordem: a que **nunca mu
 
 > ⚠️ **Chave é o conjunto mínimo, não o conjunto que descreve.** `PRODUTO(codigo, nome, fabricante)` como chave primária é o erro clássico do catálogo: se `codigo` já identifica, acrescentar qualquer coisa não cria uma chave melhor — cria uma chave grande, que será copiada inteira em toda referência.
 
+### ✏️ Tente você
+
+A biblioteca vai cadastrar as **editoras** com estas colunas: `cnpj`, `razao_social`, `nome_fantasia`, `site` e `email_comercial`. O CNPJ é único; a razão social também, por exigência legal; o site pode estar vazio, e o e-mail comercial pode ser compartilhado por duas editoras do mesmo grupo.
+
+Quais são as chaves candidatas, e qual você escolhe como primária?
+
+<details>
+<summary>Resposta</summary>
+
+Candidatas: **`cnpj`** e **`razao_social`**. O `email_comercial` não é candidata porque não é único; o `site` não é porque pode ficar vazio.
+
+Primária: **`cnpj`**, pelos três critérios — nunca muda (razão social muda em reestruturação societária), é menor, e nunca fica vazio.
+
+A `razao_social` fica como chave **alternativa**: continua única, mas não é a referência que as outras tabelas copiam.
+</details>
+
 ## 3. Do losango para a coluna
 
 Agora a tradução que a Aula 05 prometeu. **Chave estrangeira** é uma coluna que guarda o valor da chave primária de outra tabela — é assim que a ligação por valor acontece.
@@ -75,7 +91,41 @@ Agora a tradução que a Aula 05 prometeu. **Chave estrangeira** é uma coluna q
 
 **Relacionamento 1:1.** A chave estrangeira pode ir para qualquer um dos dois lados — escolha o lado de participação total, para não ficar com coluna vazia na maioria das linhas.
 
+**Autorrelacionamento.** A chave estrangeira aponta para a **própria tabela** — e é aqui que o papel da Aula 06 vira coluna:
+
+```
+   FUNCIONARIO(matricula, nome, ramal,
+               matricula_supervisor → FUNCIONARIO)
+```
+
+Repare no nome da coluna. Ela **não pode** se chamar `matricula`, porque esse nome já está ocupado pela chave da própria tabela — e quem dá o nome novo é o **papel**. Sem os papéis nomeados lá no diagrama, esta coluna não teria como se chamar.
+
+No N:M autorrelacionado, a tabela associativa recebe **duas** colunas apontando para a mesma tabela, uma por papel:
+
+```
+   CITA(isbn_citante → OBRA, isbn_citada → OBRA)
+        └──── chave primária composta ────┘
+```
+
 > 💡 Repare que **nenhum losango sobreviveu**. No modelo lógico existem só tabelas e colunas; o relacionamento continua lá, mas escrito como valor repetido em duas tabelas. É por isso que o diagrama continua sendo necessário: ele é o único documento onde a ligação é visível de longe.
+
+### ✏️ Tente você
+
+Converta para esquema lógico o autorrelacionamento da Aula 06 — a obra que **continua** outra obra, com os papéis `anterior` e `posterior`. Lembre que uma obra continua no máximo uma outra, e é continuada por no máximo uma.
+
+<details>
+<summary>Resposta</summary>
+
+É 1:1, então **não nasce tabela associativa**: a chave estrangeira vai para dentro da própria `OBRA`.
+
+```
+   OBRA(isbn, titulo, isbn_anterior → OBRA)
+```
+
+Uma coluna só resolve as duas direções. Se a obra A tem `isbn_anterior` apontando para B, então B é continuada por A — a outra leitura se obtém percorrendo a tabela ao contrário, sem coluna nova.
+
+E essa coluna **aceita vazio**: a primeira obra de uma série não continua nada.
+</details>
 
 ## 4. As três integridades
 
@@ -112,6 +162,26 @@ A última linha é a que ensina mais: **integridade não é "recusar o que parec
 
 > ⚠️ **Chave estrangeira aponta para chave primária ou candidata — nunca para outra coluna.** Guardar o *nome* da editora dentro de `LIVRO` para "referenciá-la" é o erro do catálogo: nome não é único e muda. O que é legível você busca seguindo a ligação.
 
+### ✏️ Tente você
+
+Quatro tentativas de gravação no esquema da biblioteca. Qual regra recusa cada uma — e qual delas **não é recusada por nenhuma**?
+
+1. um exemplar com `situacao` = `"sumido?"`, num domínio de quatro valores fixos;
+2. um empréstimo cuja `matricula` não existe em `ALUNO`;
+3. um exemplar sem `numero_ex`;
+4. um empréstimo com `data_devolucao` vazia.
+
+<details>
+<summary>Resposta</summary>
+
+1. **domínio** — o valor não está no conjunto aceito;
+2. **referencial** — a linha apontada não existe;
+3. **entidade** — falta parte da chave primária composta;
+4. **nenhuma.** É um empréstimo em aberto, e isso é legítimo.
+
+A quarta é a que ensina: integridade não é *"recusar o que parece estranho"*. Coluna vazia só é erro onde o modelo disse que era obrigatória — e quem disse isso foi a participação total desenhada no DER.
+</details>
+
 ## 5. E quando alguém apaga o outro lado?
 
 A integridade referencial tem um segundo capítulo, que é onde ela deixa de ser teoria: **o que fazer quando a linha referenciada é apagada ou tem a chave alterada?** Três políticas, e a escolha é do modelo, não do SGBD:
@@ -123,6 +193,22 @@ A integridade referencial tem um segundo capítulo, que é onde ela deixa de ser
 > 💡 A escolha entre as três se decide olhando a **participação** que você desenhou na Aula 06. Participação total do lado N pede recusar ou propagar — nunca anular, porque anular criaria justamente a ocorrência que o desenho diz ser impossível. É o diagrama pagando dividendo duas aulas depois.
 
 > ⚠️ **Propagar é a política que apaga dado sem perguntar.** Antes de escolhê-la, aplique o teste da entidade fraca da Aula 06: se a entidade se identifica sozinha, ela sobrevive à dona, e propagar vai destruir histórico que ninguém mandou destruir.
+
+### ✏️ Tente você
+
+Duas exclusões chegam ao balcão. Para cada uma, escolha entre **recusar**, **propagar** e **anular**, e diga qual linha do DER decidiu:
+
+1. apagar uma obra que tem três exemplares na estante;
+2. apagar uma editora que publicou 40 obras do acervo.
+
+<details>
+<summary>Resposta</summary>
+
+1. **Propagar.** `EXEMPLAR` é entidade fraca de `LIVRO` e tem participação total — exemplar de obra nenhuma não é coisa. Apagar a obra apaga os exemplares.
+2. **Recusar.** A obra se identifica sozinha pelo ISBN e sobrevive à editora, mas o acervo não pode ficar com 40 linhas apontando para o nada. *Anular* seria defensável se a biblioteca admitisse obra sem editora conhecida; **recusar** é a escolha prudente — e, como toda escolha, vai por escrito.
+
+As duas respostas saem da **mesma** pergunta: a entidade do outro lado existe sem esta?
+</details>
 
 ## 6. O esquema lógico da biblioteca
 
@@ -147,26 +233,34 @@ Quatro decisões visíveis aí, e cada uma vem de uma linha do diagrama:
 
 > ⚠️ O esquema acima **ainda permite** dois empréstimos em aberto do mesmo exemplar — o mesmo furo da Aula 06. Nenhuma das três integridades pega isso: é regra de negócio com tempo dentro, e vive na lista de regras, para ser verificada pela aplicação.
 
-> 💻 **Modelos desta aula:** [`esquema-logico-biblioteca.md`](exemplos/esquema-logico-biblioteca.md) — o esquema completo, com o motivo de cada coluna e as políticas de exclusão escolhidas.
+> 💻 **Modelos desta aula:** [`esquema-logico-biblioteca.md`](exemplos/esquema-logico-biblioteca.md) — o esquema completo da biblioteca, com o motivo de cada coluna e as políticas de exclusão escolhidas. E [`convertendo-um-der.md`](exemplos/convertendo-um-der.md) — **um DER convertido do começo ao fim**, nos cinco passos, incluindo a entidade fraca e o autorrelacionamento. Ele continua o caso que a Aula 06 modelou; leia antes dos exercícios.
 
 ## 🏋️ Exercícios da aula
 
-Na pasta `aula-07/` do seu repositório:
+Use o **modelo entidade-relacionamento** para o projeto conceitual das bases de dados abaixo. Em todos os exercícios:
 
-1. **`ex01.md`** — a tabela `FUNCIONARIO` da biblioteca tem as colunas `matricula_func`, `cpf`, `nome`, `email_pessoal`, `ramal` e `data_admissao`. Sabendo que dois funcionários podem dividir o mesmo ramal e que o e-mail pessoal é único mas opcional, liste todas as **chaves candidatas**, escolha a **chave primária** justificando pelos três critérios da seção 2 e diga quais ficaram como **alternativas**. *Confere assim: são duas candidatas, e o `email_pessoal` não é uma delas — a razão está num dos três critérios.*
+- para cada **entidade**, especifique os atributos relevantes — simples, compostos ou multivalorados — incluindo o **atributo identificador**;
+- para cada **relacionamento**, dê a **cardinalidade** dos dois lados, diga se a **participação** de cada entidade é total ou parcial e inclua os atributos do relacionamento, se houver;
+- nos **autorrelacionamentos**, diga também o **papel** de cada ponta;
+- entregue também o **esquema lógico**, marcando as chaves primárias e indicando com `→` cada chave estrangeira e a tabela que ela aponta.
 
-2. **`ex02.md`** — converta em esquema lógico o fragmento abaixo, no formato da seção 6, marcando as chaves primárias e as estrangeiras com `→`:
+Cada enunciado diz **o que se deseja registrar**. Ele não diz o que é entidade, o que é atributo e o que é relacionamento — essa decisão é sua, e é o exercício.
 
-   ```
-   AUTOR ---|N| ESCREVE{ESCREVE} ---|M| LIVRO
-   ESCREVE tem o atributo: ordem_assinatura
-   AUTOR: cpf (identifica), nome, nacionalidade
-   LIVRO: isbn (identifica), titulo
-   ```
+> 💡 O percurso inteiro de uma conversão como estas, nos cinco passos, está em [`convertendo-um-der.md`](exemplos/convertendo-um-der.md). Leia antes de começar.
 
-   *Confere assim: saem **três** tabelas, e a do meio tem chave primária composta por duas colunas. Se `ordem_assinatura` foi parar dentro de `LIVRO` ou de `AUTOR`, releia a seção 3.*
+Na pasta `aula-07/` do seu repositório, um arquivo `.md` por exercício:
 
-3. **`ex03.md`** — para cada operação abaixo sobre o esquema da seção 6, diga **qual integridade** ela viola (domínio, entidade ou referencial) ou, se não viola nenhuma, **qual política de exclusão** você adotaria e por quê: (a) cadastrar um empréstimo com `matricula` de um aluno inexistente; (b) cadastrar um exemplar sem `numero_ex`; (c) gravar `disponivel?` na coluna `situacao`, cujo domínio tem quatro valores fixos; (d) apagar uma editora que publicou 40 livros do acervo; (e) apagar uma obra que tem três exemplares na estante. *Confere assim: três violam integridade e duas são decisão de política — e as duas de política recebem respostas **diferentes**, por causa da participação que o DER da Aula 06 mostra.*
+1. **`ex01.md`** — A biblioteca participa de uma rede de **empréstimo entre instituições**. Quando uma obra é pedida a outra biblioteca, registram-se o número do pedido — sequencial e único no sistema —, a data do pedido, a data de chegada e qual obra foi pedida. De cada instituição parceira guardam-se o CNPJ, a sigla pela qual ela é conhecida na rede, o nome por extenso e a cidade; tanto o CNPJ quanto a sigla são únicos, e o nome por extenso pode se repetir entre campi de uma mesma universidade. Uma instituição atende vários pedidos, cada pedido vai a uma instituição só, e nenhum pedido existe sem instituição.
+
+   *Confere assim: uma das entidades tem **duas** chaves candidatas, e a sua escolha entre elas precisa citar qual dos três critérios da seção 2 desempatou. Saem duas tabelas — se saíram três, você promoveu a entidade alguma coisa que é atributo.*
+
+2. **`ex02.md`** — O acervo passou a registrar as **referências bibliográficas**: uma obra cita outras obras e é citada por outras. De cada obra interessam o ISBN, o título e o ano; de cada citação, a página em que ela aparece na obra que cita. Uma obra pode não citar nenhuma, e pode não ser citada por nenhuma.
+
+   *Confere assim: além de `OBRA`, sai uma tabela só — e as duas colunas dela apontam para o mesmo lugar. Se as duas ficaram com o mesmo nome, faltou o papel. E a página tem um lugar certo, que não é dentro de `OBRA`.*
+
+3. **`ex03.md`** — A biblioteca vai implantar o **descarte de acervo**. Sobre o esquema da seção 6 — `ALUNO`, `EDITORA`, `LIVRO`, `EXEMPLAR`, `EMPRESTIMO` —, a coordenação pediu para apagar do sistema uma obra que tem quatro exemplares na estante, aparece em 62 empréstimos do histórico e é citada por três outras obras do acervo. Diga, para **cada uma** das três ligações que apontam para essa obra, qual política você adotaria — recusar, propagar ou anular — e que linha do DER decidiu. Depois escreva, em até cinco linhas, o que você proporia à coordenação **em vez** do apagamento.
+
+   *Confere assim: as três ligações recebem respostas diferentes umas das outras. E a sua proposta final não é uma política de exclusão — é uma coluna.*
 
 ### 📤 Entrega
 

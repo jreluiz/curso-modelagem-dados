@@ -4,18 +4,20 @@
 
 **Sem gabarito, de propósito.** Cada questão termina com a seção da aula onde a resposta está. Responda **tudo primeiro**, sem consultar — só depois volte às seções indicadas e corrija.
 
-As três últimas são marcadas **[ENADE]**: seguem o formato do exame, com cinco alternativas e enunciado mais longo.
+As três últimas são marcadas **[ENADE]**: trazem um **texto-base** com uma situação concreta, seguido do comando. São mais longas de ler e cobram interpretação, não memória — as alternativas continuam simples, como nas demais.
+
+> 💡 As três situações das questões **[ENADE]** são as mesmas dos exercícios da aula. Quem fez os exercícios responde em cinco minutos.
 
 ---
 
 ### Q-A07-01
 
-No vocabulário do modelo relacional, uma **tupla** corresponde a:
+No modelo relacional, a **cardinalidade de uma relação** é:
 
-- **a)** o conjunto de valores aceitos por uma coluna;
-- **b)** a descrição da estrutura da tabela, sem os dados;
-- **c)** o número de colunas que a tabela possui;
-- **d)** uma linha da tabela, ou seja, uma ocorrência do mundo.
+- **a)** o número de atributos que ela possui;
+- **b)** a quantidade de ocorrências de uma entidade que participam de um relacionamento;
+- **c)** o número de tuplas que ela contém no momento;
+- **d)** a proporção entre as chaves primárias e as chaves estrangeiras dela.
 
 ↩︎ *Aula 07, seção 1 — A tabela, agora com os nomes formais*
 
@@ -23,12 +25,12 @@ No vocabulário do modelo relacional, uma **tupla** corresponde a:
 
 ### Q-A07-02
 
-Uma tabela de alunos tem três colunas que identificam sozinhas cada linha: `matricula`, `cpf` e `email`. Ao escolher `matricula` como chave primária, as outras duas passam a ser:
+Uma **chave candidata** é:
 
-- **a)** chaves estrangeiras;
-- **b)** chaves alternativas;
-- **c)** chaves parciais;
-- **d)** atributos multivalorados.
+- **a)** cada conjunto mínimo de atributos que identifica uma tupla;
+- **b)** o conjunto de atributos escolhido para ser copiado nas tabelas que fazem referência;
+- **c)** qualquer atributo cujos valores não se repetem na tabela hoje;
+- **d)** o conjunto de atributos que melhor descreve a ocorrência representada.
 
 ↩︎ *Aula 07, seção 2 — Chaves: o que identifica uma tupla*
 
@@ -36,12 +38,12 @@ Uma tabela de alunos tem três colunas que identificam sozinhas cada linha: `mat
 
 ### Q-A07-03
 
-Ao converter um relacionamento **N:M** para o modelo lógico, o que acontece com os atributos que estavam no losango?
+Na conversão de um autorrelacionamento **1:N** para o modelo lógico, a chave estrangeira:
 
-- **a)** são distribuídos entre as duas tabelas ligadas;
-- **b)** são descartados, porque losango não vira tabela;
-- **c)** vão para a tabela associativa criada para a ligação;
-- **d)** viram uma entidade fraca dependente das duas tabelas.
+- **a)** obriga a criação de uma tabela associativa, como em todo autorrelacionamento;
+- **b)** aponta para a tabela correspondente ao papel de cardinalidade N;
+- **c)** é dispensável, porque as duas pontas já estão na mesma tabela;
+- **d)** aponta para a própria tabela, e recebe um nome derivado do papel.
 
 ↩︎ *Aula 07, seção 3 — Do losango para a coluna*
 
@@ -49,12 +51,12 @@ Ao converter um relacionamento **N:M** para o modelo lógico, o que acontece com
 
 ### Q-A07-04
 
-Um livro foi cadastrado com o CNPJ de uma editora que não existe na tabela `EDITORA`. Qual integridade foi violada?
+A integridade **de entidade** garante que:
 
-- **a)** referencial;
-- **b)** de entidade;
-- **c)** de domínio;
-- **d)** de cardinalidade.
+- **a)** todo valor gravado numa coluna pertence ao domínio declarado para ela;
+- **b)** nenhuma parte da chave primária de uma tupla fica vazia;
+- **c)** toda chave estrangeira aponta para uma linha que existe;
+- **d)** duas tuplas de uma mesma relação nunca têm todos os atributos iguais.
 
 ↩︎ *Aula 07, seção 4 — As três integridades*
 
@@ -62,12 +64,12 @@ Um livro foi cadastrado com o CNPJ de uma editora que não existe na tabela `EDI
 
 ### Q-A07-05
 
-A obra que está sendo removida do acervo tem três exemplares cadastrados. Qual política de exclusão é a adequada para os exemplares, e por quê?
+A política de exclusão **propagar** é adequada quando:
 
-- **a)** anular, porque o exemplar continua existindo fisicamente na estante;
-- **b)** recusar, porque nenhum dado deve ser apagado junto com outro;
-- **c)** propagar, porque exemplar é entidade fraca e não existe sem a obra;
-- **d)** anular, porque a política de exclusão é sempre definida pelo SGBD.
+- **a)** a entidade do outro lado não existe fora daquele relacionamento;
+- **b)** a chave estrangeira daquela ligação aceita valor vazio;
+- **c)** o relacionamento convertido tem cardinalidade 1:1;
+- **d)** a tabela referenciada tem poucas linhas cadastradas.
 
 ↩︎ *Aula 07, seção 5 — E quando alguém apaga o outro lado?*
 
@@ -77,19 +79,18 @@ A obra que está sendo removida do acervo tem três exemplares cadastrados. Qual
 
 **[ENADE]**
 
-Em uma biblioteca, a tabela de livros mantém uma coluna que aponta para a tabela de editoras. Ao tentar remover do cadastro uma editora que havia encerrado as atividades, o funcionário recebeu uma recusa do sistema: havia 40 livros do acervo associados a ela.
+Uma biblioteca universitária entrou numa rede de empréstimo entre instituições. Cada parceira tem CNPJ e uma sigla própria — e é pela sigla que os bibliotecários se referem umas às outras no dia a dia. Os dois são únicos na rede.
 
-O funcionário sugeriu, então, que o sistema fosse alterado para permitir a remoção, apagando automaticamente os livros associados.
+Ao converter o modelo, o analista escolheu a sigla como chave primária de `INSTITUICAO`, argumentando que ela é mais curta e mais legível que o CNPJ. Dois anos depois, uma das parceiras passou por fusão e mudou de sigla, e a equipe descobriu que a sigla antiga estava copiada em 1.400 pedidos já registrados.
 
-Considerando a integridade referencial e o significado dos dados envolvidos, a decisão adequada é:
+Considerando a situação apresentada, o erro do analista foi:
 
-- **A)** aceitar a sugestão, pois a exclusão em cascata mantém o banco consistente em qualquer situação;
-- **B)** aceitar a sugestão, desde que os livros apagados sejam recadastrados manualmente depois;
-- **C)** remover a chave estrangeira do modelo, eliminando a origem da recusa;
-- **D)** manter a recusa, pois os livros continuam no acervo e a decisão sobre eles precisa ser explícita;
-- **E)** alterar a coluna para aceitar o nome da editora em vez do CNPJ, evitando a dependência entre as tabelas.
+- **a)** escolher como chave primária um atributo que não é único dentro da rede;
+- **b)** manter o CNPJ na tabela depois de ter adotado outra coluna como chave primária;
+- **c)** deixar de criar uma chave artificial, que é sempre a escolha correta em tabela referenciada;
+- **d)** privilegiar tamanho e legibilidade sobre estabilidade, que é o primeiro dos três critérios.
 
-↩︎ *Aula 07, seção 5 — E quando alguém apaga o outro lado?*
+↩︎ *Aula 07, seção 2 — Chaves: o que identifica uma tupla*
 
 ---
 
@@ -97,23 +98,18 @@ Considerando a integridade referencial e o significado dos dados envolvidos, a d
 
 **[ENADE]**
 
-Avalie as asserções a seguir e a relação proposta entre elas.
+O acervo de uma biblioteca passou a registrar as referências bibliográficas entre as obras: uma obra cita várias outras e é citada por várias, e de cada citação interessa a página em que ela aparece na obra que cita.
 
-I. Em uma relação, nenhuma parte da chave primária pode ficar sem valor.
+Ao converter o modelo para o esquema lógico, uma estagiária propôs acrescentar à tabela `OBRA` duas colunas: uma `isbn_citada`, apontando para a própria `OBRA`, e uma `pagina`.
 
-PORQUE
+Considerando a situação descrita, a proposta está incorreta porque:
 
-II. A chave primária é o que distingue uma tupla de todas as outras, e um valor ausente impediria essa distinção.
+- **a)** uma chave estrangeira não pode apontar para a tabela em que ela própria está;
+- **b)** o relacionamento é N:M e exige tabela própria, onde a página também passa a morar;
+- **c)** a página é atributo da obra citada, e não da obra que faz a citação;
+- **d)** faltou nomear os papéis, e sem eles a coluna `isbn_citada` fica ambígua.
 
-A respeito dessas asserções, assinale a opção correta.
-
-- **A)** As asserções I e II são proposições verdadeiras, e a II é uma justificativa correta da I;
-- **B)** As asserções I e II são proposições verdadeiras, mas a II não é uma justificativa correta da I;
-- **C)** A asserção I é uma proposição verdadeira, e a II é uma proposição falsa;
-- **D)** A asserção I é uma proposição falsa, e a II é uma proposição verdadeira;
-- **E)** As asserções I e II são proposições falsas.
-
-↩︎ *Aula 07, seção 4 — As três integridades*
+↩︎ *Aula 07, seção 3 — Do losango para a coluna*
 
 ---
 
@@ -121,23 +117,18 @@ A respeito dessas asserções, assinale a opção correta.
 
 **[ENADE]**
 
-A respeito da conversão de um diagrama entidade-relacionamento em esquema lógico relacional, avalie as afirmações a seguir.
+A coordenação de uma biblioteca pediu que uma obra desatualizada fosse apagada do sistema. A obra tem quatro exemplares na estante, aparece em 62 empréstimos do histórico e é citada por três outras obras do acervo.
 
-I. Uma chave estrangeira pode referenciar qualquer coluna da outra tabela, desde que os valores estejam sem repetição no momento do cadastro.
+O analista verificou que a exclusão exigiria decidir três políticas diferentes, e que uma delas destruiria registros de empréstimos já devolvidos — que a instituição mantém para sempre, por norma interna.
 
-II. Em um relacionamento 1:N, a chave estrangeira é acrescentada à tabela correspondente ao lado N.
+Considerando a situação apresentada, a recomendação adequada é:
 
-III. Um relacionamento N:M origina uma tabela própria, cuja chave primária é composta pelas chaves das duas tabelas ligadas.
+- **a)** propagar a exclusão nas três ligações, já que a obra deixou de fazer parte do acervo;
+- **b)** anular as três chaves estrangeiras, preservando as linhas que apontavam para a obra;
+- **c)** não apagar a obra, e registrar a retirada de circulação como um atributo de situação;
+- **d)** apagar somente os exemplares, mantendo a obra e as demais ligações intactas.
 
-É correto apenas o que se afirma em:
-
-- **A)** I;
-- **B)** I e II;
-- **C)** I e III;
-- **D)** II;
-- **E)** II e III.
-
-↩︎ *Aula 07, seção 3 — Do losango para a coluna*
+↩︎ *Aula 07, seção 5 — E quando alguém apaga o outro lado?*
 
 ---
 
