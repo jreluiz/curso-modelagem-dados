@@ -17,15 +17,16 @@ Você desenha em **Mermaid `flowchart`**, escrevendo texto. O GitHub renderiza s
 | Entidade | Retângulo | `ALUNO[ALUNO]` | |
 | Entidade fraca | Retângulo duplo | `DEP[[DEPENDENTE]]` | depende de outra para existir |
 | Relacionamento | Losango | `PEGA{PEGA}` | |
-| Relacionamento identificador | Losango duplo | `POSSUI{{POSSUI}}` | **sai hexágono** — ver seção 4 |
+| Relacionamento identificador | Losango duplo | `POSSUI{{POSSUI}}` | **sai hexágono** — ver seção 5 |
 | Atributo | Elipse | `nome((nome))` | |
 | Atributo-chave | Elipse, nome sublinhado | `mat(("<u>matricula</u>"))` | |
 | Atributo multivalorado | Elipse dupla | `tel(((telefone)))` | |
 | Atributo derivado | Elipse tracejada | `idade((idade))` + `classDef` | calculado, não armazenado |
 | Cardinalidade | Número na linha | `ALUNO ---\|N\| PEGA` | |
-| Especialização | Círculo entre superclasse e subclasses | `USUARIO --- D(("d"))` | `d` disjunta · `o` sobreposta — ver seção 4 |
+| Especialização | Círculo entre superclasse e subclasses | `USUARIO --- D(("d"))` | `d` disjunta · `o` sobreposta — ver seção 5 |
 | Especialização total | Linha dupla até o círculo | `USUARIO === D(("d"))` | parcial usa linha simples |
 | Participação total | Linha dupla | `POSSUI ===\|N\| DEP` | a entidade daquele lado não existe fora do relacionamento |
+| Autorrelacionamento | A entidade aparece **uma vez**, com duas linhas | `FUNC ---\|"N · papel"\| SUP` | o papel é obrigatório — ver seção 4 |
 
 Repare que **o id do nó e o rótulo são coisas diferentes**: em `ALUNO[ALUNO]`, o primeiro `ALUNO` é o nome interno que você usa para ligar as linhas, e o que está entre colchetes é o que aparece desenhado.
 
@@ -109,13 +110,64 @@ Os três casos que você vai usar o tempo todo:
 
 ---
 
-## 4. Três coisas que o Mermaid não desenha direito
+## 4. Autorrelacionamento: quando a entidade se liga a ela mesma
+
+Nem todo relacionamento liga duas entidades diferentes. Na biblioteca, alguns funcionários supervisionam outros — e supervisor **é** funcionário: tem a mesma matrícula, o mesmo ramal, a mesma data de admissão.
+
+**Autorrelacionamento** é o relacionamento de uma entidade **com ela mesma**. Ela aparece **uma vez só** no desenho, e as duas linhas saem dela para o mesmo losango:
+
+```mermaid
+flowchart LR
+    FUNC[FUNCIONARIO] ---|"N · supervisionado"| SUP{SUPERVISIONA}
+    SUP ---|"1 · supervisor"| FUNC
+```
+
+### O papel
+
+Repare no que está escrito nas linhas, além do número.
+
+Num relacionamento comum, cada lado se identifica pela entidade que está na ponta — ninguém confunde quem é o aluno e quem é o livro. Aqui as duas pontas saem da **mesma caixa**, e o desenho sozinho não diz qual é qual.
+
+**Papel** é o nome da qualidade em que cada ponta participa do relacionamento. Sem ele, o diagrama acima afirma apenas que funcionários se relacionam com funcionários — o que não é informação nenhuma.
+
+> 📏 **Convenção do curso:** o rótulo da linha carrega **a cardinalidade e o papel**, separados por ponto médio — `|"N · supervisionado"|`. As aspas são obrigatórias: sem elas o Mermaid não aceita o ponto médio no rótulo.
+
+A leitura em voz alta continua sendo o teste, agora com o papel dentro da frase:
+
+```
+   [FUNCIONARIO] ──N·supervisionado── {SUPERVISIONA} ──1·supervisor── [FUNCIONARIO]
+    ↑                                                                   ↑
+    └─ "N funcionários são supervisionados…"       "…por 1 funcionário" ─┘
+```
+
+### Os dois graus que você vai usar
+
+**1:N** — a supervisão acima: um supervisor tem vários supervisionados, e cada funcionário tem no máximo um supervisor.
+
+**N:M** — uma obra pode citar várias outras e ser citada por várias:
+
+```mermaid
+flowchart LR
+    OBRA[OBRA] ---|"N · citante"| CITA{CITA}
+    CITA ---|"M · citada"| OBRA
+    OBRA --- isbn(("<u>isbn</u>"))
+```
+
+> ⚠️ **Papel não é entidade.** A saída errada mais comum é criar `SUPERVISOR` e `SUPERVISIONADO` como duas caixas: os atributos se duplicam, e no dia em que um atendente vira supervisor o registro teria de mudar de lugar, arrastando o histórico junto. Está no [catálogo de erros](erros-comuns.md).
+
+> 💡 **O papel serve fora do autorrelacionamento também.** Sempre que a mesma entidade participa **duas vezes** do mesmo relacionamento, as pontas precisam de nome: uma partida tem um time mandante e um visitante, e sem os dois papéis o placar não sabe de quem é.
+
+---
+
+## 5. Quatro coisas que o Mermaid não desenha direito
 
 Melhor saber agora do que descobrir na véspera da entrega.
 
 **O losango duplo não existe.** Para relacionamento identificador — aquele que dá identidade a uma entidade fraca — o Mermaid não tem a forma. **A convenção deste curso é o hexágono `{{ }}`**, como no `POSSUI` do diagrama da seção 2. No papel e na prova, desenhe o losango duplo normalmente; no Mermaid, hexágono.
 
 **O atributo é um círculo, e ele incha.** Nomes longos como `data_retirada` viram círculos enormes e empurram o diagrama todo. A saída não é trocar a forma — a forma *é* o conceito, e um atributo desenhado como retângulo vira uma entidade aos olhos de quem lê.
+
+**O autorrelacionamento não vira laço.** Ligar um nó a ele mesmo (`FUNC --- FUNC`) desenha um laço fechado, sem lugar para o losango. **A convenção deste curso é passar pelo losango nas duas linhas** — `FUNC ---|...| SUP` e `SUP ---|...| FUNC` —, como na seção 4: a entidade aparece uma vez e as duas linhas saem dela.
 
 **A especialização não tem símbolo.** Chen desenha um triângulo, ou um círculo com `d` (disjunta) ou `o` (sobreposta), entre a superclasse e as subclasses. O Mermaid não tem a forma, e **a convenção deste curso é o círculo com a letra dentro** — `D(("d"))` —, com a linha da superclasse até ele dupla quando a especialização é **total** e simples quando é **parcial**:
 
@@ -134,7 +186,7 @@ E vale sempre: **todo diagrama vem seguido de um parágrafo em português dizend
 
 ---
 
-## 5. Pé-de-galinha em meia página — para ler a ferramenta
+## 6. Pé-de-galinha em meia página — para ler a ferramenta
 
 A outra notação que você vai encontrar se chama **pé-de-galinha** (*crow's foot*). Ela não é usada neste curso, mas é a que aparece em quase toda ferramenta de mercado — inclusive nas que você vai abrir no Bloco 3. Meia página basta para não se perder.
 
@@ -153,7 +205,7 @@ A diferença de fundo: no pé-de-galinha **não existe losango**. O relacionamen
 
 ---
 
-## 6. Escrevendo `flowchart` que renderiza de primeira
+## 7. Escrevendo `flowchart` que renderiza de primeira
 
 Os cinco tropeços que consomem a aula inteira:
 

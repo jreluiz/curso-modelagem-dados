@@ -103,7 +103,7 @@ Alunos matriculam-se em turmas. Ao final, cada matrícula recebe uma menção (a
 
 Professores têm formação e os idiomas que lecionam.
 
-> **Armadilhas:** o pré-requisito é autorrelacionamento N:M entre níveis; a matrícula do mesmo aluno no mesmo nível repete — a chave precisa contemplar o semestre; "dias da semana" é multivalorado.
+> **Armadilhas:** o pré-requisito é **autorrelacionamento N:M** entre níveis, e as duas pontas pedem papel — *exigido* e *exigente* (Aula 06); a matrícula do mesmo aluno no mesmo nível repete, então a chave precisa contemplar o semestre; "dias da semana" é multivalorado.
 
 ---
 
@@ -153,7 +153,7 @@ Jogadores pertencem a um time por período (contratos com data de início e fim;
 
 Em uma partida, registram-se os eventos: gols (com o minuto e o jogador), cartões (amarelo/vermelho, minuto, jogador) e substituições (minuto, quem sai, quem entra).
 
-> **Armadilhas:** mandante e visitante são **dois papéis** do mesmo relacionamento com `TIME`; o vínculo jogador-time é tabela com período, não FK simples; gol contra exige saber que o jogador marcou para o outro lado — o modelo precisa comportar isso.
+> **Armadilhas:** mandante e visitante são **dois papéis** do mesmo relacionamento com `TIME` — é o caso da Aula 06 em que o papel aparece **sem** ser autorrelacionamento; o vínculo jogador-time é tabela com período, não FK simples; gol contra exige saber que o jogador marcou para o outro lado, e o modelo precisa comportar isso.
 
 ---
 

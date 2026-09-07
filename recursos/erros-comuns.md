@@ -106,6 +106,30 @@ Duas metades: os erros de **modelagem** (Blocos 1 e 2) e os erros de **abstraç�
 
 ---
 
+### Autorrelacionamento sem papel
+
+**Sintoma:** o diagrama liga `FUNCIONARIO` a si mesmo por um losango `SUPERVISIONA`, com um `N` de um lado e um `1` do outro — e ninguém consegue dizer qual das duas pontas é o supervisor.
+
+**Causa:** tratar as duas pontas como intercambiáveis. Num relacionamento comum elas se distinguem pela entidade que está na ponta; num autorrelacionamento a entidade é a mesma dos dois lados, e só o papel separa.
+
+**Cura:** **nomeie as duas pontas** e leia o diagrama em voz alta nas duas direções. *"N funcionários são supervisionados por 1 funcionário"* é verdade; a leitura invertida não é, e é ela que denuncia o papel trocado.
+
+> ⚠️ A saída errada é criar `SUPERVISOR` e `SUPERVISIONADO` como entidades separadas. Os atributos se duplicam, e a primeira promoção quebra o modelo: o registro teria de mudar de caixa e o histórico ficaria para trás. **Papel é como a ocorrência participa, não o que ela é** — a mesma distinção do erro *"herança usada para papel temporário"*, na Parte 2.
+
+---
+
+### Duas entidades que são uma só
+
+**Sintoma:** um relacionamento 1:1 em que nenhum dos dois lados existe sem o outro, os dois nascem juntos, morrem juntos, e o segundo não tem atributo que justifique a caixa.
+
+**Causa:** partir uma entidade por hábito de tela ou de formulário — duas abas viram duas caixas.
+
+**Cura:** o teste do 1:1, em três perguntas: *alguém referencia uma sem a outra? uma existe antes da outra? a segunda tem atributos próprios que importam?* **Três "não" e é uma entidade só** — os atributos do segundo viram colunas do primeiro.
+
+> 💡 Nem todo 1:1 é erro. Um armário e a chave dele parecem a mesma coisa até a chave ganhar histórico de perdas e de cópias — aí ela tem vida própria e merece a caixa. O que decide é a segunda entidade ter algo a dizer sozinha.
+
+---
+
 ### O modelo que não foi lido em voz alta
 
 **Sintoma:** o diagrama está bonito e ninguém percebeu que ele afirma que um empréstimo pode existir sem exemplar.

@@ -78,6 +78,24 @@ O que ele **não** decide, e é aqui que quase todo mundo escorrega na primeira 
 
 > 📖 O modelo conceitual e a notação entidade-relacionamento abrem o Heuser, e é a parte do livro que acompanha este bloco inteiro.
 
+### ✏️ Tente você
+
+Você vai à reunião com o bibliotecário para validar o modelo. Das quatro
+perguntas abaixo, quais fazem sentido fazer **a ele**?
+
+1. "Um empréstimo pode ter dois alunos?"
+2. "A matrícula deve ser inteiro ou texto?"
+3. "Uma obra pode estar no acervo sem nenhum exemplar comprado?"
+4. "Precisamos de um índice para buscar por autor?"
+
+<details>
+<summary>Resposta</summary>
+
+**1 e 3.** As duas perguntam sobre o mundo, e ele é a autoridade nisso.
+
+A 2 e a 4 são decisões técnicas — ele não tem como responder, e levá-las para a reunião gasta a única revisão que pega erro de entendimento.
+</details>
+
 ## 4. O modelo lógico — como isso vira tabela
 
 O **modelo lógico** traduz o conceitual para a estrutura de um **modelo de dados** escolhido. Neste curso, sempre o relacional: tabelas, colunas e ligações por valor.
@@ -112,6 +130,26 @@ Uma tabela que não existia no desenho apareceu, e o atributo do losango foi mor
 
 As regras completas dessa tradução são a Aula 07. Por enquanto, o que importa é o mapa acima — e saber que a tradução **é mecânica**: modelos conceituais iguais produzem modelos lógicos iguais, e é por isso que vale gastar o tempo no primeiro.
 
+### ✏️ Tente você
+
+Um aluno pode participar de várias oficinas de pesquisa, e uma oficina recebe vários alunos. Interessa saber a **data** em que cada inscrição foi feita.
+
+Quantas tabelas saem daí, e onde mora a data?
+
+<details>
+<summary>Resposta</summary>
+
+Três:
+
+```
+   ALUNO(matricula, nome)
+   OFICINA(codigo, titulo)
+   INSCRICAO(matricula → ALUNO, codigo → OFICINA, data)
+```
+
+A data não é do aluno (muda a cada oficina) nem da oficina (muda a cada aluno). Ela é do par — e o par só existe na tabela do meio.
+</details>
+
 ## 5. O modelo físico — como isso vira arquivo
 
 O **modelo físico** decide como o SGBD escolhido vai gravar aquilo em disco: o tipo exato de cada coluna, o tamanho, os índices que aceleram as buscas, a forma de armazenamento.
@@ -125,6 +163,20 @@ O **modelo físico** decide como o SGBD escolhido vai gravar aquilo em disco: o 
 Este curso **para no lógico**, de propósito. O físico exige escolher um SGBD, medir carga real e conhecer a linguagem de definição de dados — três assuntos que não cabem em 16 aulas e que só fazem sentido depois que o modelo está certo.
 
 > ⚠️ **Índice não conserta modelo.** Um esquema com dado repetido em três tabelas continua se contradizendo depois de qualquer índice. A cura para modelo ruim é modelagem — a Aula 01 inteira é sobre isso.
+
+### ✏️ Tente você
+
+O sistema está lento na busca por título, e o estagiário propõe criar um índice por `titulo`. A bibliotecária pergunta se isso conserta também o fato de o nome da editora aparecer grafado de três jeitos diferentes no acervo.
+
+O que você responde?
+
+<details>
+<summary>Resposta</summary>
+
+Não conserta. Índice acelera a busca e **não muda o significado de nada** — o nome repetido em três lugares continua se contradizendo depois de qualquer índice.
+
+A lentidão é problema físico, e o índice resolve. A contradição é problema de modelo, e a cura é modelagem.
+</details>
 
 ## 6. Por que a ordem não se inverte
 
