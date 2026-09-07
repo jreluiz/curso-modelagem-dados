@@ -1,0 +1,25 @@
+---
+config:
+  theme: base
+  fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif"
+  themeVariables:
+    fontSize: 20px
+    lineColor: "#336791"
+    primaryColor: "#eaf0f5"
+    primaryTextColor: "#1a1a1a"
+    primaryBorderColor: "#336791"
+  flowchart:
+    nodeSpacing: 24
+    rankSpacing: 55
+    padding: 14
+    wrappingWidth: 400
+---
+flowchart LR
+    OBRA[OBRA] ---|"N · citante"| CITA{CITA}
+    CITA ---|"M · citada"| OBRA
+    OBRA --- isbn(("<u>isbn</u>"))
+    classDef ent fill:#eaf0f5,stroke:#336791,stroke-width:3px,color:#1a1a1a
+    classDef rel fill:#fdfdfb,stroke:#336791,stroke-width:2px,color:#1a1a1a
+    classDef atr fill:#fdfdfb,stroke:#336791,stroke-width:2px,color:#1a1a1a
+    classDef erro fill:#fbeaea,stroke:#a33,stroke-width:3px,color:#1a1a1a
+    linkStyle default stroke:#336791,stroke-width:3px
