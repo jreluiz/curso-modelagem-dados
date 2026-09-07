@@ -1,0 +1,29 @@
+---
+config:
+  theme: base
+  fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif"
+  themeVariables:
+    fontSize: 20px
+    lineColor: "#336791"
+    primaryColor: "#eaf0f5"
+    primaryTextColor: "#1a1a1a"
+    primaryBorderColor: "#336791"
+  flowchart:
+    nodeSpacing: 24
+    rankSpacing: 55
+    padding: 14
+    wrappingWidth: 400
+---
+flowchart TD
+    D["FUNCIONARIO ──N·supervisionado── SUPERVISIONA ──1·supervisor── FUNCIONARIO"]
+    D -->|"a chave estrangeira aponta para a própria tabela"| E["FUNCIONARIO(matricula, nome, ramal,<br/><b>matricula_supervisor → FUNCIONARIO</b>)"]
+    D2["o papel dá o nome da coluna"] -.- E
+    class D ent
+    class E sch
+    classDef leg fill:none,stroke:none,color:#336791
+    class D2 leg
+    classDef ent fill:#eaf0f5,stroke:#336791,stroke-width:3px,color:#1a1a1a
+    classDef sch fill:#fdfdfb,stroke:#336791,stroke-width:2px,color:#1a1a1a
+    classDef ok fill:#eaf5ea,stroke:#2a7,stroke-width:2px,color:#1a1a1a
+    classDef bad fill:#fbeaea,stroke:#a33,stroke-width:2px,color:#a33
+    linkStyle default stroke:#336791,stroke-width:3px

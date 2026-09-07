@@ -1,0 +1,27 @@
+---
+config:
+  theme: base
+  fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif"
+  themeVariables:
+    fontSize: 20px
+    lineColor: "#336791"
+    primaryColor: "#eaf0f5"
+    primaryTextColor: "#1a1a1a"
+    primaryBorderColor: "#336791"
+  flowchart:
+    nodeSpacing: 24
+    rankSpacing: 55
+    padding: 14
+    wrappingWidth: 400
+---
+flowchart TD
+    C["<b>CHAVES CANDIDATAS</b><br/>todo conjunto mínimo que identifica<br/>matricula · cpf · email"]
+    C -->|"você escolhe"| P["<b>CHAVE PRIMÁRIA</b><br/>matricula<br/>nunca muda · menor · nunca vazia"]
+    C -->|"sobram"| A["<b>CHAVES ALTERNATIVAS</b><br/>cpf · email<br/>continuam únicas"]
+    class C ent
+    class P,A sch
+    classDef ent fill:#eaf0f5,stroke:#336791,stroke-width:3px,color:#1a1a1a
+    classDef sch fill:#fdfdfb,stroke:#336791,stroke-width:2px,color:#1a1a1a
+    classDef ok fill:#eaf5ea,stroke:#2a7,stroke-width:2px,color:#1a1a1a
+    classDef bad fill:#fbeaea,stroke:#a33,stroke-width:2px,color:#a33
+    linkStyle default stroke:#336791,stroke-width:3px
