@@ -4,72 +4,74 @@
 
 **Sem gabarito, de propósito.** Cada questão termina com a seção da aula onde a resposta está. Responda **tudo primeiro**, sem consultar — só depois volte às seções indicadas e corrija.
 
-As três últimas são marcadas **[ENADE]**: seguem o formato do exame, com cinco alternativas e enunciado mais longo.
+As três últimas são marcadas **[ENADE]**: trazem um **texto-base** com uma situação concreta, seguido do comando. São mais longas de ler e cobram interpretação, não memória — as alternativas continuam simples, como nas demais.
+
+> 💡 As três situações das questões **[ENADE]** são as mesmas dos exercícios da aula. Quem fez os exercícios responde em cinco minutos.
 
 ---
 
 ### Q-A06-01
 
-Na notação de Chen, as formas usadas para **entidade**, **relacionamento** e **atributo** são, respectivamente:
+Uma entidade é classificada como **fraca** quando:
 
-- **a)** losango, retângulo e elipse;
-- **b)** retângulo, losango e elipse;
-- **c)** elipse, retângulo e losango;
-- **d)** retângulo, elipse e losango.
-
-↩︎ *Aula 06, seção 1 — O diagrama diz o tipo antes de você ler o nome*
-
----
-
-### Q-A06-02
-
-O que caracteriza uma **entidade fraca**?
-
-- **a)** participar obrigatoriamente de algum relacionamento do modelo;
-- **b)** possuir menos atributos do que as demais entidades do diagrama;
-- **c)** ser apagada automaticamente quando a entidade dona é apagada;
-- **d)** não conseguir se identificar sem a chave da entidade da qual depende.
+- **a)** o vínculo dela com outra entidade é obrigatório em todas as ocorrências;
+- **b)** ela não consegue se identificar sem a chave de outra entidade;
+- **c)** ela tem poucos atributos além do próprio identificador;
+- **d)** ela participa de um relacionamento com cardinalidade N.
 
 ↩︎ *Aula 06, seção 2 — Entidade forte e entidade fraca*
 
 ---
 
-### Q-A06-03
+### Q-A06-02
 
-A biblioteca precisa registrar **a ordem em que cada autor assina** uma obra. Onde esse dado deve ficar no modelo conceitual?
+Um atributo desenhado pendurado no **losango**, e não em nenhuma das duas entidades, indica que aquele dado:
 
-- **a)** no relacionamento entre autor e livro;
-- **b)** como atributo multivalorado de `LIVRO`;
-- **c)** como atributo simples de `AUTOR`;
-- **d)** numa entidade fraca dependente de `AUTOR`.
+- **a)** pertence à entidade que está do lado de cardinalidade N;
+- **b)** é calculado a partir dos atributos das duas entidades ligadas;
+- **c)** só faz sentido para o par de ocorrências que o relacionamento une;
+- **d)** é opcional, e por isso não coube dentro de nenhuma entidade.
 
 ↩︎ *Aula 06, seção 3 — O relacionamento e o que mora dentro dele*
 
 ---
 
-### Q-A06-04
+### Q-A06-03
 
-Uma editora publica muitas obras, e cada obra tem uma única editora. Como isso se escreve na notação de Chen?
+Na convenção deste curso, qual dos trechos abaixo afirma que **uma editora publica vários livros**?
 
-- **a)** `EDITORA ---|N| PUBLICA{PUBLICA} ---|1| LIVRO`
-- **b)** `EDITORA ---|N| PUBLICA{PUBLICA} ---|M| LIVRO`
-- **c)** `EDITORA ---|1| PUBLICA{PUBLICA} ---|N| LIVRO`
-- **d)** `EDITORA ---|1| PUBLICA{PUBLICA} ---|1| LIVRO`
+- **a)** `EDITORA ---|1| PUBLICA ---|N| LIVRO`
+- **b)** `EDITORA ---|N| PUBLICA ---|1| LIVRO`
+- **c)** `EDITORA ---|N| PUBLICA ---|M| LIVRO`
+- **d)** `EDITORA ---|1| PUBLICA ---|1| LIVRO`
 
 ↩︎ *Aula 06, seção 4 — Cardinalidade: quantos de cada lado*
 
 ---
 
-### Q-A06-05
+### Q-A06-04
 
-A **linha dupla** entre uma entidade e um relacionamento indica que:
+A linha dupla `===` desenhada do lado de uma entidade afirma que:
 
-- **a)** o relacionamento possui atributos próprios;
-- **b)** a cardinalidade daquele lado é obrigatoriamente `N`;
-- **c)** as duas entidades ligadas têm a mesma chave primária;
-- **d)** a entidade não pode existir fora daquele relacionamento.
+- **a)** aquela entidade participa do relacionamento com cardinalidade N;
+- **b)** o relacionamento tem pelo menos um atributo próprio;
+- **c)** aquela entidade é fraca e depende da outra para se identificar;
+- **d)** nenhuma ocorrência daquela entidade existe fora daquele relacionamento.
 
 ↩︎ *Aula 06, seção 5 — Participação: pode zero?*
+
+---
+
+### Q-A06-05
+
+Por que um autorrelacionamento exige que as duas pontas recebam um **papel**?
+
+- **a)** porque o Mermaid não desenha laço, e o papel substitui o símbolo que falta;
+- **b)** porque é o papel que define a cardinalidade de cada um dos dois lados;
+- **c)** porque as duas pontas saem da mesma entidade, e sem o nome não se sabe qual é qual;
+- **d)** porque o papel se torna a chave primária da tabela gerada na conversão.
+
+↩︎ *Aula 06, seção 6 — O relacionamento de uma entidade com ela mesma*
 
 ---
 
@@ -77,19 +79,18 @@ A **linha dupla** entre uma entidade e um relacionamento indica que:
 
 **[ENADE]**
 
-Uma equipe modelou o acervo de uma biblioteca afirmando, no diagrama, que cada livro possui um autor e que cada autor pode ter escrito vários livros. O modelo foi aprovado e o cadastro começou.
+A hemeroteca de uma biblioteca universitária controlava os periódicos numa planilha única, com uma linha por fascículo recebido. Cada linha repetia o título da revista, o ISSN e o nome da editora, e trazia o número do fascículo, o mês e o ano.
 
-Na terceira semana, chegou à biblioteca uma obra assinada por três autores. Verificou-se, além disso, que a ficha catalográfica precisa registrar a ordem em que os autores assinam a obra, pois apenas o primeiro aparece na referência abreviada.
+Ao modelar o acervo, a equipe percebeu que os fascículos são numerados de 1 em diante dentro de cada revista: existe o fascículo 3 da revista A e o fascículo 3 da revista B, e os dois são coisas diferentes. Falta decidir como representar o fascículo no modelo conceitual.
 
-Considerando a situação, a alteração correta no modelo conceitual é:
+Considerando a situação apresentada, a representação correta é:
 
-- **A)** acrescentar os atributos `autor2` e `autor3` à entidade `LIVRO`, mantendo o relacionamento como está;
-- **B)** transformar `AUTOR` em entidade fraca de `LIVRO`, identificada pela ordem de assinatura;
-- **C)** manter o relacionamento e registrar a ordem como atributo multivalorado de `LIVRO`;
-- **D)** criar um relacionamento adicional entre `LIVRO` e `AUTOR` para cada posição de assinatura;
-- **E)** tornar o relacionamento N:M e registrar a ordem de assinatura como atributo do relacionamento.
+- **a)** `FASCICULO` como entidade fraca de `REVISTA`, com a numeração servindo de chave parcial;
+- **b)** `FASCICULO` como entidade forte, tendo o número do fascículo como identificador;
+- **c)** o fascículo como atributo multivalorado de `REVISTA`, já que uma revista tem vários;
+- **d)** `FASCICULO` como relacionamento entre `REVISTA` e `EDITORA`, com mês e ano como atributos.
 
-↩︎ *Aula 06, seção 3 — O relacionamento e o que mora dentro dele*
+↩︎ *Aula 06, seção 2 — Entidade forte e entidade fraca*
 
 ---
 
@@ -97,23 +98,18 @@ Considerando a situação, a alteração correta no modelo conceitual é:
 
 **[ENADE]**
 
-Avalie as asserções a seguir e a relação proposta entre elas.
+Uma biblioteca resolveu informatizar o quadro de pessoal. No primeiro rascunho, a analista desenhou duas entidades — `SUPERVISOR` e `ATENDENTE` —, cada uma com matrícula funcional, nome, ramal e data de admissão, ligadas por um relacionamento `CHEFIA` de cardinalidade 1:N.
 
-I. Na biblioteca, `EXEMPLAR` é modelado como entidade fraca de `LIVRO`.
+Três meses depois da implantação, uma atendente foi promovida a supervisora. A equipe descobriu que o registro dela precisaria ser apagado de uma tabela e recriado na outra, e que o histórico de quem ela havia acompanhado passaria a apontar para uma matrícula que não existe mais.
 
-PORQUE
+Considerando a situação descrita, o erro de modelagem cometido no rascunho foi:
 
-II. Toda entidade que participa obrigatoriamente de um relacionamento é classificada como entidade fraca.
+- **a)** usar cardinalidade 1:N onde caberia N:M, já que um atendente tem vários supervisores ao longo do tempo;
+- **b)** deixar de registrar a data de início da supervisão, sem a qual o histórico não se reconstrói;
+- **c)** não criar uma entidade `CARGO`, que permitiria trocar a função sem mexer no registro da pessoa;
+- **d)** modelar como duas entidades aquilo que é uma entidade só, ligada a si mesma em dois papéis.
 
-A respeito dessas asserções, assinale a opção correta.
-
-- **A)** As asserções I e II são proposições verdadeiras, e a II é uma justificativa correta da I;
-- **B)** As asserções I e II são proposições verdadeiras, mas a II não é uma justificativa correta da I;
-- **C)** A asserção I é uma proposição verdadeira, e a II é uma proposição falsa;
-- **D)** A asserção I é uma proposição falsa, e a II é uma proposição verdadeira;
-- **E)** As asserções I e II são proposições falsas.
-
-↩︎ *Aula 06, seção 2 — Entidade forte e entidade fraca*
+↩︎ *Aula 06, seção 6 — O relacionamento de uma entidade com ela mesma*
 
 ---
 
@@ -121,23 +117,18 @@ A respeito dessas asserções, assinale a opção correta.
 
 **[ENADE]**
 
-A respeito da cardinalidade e da participação em um diagrama entidade-relacionamento, avalie as afirmações a seguir.
+O saguão de uma biblioteca tem um guarda-volumes com 120 armários. Cada armário tem um número, fica num corredor e abre com uma chave, que traz um código gravado. Uma chave abre um armário só e nunca é remanejada para outro.
 
-I. A linha dupla indica que a entidade participa do relacionamento com, no máximo, uma ocorrência.
+Ao modelar o guarda-volumes, um estagiário criou as entidades `ARMARIO` e `CHAVE`, ligadas por um relacionamento de cardinalidade 1:1 com participação total dos dois lados. A coordenadora pediu que ele revisse a decisão antes de seguir.
 
-II. Cardinalidade e obrigatoriedade são eixos independentes: um mesmo lado pode ser `1` e opcional, ou `1` e obrigatório.
+Considerando a situação apresentada, o motivo da revisão é que:
 
-III. Um relacionamento muitos-para-muitos é escrito com a mesma letra nos dois lados, indicando quantidades necessariamente iguais.
+- **a)** um relacionamento 1:1 não admite participação total dos dois lados, pois nenhuma das duas entidades poderia ser cadastrada primeiro;
+- **b)** a chave não tem atributo nem relacionamento próprio além do código, e por isso é atributo do armário;
+- **c)** o relacionamento deveria ser 1:N, porque um armário acumula chaves diferentes ao longo do tempo;
+- **d)** `ARMARIO` deveria ser entidade fraca de `CORREDOR`, já que o número só distingue dentro do corredor.
 
-É correto apenas o que se afirma em:
-
-- **A)** I;
-- **B)** II;
-- **C)** III;
-- **D)** I e II;
-- **E)** II e III.
-
-↩︎ *Aula 06, seção 5 — Participação: pode zero?*
+↩︎ *Aula 06, seção 4 — Cardinalidade: quantos de cada lado*
 
 ---
 
