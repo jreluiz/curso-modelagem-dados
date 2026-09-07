@@ -4,7 +4,7 @@
 
 **Sem gabarito, de propósito.** Cada questão termina com a seção da aula onde a resposta está. Responda **tudo primeiro**, sem consultar — só depois volte às seções indicadas e corrija.
 
-As três últimas são marcadas **[ENADE]**: seguem o formato do exame, com cinco alternativas e enunciado mais longo.
+As três últimas são marcadas **[ENADE]**: trazem um **texto-base** com uma situação concreta, seguido do comando. São mais longas de ler e cobram interpretação, não memória — as alternativas continuam simples, como nas demais.
 
 ---
 
@@ -83,11 +83,10 @@ Na reunião seguinte, o bibliotecário informou que um exemplar pode ser emprest
 
 Considerando a situação, a falha de método cometida pela equipe foi:
 
-- **A)** ter escolhido o SGBD antes de conhecer o volume de dados esperado;
-- **B)** ter tomado decisões físicas antes de construir e validar o modelo conceitual com o cliente;
-- **C)** ter criado índices antes de medir o desempenho das consultas mais frequentes;
-- **D)** ter carregado dados de teste antes da conclusão do levantamento de requisitos;
-- **E)** ter adotado o modelo relacional sem antes comparar as alternativas disponíveis.
+- **a)** ter escolhido o SGBD antes de conhecer o volume de dados esperado;
+- **b)** ter tomado decisões físicas antes de construir e validar o modelo conceitual com o cliente;
+- **c)** ter criado índices antes de medir o desempenho das consultas mais frequentes;
+- **d)** ter carregado dados de teste antes da conclusão do levantamento de requisitos.
 
 ↩︎ *Aula 05, seção 3 — O modelo conceitual — o que o mundo é*
 
@@ -97,21 +96,16 @@ Considerando a situação, a falha de método cometida pela equipe foi:
 
 **[ENADE]**
 
-Avalie as asserções a seguir e a relação proposta entre elas.
+Uma clínica-escola mantém o banco do prontuário em um SGBD e decidiu trocar de fornecedor por questão de contrato. A equipe de dados foi consultada sobre o que precisará ser refeito na migração.
 
-I. O modelo físico é o documento adequado para validar, junto ao cliente, o entendimento do minimundo.
+O levantamento mostrou que o diagrama de entidades e relacionamentos validado com a coordenação continua descrevendo corretamente o funcionamento da clínica, e que a estrutura de tabelas e colunas permanece a mesma. O que muda são os tipos exatos de cada coluna, os índices e a forma de armazenamento.
 
-PORQUE
+Considerando a situação apresentada, o documento que precisa ser refeito é o:
 
-II. O modelo físico depende do SGBD escolhido e registra tipos de dados, tamanhos, índices e forma de armazenamento.
-
-A respeito dessas asserções, assinale a opção correta.
-
-- **A)** As asserções I e II são proposições verdadeiras, e a II é uma justificativa correta da I;
-- **B)** As asserções I e II são proposições verdadeiras, mas a II não é uma justificativa correta da I;
-- **C)** A asserção I é uma proposição verdadeira, e a II é uma proposição falsa;
-- **D)** A asserção I é uma proposição falsa, e a II é uma proposição verdadeira;
-- **E)** As asserções I e II são proposições falsas.
+- **a)** modelo conceitual, porque ele descreve o minimundo que o novo SGBD vai atender;
+- **b)** modelo lógico, porque tabelas e colunas são definidas pela linguagem de cada fornecedor;
+- **c)** levantamento de requisitos, porque a troca de fornecedor altera o que o sistema guarda;
+- **d)** modelo físico, porque ele é o único nível que assume compromisso com o SGBD escolhido.
 
 ↩︎ *Aula 05, seção 5 — O modelo físico — como isso vira arquivo*
 
@@ -121,21 +115,16 @@ A respeito dessas asserções, assinale a opção correta.
 
 **[ENADE]**
 
-A respeito da passagem do modelo conceitual para o modelo lógico relacional, avalie as afirmações a seguir.
+Um laboratório de informática empresta equipamentos aos professores. Um professor reserva vários equipamentos ao longo do semestre, e um mesmo equipamento é reservado por vários professores. Para cada reserva, a secretaria precisa registrar a data prevista de retirada.
 
-I. Um relacionamento 1:N é representado por uma coluna acrescentada à tabela do lado N, apontando para a chave da outra tabela.
+No modelo conceitual, a equipe desenhou `PROFESSOR` e `EQUIPAMENTO` ligados por um relacionamento `RESERVA`, com a data prevista como atributo desse relacionamento. Agora precisa traduzir o desenho para o modelo lógico relacional.
 
-II. O modelo lógico independe do modelo de dados adotado, sendo o mesmo documento para bancos relacionais e hierárquicos.
+Considerando a situação apresentada, a tradução correta é:
 
-III. A definição dos índices necessários às consultas mais frequentes faz parte do modelo lógico.
-
-É correto apenas o que se afirma em:
-
-- **A)** I;
-- **B)** II;
-- **C)** I e III;
-- **D)** II e III;
-- **E)** I, II e III.
+- **a)** duas tabelas, com a data prevista como coluna de `EQUIPAMENTO`;
+- **b)** duas tabelas, com a data prevista como coluna de `PROFESSOR`;
+- **c)** três tabelas, com a data prevista na tabela que representa a reserva;
+- **d)** três tabelas, com a data prevista repetida em `PROFESSOR` e em `EQUIPAMENTO`.
 
 ↩︎ *Aula 05, seção 4 — O modelo lógico — como isso vira tabela*
 
