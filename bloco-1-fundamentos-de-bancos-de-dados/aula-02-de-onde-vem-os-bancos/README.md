@@ -162,6 +162,10 @@ Confira no navegador que a pasta apareceu em `github.com/SEU-USUARIO/exercicios-
 
 Entre com uma conta Google, selecione seu nome na lista e informe seu usuário do GitHub — só o usuário, não o endereço do perfil. Se o seu nome ainda não estiver na lista, marque a última opção e escreva o nome completo no campo seguinte. É **uma resposta por aluno** e não dá para editar depois de enviar, então confira antes. A nota é liberada no AVA depois da revisão em sala e da divulgação do gabarito.
 
+**Gabarito comentado:** na [pasta de gabaritos no Google Drive](https://drive.google.com/drive/folders/1IzFgniWA_6cPXI4RWcwLk5PQOMoTXdhv), o arquivo `curso-modelagem-dados-aula-02-gabarito.pdf`.
+
+Consulte só depois de enviar o formulário. Para cada questão ele mostra a alternativa certa, o porquê e o que há de errado em cada uma das outras.
+
 ---
 
 ⬅️ [Aula 01 — A Redundância e a Resposta do SGBD](../aula-01-redundancia-e-o-sgbd/README.md) | ➡️ [Aula 03 — Os Elementos de um Banco de Dados](../aula-03-elementos-de-um-banco/README.md)
