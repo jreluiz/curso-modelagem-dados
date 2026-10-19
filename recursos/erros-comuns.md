@@ -2,7 +2,7 @@
 
 Num curso de modelagem não existe compilador: o modelo errado não reclama, não fica vermelho, não avisa. Ele só custa caro depois. Este catálogo é o substituto — a lista das concepções erradas que aparecem todo semestre, com o sintoma, a causa e a cura.
 
-Duas metades: os erros de **modelagem** (Blocos 1 e 2) e os erros de **abstração e normalização** (Blocos 3 e 4).
+Duas metades: os erros de **modelagem** (Blocos 1 e 2) e os erros de **abstração e normalização** (Bloco 3 e leituras complementares).
 
 ---
 

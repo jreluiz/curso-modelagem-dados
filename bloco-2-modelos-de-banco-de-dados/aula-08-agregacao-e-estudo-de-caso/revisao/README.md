@@ -4,7 +4,7 @@
 
 **Sem gabarito, de propósito.** Cada questão termina com a seção da aula onde a resposta está. Responda **tudo primeiro**, sem consultar — só depois volte às seções indicadas e corrija.
 
-As três últimas são marcadas **[ENADE]**: seguem o formato do exame, com cinco alternativas e enunciado mais longo.
+As três últimas são marcadas **[ENADE]**: trazem um **texto-base** com uma situação concreta, seguido do comando. São mais longas de ler e cobram interpretação, não memória — as alternativas continuam simples, como nas demais.
 
 ---
 
@@ -77,19 +77,18 @@ No ritual de leitura do modelo, qual das perguntas revelaria que uma obra doada,
 
 **[ENADE]**
 
-Uma biblioteca empresta salas de estudo. Um aluno reserva uma sala para uma data e um horário, e uma mesma sala é reservada por diversos alunos ao longo da semana.
+Uma biblioteca universitária oferece oficinas de pesquisa bibliográfica. Um aluno pode se inscrever em várias oficinas, e cada oficina recebe vários alunos — no modelo, um relacionamento N:M entre `ALUNO` e `OFICINA`.
 
-Foi solicitada uma alteração no modelo: o aluno passa a poder requisitar equipamentos — projetor ou notebook — que ficam na sala durante o período reservado. O equipamento não pode ser retirado do prédio e não pertence a nenhuma sala em particular.
+A coordenação pediu para registrar os certificados de conclusão. Cada certificado tem número e data de emissão e corresponde a uma participação específica: o aluno que conclui duas oficinas recebe dois certificados, e quem não conclui não recebe nenhum.
 
-Considerando o modelo entidade-relacionamento, a representação correta é:
+Considerando a situação apresentada, a representação mais adequada para o certificado é:
 
-- **A)** ligar `EQUIPAMENTO` diretamente a `ALUNO`, pois é o aluno quem responde pelo equipamento;
-- **B)** ligar `EQUIPAMENTO` diretamente a `SALA`, pois é nela que o equipamento permanece;
-- **C)** tratar a reserva como uma agregação e ligar `EQUIPAMENTO` a essa unidade;
-- **D)** criar dois relacionamentos independentes, de `EQUIPAMENTO` para `ALUNO` e para `SALA`;
-- **E)** transformar `EQUIPAMENTO` em entidade fraca de `SALA`, identificada pelo horário de uso.
+- **a)** ligar `CERTIFICADO` a `ALUNO`, porque é o aluno quem recebe o documento;
+- **b)** ligar `CERTIFICADO` a `OFICINA`, porque é a oficina que emite o documento;
+- **c)** tratar a inscrição como agregação e ligar `CERTIFICADO` a essa unidade;
+- **d)** criar dois relacionamentos independentes, de `CERTIFICADO` para `ALUNO` e para `OFICINA`.
 
-↩︎ *Aula 08, seção 1 — O relacionamento que precisa se relacionar*
+↩︎ *Aula 08, seção 2 — Agregação: tratar um relacionamento como uma coisa*
 
 ---
 
@@ -97,21 +96,16 @@ Considerando o modelo entidade-relacionamento, a representação correta é:
 
 **[ENADE]**
 
-Avalie as asserções a seguir e a relação proposta entre elas.
+Numa biblioteca, os alunos reservam salas de estudo para uma data e um horário, e o modelo trata a reserva como agregação. Os monitores bolsistas passaram a ter duas funções: cada sala tem um monitor responsável, fixo durante o ano inteiro, e, nas semanas de entrega de trabalhos, um monitor pode ser escalado para acompanhar uma reserva específica.
 
-I. A agregação permite que um relacionamento participe de outro relacionamento.
+O analista propôs ligar `MONITOR` à caixa da agregação nas duas funções, argumentando que assim todas as ligações do monitor ficam no mesmo lugar do diagrama.
 
-PORQUE
+Considerando a situação apresentada, a avaliação mais adequada da proposta é:
 
-II. Relacionamentos muitos-para-muitos dão origem a tabelas associativas no modelo lógico relacional.
-
-A respeito dessas asserções, assinale a opção correta.
-
-- **A)** As asserções I e II são proposições verdadeiras, e a II é uma justificativa correta da I;
-- **B)** As asserções I e II são proposições verdadeiras, mas a II não é uma justificativa correta da I;
-- **C)** A asserção I é uma proposição verdadeira, e a II é uma proposição falsa;
-- **D)** A asserção I é uma proposição falsa, e a II é uma proposição verdadeira;
-- **E)** As asserções I e II são proposições falsas.
+- **a)** a escala depende da reserva e deve sair da agregação, mas a responsabilidade é da sala o ano todo e deve sair de `SALA`;
+- **b)** a proposta está correta, porque um mesmo elemento não deve se ligar a partes diferentes do diagrama;
+- **c)** as duas funções devem sair de `SALA`, porque tanto o responsável quanto o escalado ficam na sala;
+- **d)** as duas funções devem virar atributos do losango `RESERVA`, porque as duas dizem respeito à sala reservada.
 
 ↩︎ *Aula 08, seção 2 — Agregação: tratar um relacionamento como uma coisa*
 
@@ -121,21 +115,16 @@ A respeito dessas asserções, assinale a opção correta.
 
 **[ENADE]**
 
-A respeito da agregação no modelo entidade-relacionamento, avalie as afirmações a seguir.
+No modelo das oficinas de uma biblioteca, a inscrição do aluno na oficina é uma agregação, e o certificado de conclusão se liga a ela. Ao converter o modelo, um estagiário criou a tabela `INSCRICAO(matricula → ALUNO, cod_oficina → OFICINA)` e a tabela `CERTIFICADO(numero, data_emissao, matricula → ALUNO, cod_oficina → OFICINA)`.
 
-I. Ela se justifica quando o elemento externo se liga ao encontro de duas entidades, e não a cada uma delas separadamente.
+Na revisão do esquema, apontou-se que ele aceita um certificado para uma combinação de aluno e oficina que não existe em `INSCRICAO`.
 
-II. No modelo lógico, a agregação corresponde a uma tabela cuja chave é referenciada por quem se liga a ela.
+Considerando a situação apresentada, a correção adequada é:
 
-III. Toda agregação pode ser substituída por dois relacionamentos independentes, sem perda de significado.
-
-É correto apenas o que se afirma em:
-
-- **A)** I;
-- **B)** II;
-- **C)** III;
-- **D)** I e II;
-- **E)** II e III.
+- **a)** acrescentar a `CERTIFICADO` uma coluna com o tema da oficina, para conferência;
+- **b)** eliminar a tabela `INSCRICAO`, que ficou desnecessária com a criação do certificado;
+- **c)** trocar a chave primária de `CERTIFICADO` pelo par formado por `matricula` e `cod_oficina`;
+- **d)** fazer `matricula` e `cod_oficina`, em `CERTIFICADO`, formarem uma única chave estrangeira que aponte para `INSCRICAO`.
 
 ↩︎ *Aula 08, seção 3 — A alternativa: promover o relacionamento a entidade*
 

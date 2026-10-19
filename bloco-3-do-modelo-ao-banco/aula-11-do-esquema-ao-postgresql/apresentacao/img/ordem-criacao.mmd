@@ -1,0 +1,29 @@
+---
+config:
+  theme: base
+  fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif"
+  themeVariables:
+    fontSize: 20px
+    lineColor: "#336791"
+    primaryColor: "#eaf0f5"
+    primaryTextColor: "#1a1a1a"
+    primaryBorderColor: "#336791"
+  flowchart:
+    nodeSpacing: 22
+    rankSpacing: 50
+    padding: 14
+    wrappingWidth: 520
+---
+flowchart LR
+    R1["<b>1ª rodada</b><br/>usuario<br/>editora<br/>autor"] --> R2["<b>2ª rodada</b><br/>aluno · professor<br/>editora_telefone<br/>livro"]
+    R2 --> R3["<b>3ª rodada</b><br/>escreve<br/>exemplar<br/>oficina"]
+    R3 --> R4["<b>4ª rodada</b><br/>emprestimo<br/> <br/> "]
+    class R1 ok
+    class R2,R3,R4 sch
+    classDef leg fill:none,stroke:none,color:#336791
+    classDef erro fill:#fbeaea,stroke:#a33,stroke-width:3px,color:#1a1a1a
+    classDef ok fill:#eaf5ea,stroke:#2a7,stroke-width:3px,color:#1a1a1a
+    classDef sch fill:#fdfdfb,stroke:#336791,stroke-width:2px,color:#1a1a1a
+    classDef cir fill:#ffffff,stroke:#336791,stroke-width:2px,color:#336791
+    classDef code fill:#1e1e1e,stroke:#1e1e1e,color:#e6e6e6,font-family:Menlo
+    linkStyle default stroke:#336791,stroke-width:3px

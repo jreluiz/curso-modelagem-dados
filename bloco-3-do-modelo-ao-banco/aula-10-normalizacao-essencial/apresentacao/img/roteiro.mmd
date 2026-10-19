@@ -1,0 +1,28 @@
+---
+config:
+  theme: base
+  fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif"
+  themeVariables:
+    fontSize: 20px
+    lineColor: "#336791"
+    primaryColor: "#eaf0f5"
+    primaryTextColor: "#1a1a1a"
+    primaryBorderColor: "#336791"
+  flowchart:
+    nodeSpacing: 22
+    rankSpacing: 50
+    padding: 14
+    wrappingWidth: 400
+---
+flowchart LR
+    Q1["<b>1FN</b><br/>Alguma célula<br/>tem uma lista?<br/><i>A lista vira<br/>tabela.</i>"] --> Q2["<b>2FN</b><br/>Algo depende de<br/>parte da chave?<br/><i>Sai com essa<br/>parte.</i>"]
+    Q2 --> Q3["<b>3FN</b><br/>Algo depende de<br/>quem não é chave?<br/><i>Sai com quem<br/>determina.</i>"]
+    Q3 --> F["<b>Conferir</b><br/>A coluna comum<br/>é chave de um lado?<br/><i>Então não<br/>houve perda.</i>"]
+    class Q1,Q2,Q3 sch
+    class F ok
+    classDef leg fill:none,stroke:none,color:#336791
+    classDef erro fill:#fbeaea,stroke:#a33,stroke-width:3px,color:#1a1a1a
+    classDef ok fill:#eaf5ea,stroke:#2a7,stroke-width:3px,color:#1a1a1a
+    classDef sch fill:#fdfdfb,stroke:#336791,stroke-width:2px,color:#1a1a1a
+    classDef cir fill:#ffffff,stroke:#336791,stroke-width:2px,color:#336791
+    linkStyle default stroke:#336791,stroke-width:3px

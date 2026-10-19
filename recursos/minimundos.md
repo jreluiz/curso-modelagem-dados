@@ -211,7 +211,7 @@ Multas por atraso são calculadas por dia e podem ser pagas ou perdoadas por um 
 
 ## Escolhendo um minimundo para o exercício autoral
 
-Este catálogo abastece o **terceiro exercício das Aulas 04, 08, 12 e 16** — os quatro pontos do curso em que você recorta uma realidade própria, em vez de estender a Biblioteca. Três critérios, nesta ordem:
+Este catálogo abastece o **terceiro exercício das Aulas 04 e 08** — os pontos do curso em que você recorta uma realidade própria, em vez de estender a Biblioteca — e o das leituras *Ferramentas CASE na prática* e *3FN e 4FN*. Três critérios, nesta ordem:
 
 1. **Você entende o domínio?** Modelar bem exige saber quando o enunciado está mentindo. Um domínio que você conhece de verdade — o trabalho de alguém da família, um hobby, a rotina de um lugar que você frequenta — vale mais que um tema "impressionante";
 2. **Ele exercita o que a aula acabou de ensinar?** Use a coluna *"a partir de"* da tabela: um minimundo de Bloco 3 escolhido na Aula 08 vai pedir especialização, que você ainda não viu;

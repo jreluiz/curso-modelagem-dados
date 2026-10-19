@@ -11,14 +11,14 @@ flowchart LR
         RES ---|M| SALA[SALA]
         RES --- dh((data_hora))
     end
-    USO ---|1| REQ{REQUISITA}
-    REQ ---|N| EQP[EQUIPAMENTO]
+    USO ---|N| REQ{REQUISITA}
+    REQ ---|M| EQP[EQUIPAMENTO]
     EQP --- pat(("<u>patrimonio</u>"))
 ```
 
 **O que este diagrama afirma sobre o mundo.** Um aluno reserva várias salas ao longo do tempo, e uma sala é reservada por vários alunos: a reserva é um relacionamento N:M, e a `data_hora` pertence a ele — não ao aluno nem à sala.
 
-A caixa em volta diz que *aquele aluno, naquela sala, naquele horário* é **uma unidade**: o `USO_DA_SALA`. É essa unidade que requisita equipamento. O projetor não foi emprestado ao aluno (ele não pode levá-lo para casa) nem pertence à sala (ele é levado até ela) — ele está preso àquele uso específico.
+A caixa em volta diz que *aquele aluno, naquela sala, naquele horário* é **uma unidade**: o `USO_DA_SALA`. É essa unidade que requisita equipamento — vários por uso, e cada equipamento em vários usos ao longo do tempo: a ligação `REQUISITA` também é N:M. O projetor não foi emprestado ao aluno (ele não pode levá-lo para casa) nem pertence à sala (ele é levado até ela) — ele está preso àquele uso específico.
 
 ## O esquema lógico
 

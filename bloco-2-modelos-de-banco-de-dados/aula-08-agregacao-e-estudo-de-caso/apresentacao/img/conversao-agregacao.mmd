@@ -1,0 +1,28 @@
+---
+config:
+  theme: base
+  fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif"
+  themeVariables:
+    fontSize: 20px
+    lineColor: "#336791"
+    primaryColor: "#eaf0f5"
+    primaryTextColor: "#1a1a1a"
+    primaryBorderColor: "#336791"
+    clusterBkg: "#f6f9fc"
+    clusterBorder: "#336791"
+  flowchart:
+    nodeSpacing: 20
+    rankSpacing: 40
+    padding: 14
+    wrappingWidth: 400
+---
+flowchart TD
+    A["<b>agregação</b> USO_DA_SALA, que requisita equipamento"] -->|"vira tabela"| B["<b>RESERVA</b>(cod_reserva, data_hora,<br/>matricula → ALUNO, cod_sala → SALA)"]
+    B -->|"quem se liga a ela aponta para ela"| C["<b>REQUISICAO</b>(cod_reserva → RESERVA,<br/>patrimonio → EQUIPAMENTO)"]
+    class A ok
+    class B,C sch
+    classDef leg fill:none,stroke:none,color:#336791
+    classDef erro fill:#fbeaea,stroke:#a33,stroke-width:3px,color:#1a1a1a
+    classDef ok fill:#eaf5ea,stroke:#2a7,stroke-width:3px,color:#1a1a1a
+    classDef sch fill:#fdfdfb,stroke:#336791,stroke-width:2px,color:#1a1a1a
+    linkStyle default stroke:#336791,stroke-width:3px

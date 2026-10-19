@@ -1,0 +1,36 @@
+---
+config:
+  theme: base
+  fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif"
+  themeVariables:
+    fontSize: 20px
+    lineColor: "#336791"
+    primaryColor: "#eaf0f5"
+    primaryTextColor: "#1a1a1a"
+    primaryBorderColor: "#336791"
+  flowchart:
+    nodeSpacing: 22
+    rankSpacing: 50
+    padding: 14
+    wrappingWidth: 520
+---
+flowchart LR
+    L1["Introdução aos Bancos de Dados"] --> E1["Editora Aurora"]
+    L1 --> E2["Editora Vértice"]
+    L1 --> E3["Editora Ponte Alta"]
+    L3["SQL para Iniciantes"] --> E1
+    L3 --> E2
+    L3 --> E3
+    L5["História da Computação"] --> E1
+    L5 --> E2
+    L5 --> E3
+    class L1,L3,L5 sch
+    class E1,E2,E3 sch
+    classDef leg fill:none,stroke:none,color:#336791
+    classDef erro fill:#fbeaea,stroke:#a33,stroke-width:3px,color:#1a1a1a
+    classDef ok fill:#eaf5ea,stroke:#2a7,stroke-width:3px,color:#1a1a1a
+    classDef sch fill:#fdfdfb,stroke:#336791,stroke-width:2px,color:#1a1a1a
+    classDef cir fill:#ffffff,stroke:#336791,stroke-width:2px,color:#336791
+    classDef code fill:#1e1e1e,stroke:#1e1e1e,color:#e6e6e6,font-family:Menlo
+    linkStyle default stroke:#a33,stroke-width:2px,stroke-dasharray:6 4
+    linkStyle 0,4,8 stroke:#2a7,stroke-width:4px,stroke-dasharray:0

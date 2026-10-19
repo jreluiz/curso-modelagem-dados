@@ -1,0 +1,30 @@
+---
+config:
+  theme: base
+  fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif"
+  themeVariables:
+    fontSize: 20px
+    lineColor: "#336791"
+    primaryColor: "#eaf0f5"
+    primaryTextColor: "#1a1a1a"
+    primaryBorderColor: "#336791"
+  flowchart:
+    nodeSpacing: 22
+    rankSpacing: 45
+    padding: 14
+    wrappingWidth: 400
+---
+flowchart LR
+    PESSOA[PESSOA] --- O(("o"))
+    O --- ALUNO[ALUNO]
+    O --- PROF[PROFESSOR]
+    L1["linha <b>simples</b>: pode não ser nenhum<br/>— o funcionário"] -.- PESSOA
+    L2["<b>o</b>: pode ser os dois<br/>— o professor no mestrado"] -.- O
+    class O cir
+    class L1,L2 leg
+    classDef leg fill:none,stroke:none,color:#336791
+    classDef erro fill:#fbeaea,stroke:#a33,stroke-width:3px,color:#1a1a1a
+    classDef ok fill:#eaf5ea,stroke:#2a7,stroke-width:3px,color:#1a1a1a
+    classDef sch fill:#fdfdfb,stroke:#336791,stroke-width:2px,color:#1a1a1a
+    classDef cir fill:#ffffff,stroke:#336791,stroke-width:2px,color:#336791
+    linkStyle default stroke:#336791,stroke-width:3px

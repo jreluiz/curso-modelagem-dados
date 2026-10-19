@@ -178,7 +178,7 @@ flowchart LR
     D --- PROF[PROFESSOR]
 ```
 
-Esse desenho afirma: todo usuário é aluno **ou** professor (total, pela linha dupla), e nunca os dois ao mesmo tempo (disjunta, pelo `d`). Trocar o `d` por `o` permite ser os dois; trocar `===` por `---` permite não ser nenhum. As quatro combinações estão desenhadas no [exemplo da Aula 11](../bloco-3-abordagem-entidade-relacionamento/aula-11-especializacao-e-generalizacao/exemplos/especializacao-usuario.md).
+Esse desenho afirma: todo usuário é aluno **ou** professor (total, pela linha dupla), e nunca os dois ao mesmo tempo (disjunta, pelo `d`). Trocar o `d` por `o` permite ser os dois; trocar `===` por `---` permite não ser nenhum. As quatro combinações estão desenhadas no [exemplo da leitura *Especialização, generalização e as ferramentas*](../leituras-complementares/especializacao-e-generalizacao/exemplos/especializacao-usuario.md).
 
 > 📏 **Regra do curso:** desenhe **poucos atributos** por diagrama — a chave e mais dois ou três que importam para o assunto. Os demais vão numa lista em texto, abaixo do diagrama. Diagrama de DER serve para mostrar **estrutura**, não para ser o inventário completo das colunas.
 

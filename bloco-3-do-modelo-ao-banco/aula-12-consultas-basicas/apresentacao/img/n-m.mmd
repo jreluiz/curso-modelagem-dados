@@ -1,0 +1,28 @@
+---
+config:
+  theme: base
+  fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif"
+  themeVariables:
+    fontSize: 20px
+    lineColor: "#336791"
+    primaryColor: "#eaf0f5"
+    primaryTextColor: "#1a1a1a"
+    primaryBorderColor: "#336791"
+  flowchart:
+    nodeSpacing: 22
+    rankSpacing: 50
+    padding: 14
+    wrappingWidth: 520
+---
+flowchart LR
+    L["<b>LIVRO</b><br/>titulo"] ---|"isbn"| S["<b>ESCREVE</b><br/>isbn · cpf · ordem"]
+    S ---|"cpf"| A["<b>AUTOR</b><br/>sobrenome"]
+    class L,A ok
+    class S sch
+    classDef leg fill:none,stroke:none,color:#336791
+    classDef erro fill:#fbeaea,stroke:#a33,stroke-width:3px,color:#1a1a1a
+    classDef ok fill:#eaf5ea,stroke:#2a7,stroke-width:3px,color:#1a1a1a
+    classDef sch fill:#fdfdfb,stroke:#336791,stroke-width:2px,color:#1a1a1a
+    classDef cir fill:#ffffff,stroke:#336791,stroke-width:2px,color:#336791
+    classDef code fill:#1e1e1e,stroke:#1e1e1e,color:#e6e6e6,font-family:Menlo
+    linkStyle default stroke:#336791,stroke-width:3px

@@ -1,0 +1,32 @@
+---
+config:
+  theme: base
+  fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif"
+  themeVariables:
+    fontSize: 20px
+    lineColor: "#336791"
+    primaryColor: "#eaf0f5"
+    primaryTextColor: "#1a1a1a"
+    primaryBorderColor: "#336791"
+  flowchart:
+    nodeSpacing: 8
+    rankSpacing: 50
+    padding: 9
+    wrappingWidth: 520
+---
+flowchart LR
+    L1["Introdução aos Bancos de Dados · <b>…0101</b>"] --> E1["<b>…0101</b> · Editora Aurora"]
+    L2["Modelagem na Prática · <b>…0101</b>"] --> E1
+    L3["SQL para Iniciantes · <b>…0102</b>"] --> E2["<b>…0102</b> · Editora Vértice"]
+    L4["Algoritmos em Português · <b>…0102</b>"] --> E2
+    L5["História da Computação · <b>…0103</b>"] --> E3["<b>…0103</b> · Editora Ponte Alta"]
+    L6["Projeto de Sistemas · <b>…0103</b>"] --> E3
+    class L1,L2,L3,L4,L5,L6 sch
+    class E1,E2,E3 ok
+    classDef leg fill:none,stroke:none,color:#336791
+    classDef erro fill:#fbeaea,stroke:#a33,stroke-width:3px,color:#1a1a1a
+    classDef ok fill:#eaf5ea,stroke:#2a7,stroke-width:3px,color:#1a1a1a
+    classDef sch fill:#fdfdfb,stroke:#336791,stroke-width:2px,color:#1a1a1a
+    classDef cir fill:#ffffff,stroke:#336791,stroke-width:2px,color:#336791
+    classDef code fill:#1e1e1e,stroke:#1e1e1e,color:#e6e6e6,font-family:Menlo
+    linkStyle default stroke:#336791,stroke-width:3px

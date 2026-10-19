@@ -1,0 +1,28 @@
+---
+config:
+  theme: base
+  fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif"
+  themeVariables:
+    fontSize: 20px
+    lineColor: "#336791"
+    primaryColor: "#eaf0f5"
+    primaryTextColor: "#1a1a1a"
+    primaryBorderColor: "#336791"
+  flowchart:
+    nodeSpacing: 22
+    rankSpacing: 50
+    padding: 14
+    wrappingWidth: 400
+---
+flowchart LR
+    R["<b>RETIRADA</b>(<u>isbn, numero_ex,</u><br/><u>data_retirada</u>, codigo_usuario)"] -->|"isbn"| L["<b>LIVRO</b>(<u>isbn</u>,<br/>titulo, cnpj)"]
+    L -->|"cnpj"| E["<b>EDITORA</b><br/>(<u>cnpj</u>, nome)"]
+    R -->|"codigo_usuario"| U["<b>USUARIO</b><br/>(<u>codigo</u>, nome)"]
+    A["<b>LIVRO_AUTOR</b><br/>(<u>isbn, autor</u>)"] -->|"isbn"| L
+    class R,L,E,U,A ok
+    classDef leg fill:none,stroke:none,color:#336791
+    classDef erro fill:#fbeaea,stroke:#a33,stroke-width:3px,color:#1a1a1a
+    classDef ok fill:#eaf5ea,stroke:#2a7,stroke-width:3px,color:#1a1a1a
+    classDef sch fill:#fdfdfb,stroke:#336791,stroke-width:2px,color:#1a1a1a
+    classDef cir fill:#ffffff,stroke:#336791,stroke-width:2px,color:#336791
+    linkStyle default stroke:#336791,stroke-width:3px

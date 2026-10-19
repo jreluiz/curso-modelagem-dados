@@ -36,6 +36,22 @@ Leia o que ele permite: o projetor está ligado à Ana **e** à sala 204, sem qu
 
 O equipamento não se liga ao aluno nem à sala: liga-se **ao par**, àquela reserva específica. É precisamente o problema que a agregação resolve.
 
+### ✏️ Tente você
+
+Os alunos se inscrevem nas **oficinas** de pesquisa bibliográfica — um N:M entre `ALUNO` e `OFICINA`. Chegaram duas informações novas. Para cada uma, diga se ela é **atributo do losango** ou se é **uma coisa que se liga ao encontro** do aluno com a oficina:
+
+1. a **nota de participação** que o instrutor dá a cada aluno em cada oficina;
+2. o **material impresso** entregue ao aluno naquela oficina — cada material tem número de patrimônio e volta a ser entregue em outras oficinas.
+
+<details>
+<summary>Resposta</summary>
+
+1. **Atributo do losango.** A nota é **um valor** por par aluno-oficina, e cabe dentro do relacionamento, como a `ordem` do `ESCREVE` na Aula 06. Nada se liga ao par: o par só **tem** um valor.
+2. **Uma coisa que se liga ao encontro.** O material tem identidade própria — o patrimônio — e se liga àquela participação específica, exatamente como o projetor se liga à reserva.
+
+A pergunta que separa os dois: o que está do outro lado é **um valor** do par, ou **uma coisa** com identidade própria?
+</details>
+
 ## 2. Agregação: tratar um relacionamento como uma coisa
 
 **Agregação** é o recurso do modelo entidade-relacionamento que trata **um relacionamento inteiro como se fosse uma entidade**, para que ele possa participar de outro relacionamento.
@@ -49,8 +65,8 @@ flowchart LR
         RES ---|M| SALA[SALA]
         RES --- dh((data_hora))
     end
-    USO ---|1| REQ{REQUISITA}
-    REQ ---|N| EQP[EQUIPAMENTO]
+    USO ---|N| REQ{REQUISITA}
+    REQ ---|M| EQP[EQUIPAMENTO]
     EQP --- pat(("<u>patrimonio</u>"))
 ```
 
@@ -61,6 +77,27 @@ Lendo o desenho: o que está dentro da caixa é uma unidade chamada `USO_DA_SALA
 > ⚠️ **Nem todo relacionamento a mais é agregação.** Se o equipamento fosse simplesmente *do aluno* — ele leva o projetor para onde quiser —, bastava um relacionamento comum entre `ALUNO` e `EQUIPAMENTO`. A agregação só se justifica quando a coisa de fora **depende do par**, e não de cada um separadamente.
 
 > 📖 O Heuser trata a agregação junto com as construções avançadas do modelo ER, com a mesma notação de caixa em volta.
+
+### ✏️ Tente você
+
+Desenhe em Mermaid o item 2 do Tente você anterior: a inscrição do aluno na oficina como agregação, e o `MATERIAL` ligado a ela. Cada participação recebe vários materiais, e cada material é entregue em várias participações ao longo do ano.
+
+<details>
+<summary>Resposta</summary>
+
+```mermaid
+flowchart LR
+    subgraph PART[PARTICIPACAO]
+        ALUNO[ALUNO] ---|N| INS{INSCREVE_SE}
+        INS ---|M| OFI[OFICINA]
+    end
+    PART ---|N| REC{RECEBE}
+    REC ---|M| MAT[MATERIAL]
+    MAT --- pat(("<u>patrimonio</u>"))
+```
+
+A aresta do `RECEBE` sai **da caixa**, e não de `ALUNO` nem de `OFICINA`: é isso que o desenho afirma. E as duas pontas do `RECEBE` têm letra de muitos, porque a ligação nova também é N:M.
+</details>
 
 ## 3. A alternativa: promover o relacionamento a entidade
 
@@ -80,6 +117,25 @@ Qual usar? A diferença é de **momento**, não de gosto:
 | Quando escolher | ao desenhar o DER com o cliente | ao converter para tabelas |
 
 E é isso que acontece na conversão: **toda agregação vira uma tabela associativa** no modelo lógico, e quem se liga a ela referencia a chave dessa tabela. O `REQUISITA` do diagrama acima virou a tabela `REQUISICAO`, que aponta para a reserva inteira — não para o aluno, não para a sala.
+
+### ✏️ Tente você
+
+Converta para esquema lógico a agregação que você desenhou no Tente você anterior — participação na oficina e material recebido.
+
+<details>
+<summary>Resposta</summary>
+
+```
+   ALUNO(matricula, nome)
+   OFICINA(codigo, tema, data)
+   MATERIAL(patrimonio, descricao)
+   PARTICIPACAO(matricula → ALUNO, cod_oficina → OFICINA)
+   RECEBE(matricula + cod_oficina → PARTICIPACAO,
+          patrimonio → MATERIAL)
+```
+
+A agregação virou a tabela `PARTICIPACAO`, e o `RECEBE` aponta para ela com **uma chave estrangeira de duas colunas** — o par inteiro. Se `RECEBE` tivesse `matricula → ALUNO` e `cod_oficina → OFICINA` como duas ligações independentes, aceitaria material entregue numa oficina que o aluno nunca fez: a combinação impossível da seção 1, voltando pela tradução.
+</details>
 
 > ⚠️ **Não desenhe o retângulo da agregação em volta de qualquer coisa "para dar destaque".** A caixa tem significado: ela diz *"isto aqui é a unidade que participa da próxima ligação"*. Caixa sem relacionamento saindo dela não é agregação, é enfeite — e confunde quem lê.
 
@@ -106,6 +162,24 @@ Dessa descrição saem as regras numeradas da Aula 04. Nove bastam:
 ```
 
 > 💡 Repare que a **RN-08 e a RN-09 não vão virar desenho nenhum** — prazo e política de guarda não têm símbolo em Chen. Elas ficam na lista, em texto, e é assim que se evita perder informação por falta de notação. Um modelo é o diagrama **mais** a lista.
+
+### ✏️ Tente você
+
+O balcão mandou mais uma frase: *"Um aluno pode reservar um exemplar que está emprestado. Cada exemplar tem no máximo uma reserva ativa, e a reserva vale por 48 horas depois da devolução — passado o prazo, o exemplar volta para a estante."*
+
+Escreva as regras numeradas que saem dela, continuando a partir de RN-10, e diga quais viram desenho e quais ficam só em texto.
+
+<details>
+<summary>Resposta</summary>
+
+```
+   RN-10  Um aluno pode reservar exemplares que estão emprestados.
+   RN-11  Um exemplar tem no máximo uma reserva ativa.
+   RN-12  A reserva vale 48 horas depois da devolução.
+```
+
+Só a **RN-10** vira desenho: um relacionamento `RESERVA` entre `ALUNO` e `EXEMPLAR`. A **RN-11** e a **RN-12** ficam em texto, pela mesma razão da RN-08: elas têm **tempo dentro**. "Ativa" e "48 horas" dependem do relógio, e o diagrama de Chen não tem símbolo para relógio. Ao longo da história um exemplar tem muitas reservas; o que a RN-11 limita é quantas valem **ao mesmo tempo**.
+</details>
 
 ## 5. Estudo de caso — o projeto, parte 2: o diagrama e o esquema
 
@@ -162,11 +236,26 @@ Um modelo entregue sem esta última etapa é um modelo não conferido. São quat
 
 ## 🏋️ Exercícios da aula
 
-Na pasta `aula-08/` do seu repositório:
+Use o **modelo entidade-relacionamento** para o projeto conceitual das bases de dados abaixo. Em todos os exercícios:
 
-1. **`ex01.md`** — a biblioteca oferece **oficinas** de pesquisa bibliográfica, em que os alunos se inscrevem. Para cada situação, diga se ela **exige agregação** ou se um relacionamento comum resolve, justificando em duas linhas: (a) o comentário que o bibliotecário registra sobre cada empréstimo; (b) o certificado, com número e data de emissão, entregue ao aluno que participou de uma oficina; (c) o projetor instalado permanentemente em uma das salas de estudo; (d) o monitor designado para acompanhar um aluno numa oficina específica. *Confere assim: duas exigem agregação e duas não — e nas duas que não exigem, a coisa de fora pertence a **uma** entidade só.*
+- para cada **entidade**, especifique os atributos relevantes — simples, compostos ou multivalorados — incluindo o **atributo identificador**;
+- para cada **relacionamento**, dê a **cardinalidade** dos dois lados, diga se a **participação** de cada entidade é total ou parcial e inclua os atributos do relacionamento, se houver;
+- nas **agregações**, diga qual relacionamento virou unidade e o que se liga a ela;
+- entregue também o **esquema lógico**, marcando as chaves primárias e indicando com `→` cada chave estrangeira e a tabela que ela aponta.
 
-2. **`ex02.md`** — converta para esquema lógico o diagrama de agregação da seção 2, no formato da Aula 07. Depois escreva **uma linha** dizendo o que aconteceria com a tabela do equipamento se a reserva fosse apagada, e qual política de exclusão você adotaria. *Confere assim: saem quatro tabelas, e a que representa a requisição referencia **a reserva inteira** — se ela tem uma coluna para o aluno e outra para a sala separadamente, a agregação se perdeu na tradução.*
+Cada enunciado diz **o que se deseja registrar**. Ele não diz o que é entidade, o que é atributo, o que é relacionamento e o que é agregação — essa decisão é sua, e é o exercício.
+
+> 💡 O percurso de um projeto inteiro, do texto ao esquema, está em [`estudo-de-caso-biblioteca.md`](exemplos/estudo-de-caso-biblioteca.md); a agregação da seção 2, desenhada e convertida, em [`agregacao-sala-equipamento.md`](exemplos/agregacao-sala-equipamento.md). Leia antes de começar.
+
+Na pasta `aula-08/` do seu repositório, um arquivo `.md` por exercício:
+
+1. **`ex01.md`** — A biblioteca oferece **oficinas de pesquisa bibliográfica**. De cada oficina guardam-se um código, o tema e a data; de cada aluno, a matrícula e o nome. Um aluno pode se inscrever em várias oficinas, e uma oficina recebe vários alunos. Quem conclui uma oficina recebe um **certificado**, com número único e data de emissão. O certificado é **daquela participação**: o aluno que conclui duas oficinas recebe dois certificados, e quem se inscreve e não conclui não recebe nenhum.
+
+   *Confere assim: o certificado não se liga ao aluno nem à oficina — se ligou, o seu modelo não sabe dizer de qual oficina é o certificado. A ligação dele é 1:1, com participação total de um lado só. E, no esquema lógico, a chave estrangeira do certificado tem duas colunas.*
+
+2. **`ex02.md`** — A biblioteca tem **salas de estudo**, cada uma com número e capacidade, que os alunos reservam para uma data e um horário. Ela também tem **monitores** — estudantes bolsistas, com matrícula e nome. Cada sala tem um monitor **responsável**, que cuida dela o ano inteiro; um monitor pode ser responsável por mais de uma sala, e há monitores que não são responsáveis por nenhuma. Nas semanas de entrega de trabalhos, um monitor pode ainda ser **escalado** para acompanhar uma reserva específica — aquele aluno, naquela sala, naquele horário —, e cada reserva tem no máximo um monitor escalado.
+
+   *Confere assim: `MONITOR` aparece em dois relacionamentos, e eles saem de lugares diferentes do desenho — um de `SALA`, o outro da caixa da agregação. Se os dois saem de `SALA`, o modelo perdeu a qual reserva o monitor foi escalado; se os dois saem da caixa, o responsável passou a mudar a cada reserva.*
 
 3. **`ex03.md`** — **exercício autoral.** Escolha um minimundo de dificuldade ⭐⭐ do [catálogo](../../recursos/minimundos.md) — Academia, Oficina mecânica, Hotel ou Escola de idiomas — e entregue o projeto conceitual completo, na ordem da seção 4: (i) a lista de **regras numeradas** que você extraiu do enunciado, com no mínimo oito; (ii) o **DER em Mermaid**, com cardinalidade e participação nos dois lados de cada relacionamento; (iii) o **esquema lógico**; (iv) o resultado das **quatro perguntas** da seção 6, escrito. *Confere assim: cada relacionamento do seu DER tem que apontar para pelo menos uma regra da sua lista — o que não aponta para regra nenhuma é invenção sua e deve sair, e a regra que não virou desenho precisa aparecer na lista em texto.*
 
@@ -189,4 +278,4 @@ Confira no navegador que a pasta apareceu em `github.com/SEU-USUARIO/exercicios-
 
 ---
 
-⬅️ [Aula 07 — Do Relacional à Integridade Referencial](../aula-07-relacional-e-integridade/README.md) | ➡️ [Aula 09 — Como se Conduz uma Modelagem](../../bloco-3-abordagem-entidade-relacionamento/aula-09-como-se-conduz-uma-modelagem/README.md)
+⬅️ [Aula 07 — Do Relacional à Integridade Referencial](../aula-07-relacional-e-integridade/README.md) | ➡️ [Aula 09 — Especialização e o Esquema Completo](../../bloco-3-do-modelo-ao-banco/aula-09-especializacao-e-o-esquema-completo/README.md)

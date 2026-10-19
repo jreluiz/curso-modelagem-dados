@@ -39,7 +39,7 @@ Vale separar duas coisas que se confundem:
 
 ## 3. As três anomalias
 
-Repetir dado não é só desperdiçar espaço. A repetição produz três problemas com nome próprio, e você vai reencontrar os três no Bloco 4, quando eles ganharem uma cura com regra escrita.
+Repetir dado não é só desperdiçar espaço. A repetição produz três problemas com nome próprio, e você vai reencontrar os três na Aula 10, quando eles ganharem uma cura com regra escrita.
 
 **Anomalia de alteração.** A Ana mudou de nome. Quantas linhas você precisa alterar? Todas as dela. Se esquecer uma, a planilha passa a ter duas Anas — que é exatamente o estado em que ela já está.
 

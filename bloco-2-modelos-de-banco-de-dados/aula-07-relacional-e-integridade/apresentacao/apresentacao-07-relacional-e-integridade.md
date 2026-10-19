@@ -45,7 +45,7 @@ Agora ele vira **tabela** — e cada traço do desenho vira uma decisão de esqu
 
 ![w:1140](img/relacao-nomes.svg)
 
-Três deles você já viu na Aula 03. O que muda aqui é que eles ganham **definição precisa** — e é sobre ela que a normalização do Bloco 4 vai trabalhar.
+Três deles você já viu na Aula 03. O que muda aqui é que eles ganham **definição precisa** — e é sobre ela que a normalização da Aula 10 vai trabalhar.
 
 ---
 

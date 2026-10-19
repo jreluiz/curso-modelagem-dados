@@ -1,0 +1,30 @@
+---
+config:
+  theme: base
+  fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif"
+  themeVariables:
+    fontSize: 20px
+    lineColor: "#336791"
+    primaryColor: "#eaf0f5"
+    primaryTextColor: "#1a1a1a"
+    primaryBorderColor: "#336791"
+    clusterBkg: "#f6f9fc"
+    clusterBorder: "#336791"
+  flowchart:
+    nodeSpacing: 22
+    rankSpacing: 50
+    padding: 14
+    wrappingWidth: 400
+---
+flowchart LR
+    EXEMPLAR[[EXEMPLAR]] ---|1| REF{REFERE_SE}
+    REF ===|N| EMP[EMPRESTIMO]
+    ALUNO[ALUNO] ---|1| FAZ{FAZ}
+    FAZ ===|N| EMP
+    EMP --- dr((data_retirada))
+    EMP --- dd((data_devolucao))
+    classDef leg fill:none,stroke:none,color:#336791
+    classDef erro fill:#fbeaea,stroke:#a33,stroke-width:3px,color:#1a1a1a
+    classDef ok fill:#eaf5ea,stroke:#2a7,stroke-width:3px,color:#1a1a1a
+    classDef sch fill:#fdfdfb,stroke:#336791,stroke-width:2px,color:#1a1a1a
+    linkStyle default stroke:#336791,stroke-width:3px
