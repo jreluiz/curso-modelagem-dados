@@ -17,8 +17,8 @@
 
 - [x] **06/10** · 🔍 Entrega e correção da avaliação do 1º bimestre
 - [x] **13/10** · sem aula — feriado de 15/10 antecipado
-- [ ] **20/10** · Aulas 07 + 08 — [Do relacional à integridade referencial](bloco-2-modelos-de-banco-de-dados/aula-07-relacional-e-integridade/README.md) e [Agregação e estudo de caso](bloco-2-modelos-de-banco-de-dados/aula-08-agregacao-e-estudo-de-caso/README.md) · **encontro duplo** · fecha o Bloco 2
-- [ ] **27/10** · Aula 09 — [Especialização e o esquema completo](bloco-3-do-modelo-ao-banco/aula-09-especializacao-e-o-esquema-completo/README.md)
+- [x] **20/10** · Aula 07 — [Do relacional à integridade referencial](bloco-2-modelos-de-banco-de-dados/aula-07-relacional-e-integridade/README.md)
+- [ ] **27/10** · Aulas 08 + 09 — [Agregação e estudo de caso](bloco-2-modelos-de-banco-de-dados/aula-08-agregacao-e-estudo-de-caso/README.md) e [Especialização e o esquema completo](bloco-3-do-modelo-ao-banco/aula-09-especializacao-e-o-esquema-completo/README.md) · **encontro duplo** · a 08 fecha o Bloco 2
 - [ ] **03/11** · Aula 10 — [Normalização essencial](bloco-3-do-modelo-ao-banco/aula-10-normalizacao-essencial/README.md)
 - [ ] **10/11** · Aula 11 — [Do esquema ao PostgreSQL](bloco-3-do-modelo-ao-banco/aula-11-do-esquema-ao-postgresql/README.md) · laboratório
 - [ ] **17/11** · 🧠 **Revisão geral para a avaliação** · revisões das Aulas 07–11 em casa
@@ -38,7 +38,7 @@
 ## Decisões deste cronograma
 
 - **Entre 22/09 e 13/10 não houve aula nova.** 22/09 foi a revisão presencial, 29/09 a avaliação, 06/10 a entrega e a correção das provas, e 13/10 ficou sem aula com o feriado de 15/10 antecipado. O Bloco 2 recomeça em 20/10;
-- **Um encontro duplo, em 20/10:** as Aulas 07 e 08, que fecham o Bloco 2 — a 07 converte o DER em tabelas e a 08 faz o projeto completo, do minimundo ao esquema;
+- **Um encontro duplo, em 27/10:** as Aulas 08 e 09. O duplo estava previsto para 20/10, com as Aulas 07 e 08, mas lá só coube a 07, e a 08 passou para o encontro seguinte. Ela fecha o Bloco 2 com o projeto completo, do minimundo ao esquema, e a 09 abre o Bloco 3 completando a conversão;
 - **O Bloco 3 vai do modelo ao banco.** Ele completa a conversão (Aula 09), normaliza em um encontro (Aula 10) e cria o banco no PostgreSQL (Aulas 11 e 12). Os conteúdos que não couberam viraram leituras complementares;
 - **17/11 é revisão, e a Aula 12 fica fora da avaliação.** É o mesmo padrão do 1º bimestre, e a aula de consultas é prática: ela cai em 01/12, depois da prova.
 
