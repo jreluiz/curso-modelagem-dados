@@ -160,7 +160,7 @@ O **modelo físico** decide como o SGBD escolhido vai gravar aquilo em disco: o 
 - **É o único nível em que desempenho é assunto.** Antes disso, discutir velocidade é adivinhação;
 - **É o mais fácil de mudar depois.** Criar um índice não altera o significado de nada — trocar uma entidade, sim.
 
-Este curso **para no lógico**, de propósito. O físico exige escolher um SGBD, medir carga real e conhecer a linguagem de definição de dados — três assuntos que não cabem em 16 aulas e que só fazem sentido depois que o modelo está certo.
+Este curso **chega ao físico só no fim**, de propósito. O físico exige escolher um SGBD e conhecer a linguagem de definição de dados, e só faz sentido depois que o modelo está certo. Por isso as aulas ficam no conceitual e no lógico até a [Aula 11](../../bloco-3-do-modelo-ao-banco/aula-11-do-esquema-ao-postgresql/README.md), quando o esquema vira um banco no PostgreSQL, com o tipo de cada coluna. Medir carga real e escolher índices ficam fora do curso.
 
 > ⚠️ **Índice não conserta modelo.** Um esquema com dado repetido em três tabelas continua se contradizendo depois de qualquer índice. A cura para modelo ruim é modelagem — a Aula 01 inteira é sobre isso.
 

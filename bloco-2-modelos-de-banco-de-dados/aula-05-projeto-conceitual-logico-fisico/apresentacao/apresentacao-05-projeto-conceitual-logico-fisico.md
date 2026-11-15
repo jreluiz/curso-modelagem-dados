@@ -224,13 +224,13 @@ A cura para modelo ruim é **modelagem** — a Aula 01 inteira é sobre isso.
 
 ---
 
-## Este curso para no lógico
+## O físico fica para o fim do curso
 
-E para **de propósito**.
+E fica **de propósito**.
 
-O físico exige escolher um SGBD, medir carga real e conhecer a linguagem de definição de dados.
+O físico exige escolher um SGBD e conhecer a linguagem de definição de dados — e **só faz sentido depois que o modelo está certo**.
 
-São três assuntos que não cabem em 16 aulas — e que **só fazem sentido depois que o modelo está certo**.
+É na **Aula 11** que o esquema vira um banco no PostgreSQL.
 
 ---
 

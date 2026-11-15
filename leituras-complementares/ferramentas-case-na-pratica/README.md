@@ -19,7 +19,7 @@ A família se dividiu cedo, e a divisão ainda organiza o mercado:
 
 Os anos 90 prometeram que a ferramenta geraria o sistema inteiro a partir do modelo, e a promessa não se cumpriu. O que sobrou é modesto e útil: **desenho, verificação de consistência, conversão entre níveis e engenharia reversa** — esta última partindo de um banco que já existe para produzir o modelo correspondente, que é como se documenta sistema herdado.
 
-> 💡 A ferramenta que você vai usar no resto do curso é *upper* CASE. Ela para exatamente onde este curso para: no modelo lógico.
+> 💡 Neste curso, a ferramenta faz o trabalho de *upper* CASE: desenhar o DER e convertê-lo para o modelo lógico. O passo seguinte, o esquema virando banco, o curso faz à mão, em SQL, na [Aula 11](../../bloco-3-do-modelo-ao-banco/aula-11-do-esquema-ao-postgresql/README.md), para que cada decisão do modelo apareça num comando que você mesmo escreveu.
 
 Duas lições dessa história valem mais que os nomes das categorias:
 

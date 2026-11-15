@@ -139,7 +139,7 @@ Não passa no teste: **não tem característica própria** e ninguém vai pendur
    1. REQUISITOS   ──▶  o que o cliente precisa guardar   (Aula 04)
    2. CONCEITUAL   ──▶  entidades, atributos, ligações    (Bloco 2)
    3. LÓGICO       ──▶  tabelas, chaves e ligações        (Bloco 2)
-   4. FÍSICO       ──▶  tipos, índices, armazenamento     (fora do curso)
+   4. FÍSICO       ──▶  tipos, índices, armazenamento     (Aula 11)
 ```
 
 **A ordem não se inverte** — e cada etapa é independente da seguinte.

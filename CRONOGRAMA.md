@@ -21,7 +21,7 @@
 - [ ] **27/10** · Aulas 08 + 09 — [Agregação e estudo de caso](bloco-2-modelos-de-banco-de-dados/aula-08-agregacao-e-estudo-de-caso/README.md) e [Especialização e o esquema completo](bloco-3-do-modelo-ao-banco/aula-09-especializacao-e-o-esquema-completo/README.md) · **encontro duplo** · a 08 fecha o Bloco 2
 - [ ] **03/11** · Aula 10 — [Normalização essencial](bloco-3-do-modelo-ao-banco/aula-10-normalizacao-essencial/README.md)
 - [ ] **10/11** · Aula 11 — [Do esquema ao PostgreSQL](bloco-3-do-modelo-ao-banco/aula-11-do-esquema-ao-postgresql/README.md) · laboratório
-- [ ] **17/11** · 🧠 **Revisão geral para a avaliação** · revisões das Aulas 07–11 em casa
+- [ ] **17/11** · 🧠 **Revisão geral para a avaliação** — [12 questões das Aulas 07 a 11](recursos/revisao-geral-aulas-07-a-11.md) · revisões das Aulas 07–11 em casa
 - [ ] **24/11** · 📝 **Avaliação Oficial — 2º bimestre** · Aulas 07 a 11
 
 > 🗓️ Notas do 2º bimestre lançadas até **04/12**.
